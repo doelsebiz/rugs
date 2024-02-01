@@ -144,92 +144,9 @@
              <!--/ End Single Tab -->
             @endif
             <!-- /.col-md-6 col-lg-4 -->
-            <div class="col-xl-3 col-lg-4 col-md-6 ">
-                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
-                    <div class="product__item__image">
-                        <img src="assets/images/products/product-1-2.jpg" alt="Mosaic Tiles">
-                    </div>
-                    <!-- /.product-image -->
-                    <div class="product__item__content">
-                        <div class="floens-ratings product__item__ratings">
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                        </div>
-                        <!-- /.product-ratings -->
-                        <h4 class="product__item__title"><a href="shop-details.html">Mosaic Tiles</a></h4>
-                        <!-- /.product-title -->
-                        <div class="product__item__price">$78.00</div>
-                        <!-- /.product-price -->
-                        <a href="cart.html" class="floens-btn product__item__link">
-                            <span>Add to Cart</span>
-                            <i class="icon-cart"></i>
-                        </a>
-                    </div>
-                    <!-- /.product-content -->
-                </div>
-                <!-- /.product-item -->
-            </div>
+
             <!-- /.col-md-6 col-lg-4 -->
-            <div class="col-xl-3 col-lg-4 col-md-6 ">
-                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
-                    <div class="product__item__image">
-                        <img src="assets/images/products/product-1-3.jpg" alt="Terracotta Tiles">
-                    </div>
-                    <!-- /.product-image -->
-                    <div class="product__item__content">
-                        <div class="floens-ratings product__item__ratings">
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                        </div>
-                        <!-- /.product-ratings -->
-                        <h4 class="product__item__title"><a href="shop-details.html">Terracotta Tiles</a></h4>
-                        <!-- /.product-title -->
-                        <div class="product__item__price">$22.00</div>
-                        <!-- /.product-price -->
-                        <a href="cart.html" class="floens-btn product__item__link">
-                            <span>Add to Cart</span>
-                            <i class="icon-cart"></i>
-                        </a>
-                    </div>
-                    <!-- /.product-content -->
-                </div>
-                <!-- /.product-item -->
-            </div>
             <!-- /.col-md-6 col-lg-4 -->
-            <div class="col-xl-3 col-lg-4 col-md-6 ">
-                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
-                    <div class="product__item__image">
-                        <img src="assets/images/products/product-1-9.jpg" alt="Encaustic Tiless">
-                    </div>
-                    <!-- /.product-image -->
-                    <div class="product__item__content">
-                        <div class="floens-ratings product__item__ratings">
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                        </div>
-                        <!-- /.product-ratings -->
-                        <h4 class="product__item__title"><a href="shop-details.html">Encaustic Tiless</a></h4>
-                        <!-- /.product-title -->
-                        <div class="product__item__price">$49.00</div>
-                        <!-- /.product-price -->
-                        <a href="cart.html" class="floens-btn product__item__link">
-                            <span>Add to Cart</span>
-                            <i class="icon-cart"></i>
-                        </a>
-                    </div>
-                    <!-- /.product-content -->
-                </div>
-                <!-- /.product-item -->
-            </div>
             <!-- /.col-md-6 col-lg-4 -->
         </div>
         <!-- /.row -->

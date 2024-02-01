@@ -15493,6 +15493,7 @@ li:hover .sidebar__comments__icon::after {
     margin-bottom: 27px;
     z-index: 1;
     overflow: hidden;
+    height: 280px;
 }
 
 .service-card-two__image img {

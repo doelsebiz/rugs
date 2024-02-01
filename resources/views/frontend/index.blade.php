@@ -8,15 +8,15 @@
 <!--/ End Slider Area -->
 <!-- services start -->
 <section class="services-two section-space-two">
-    <div class="container">
+    <div class="container-fluid">
         <div class="services-two__top">
             <div class="row gutter-y-50 align-items-center">
                 <div class="col-lg-8 col-md-10">
                     <div class="sec-title @@extraClassName">
 
-                        <h6 class="sec-title__tagline">services</h6><!-- /.sec-title__tagline -->
+                        <!-- <h6 class="sec-title__tagline">Categories</h6> -->
 
-                        <h3 class="sec-title__title">We Provides Best florring Services for you</h3><!-- /.sec-title__title -->
+                        <h3 class="sec-title__title">Our Trending Categories</h3><!-- /.sec-title__title -->
                     </div><!-- /.sec-title -->
 
 
@@ -65,17 +65,23 @@
         }
     }
 }'>
+        @php
+        $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
+        @endphp
+        @if($category_lists)
+            @foreach($category_lists as $cat)
+                @if($cat->is_parent==1)
             <div class="item">
                 <div class="service-card-two">
-                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__bg" style="background-image: url('{{ url("") }}/public/assetstwo/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
                     <div class="service-card-two__image">
-                        <img src="assets/images/services/service-2-1.jpg" alt="Tiling & concrete">
+                        <img src="{{ url('') }}/public/images/{{ $cat->photo  }}" alt="Tiling & concrete">
                     </div><!-- /.service-card-two__image -->
                     <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href='service-d-tiling-concrete.html'>Tiling & concrete</a></h3><!-- /.service-card-two__title -->
+                        <h3 class="service-card-two__title"><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></h3><!-- /.service-card-two__title -->
                         <div class="service-card-two__bottom">
-                            <a href='service-d-tiling-concrete.html' class="service-card-two__link floens-btn">
-                                <span>service details</span>
+                            <a href="{{route('product-cat',$cat->slug)}}" class="service-card-two__link floens-btn">
+                                <span>View Category</span>
                                 <i class="icon-right-arrow"></i>
                             </a>
                             <span class="service-card-two__icon icon-tile"></span>
@@ -83,148 +89,29 @@
                     </div><!-- /.service-card-two__content -->
                 </div><!-- /.service-card-two -->
             </div><!-- /.item -->
-            <div class="item">
-                <div class="service-card-two">
-                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
-                    <div class="service-card-two__image">
-                        <img src="assets/images/services/service-2-2.jpg" alt="Industrial Flooring">
-                    </div><!-- /.service-card-two__image -->
-                    <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href='service-d-industrial-flooring.html'>Industrial Flooring</a></h3><!-- /.service-card-two__title -->
-                        <div class="service-card-two__bottom">
-                            <a href='service-d-industrial-flooring.html' class="service-card-two__link floens-btn">
-                                <span>service details</span>
-                                <i class="icon-right-arrow"></i>
-                            </a>
-                            <span class="service-card-two__icon icon-parquet"></span>
-                        </div><!-- /.service-card-two__bottom -->
-                    </div><!-- /.service-card-two__content -->
-                </div><!-- /.service-card-two -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="service-card-two">
-                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
-                    <div class="service-card-two__image">
-                        <img src="assets/images/services/service-2-3.jpg" alt="Vinyl Plank">
-                    </div><!-- /.service-card-two__image -->
-                    <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href='service-d-vinyl-plank.html'>Vinyl Plank</a></h3><!-- /.service-card-two__title -->
-                        <div class="service-card-two__bottom">
-                            <a href='service-d-vinyl-plank.html' class="service-card-two__link floens-btn">
-                                <span>service details</span>
-                                <i class="icon-right-arrow"></i>
-                            </a>
-                            <span class="service-card-two__icon icon-tiles"></span>
-                        </div><!-- /.service-card-two__bottom -->
-                    </div><!-- /.service-card-two__content -->
-                </div><!-- /.service-card-two -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="service-card-two">
-                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
-                    <div class="service-card-two__image">
-                        <img src="assets/images/services/service-2-4.jpg" alt="Carpets & rugs">
-                    </div><!-- /.service-card-two__image -->
-                    <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href='service-d-carpets-rugs.html'>Carpets & rugs</a></h3><!-- /.service-card-two__title -->
-                        <div class="service-card-two__bottom">
-                            <a href='service-d-carpets-rugs.html' class="service-card-two__link floens-btn">
-                                <span>service details</span>
-                                <i class="icon-right-arrow"></i>
-                            </a>
-                            <span class="service-card-two__icon icon-carpet"></span>
-                        </div><!-- /.service-card-two__bottom -->
-                    </div><!-- /.service-card-two__content -->
-                </div><!-- /.service-card-two -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="service-card-two">
-                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
-                    <div class="service-card-two__image">
-                        <img src="assets/images/services/service-2-5.jpg" alt="Oak Flooring">
-                    </div><!-- /.service-card-two__image -->
-                    <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href='service-d-oak-flooring.html'>Oak Flooring</a></h3><!-- /.service-card-two__title -->
-                        <div class="service-card-two__bottom">
-                            <a href='service-d-oak-flooring.html' class="service-card-two__link floens-btn">
-                                <span>service details</span>
-                                <i class="icon-right-arrow"></i>
-                            </a>
-                            <span class="service-card-two__icon icon-wood-board"></span>
-                        </div><!-- /.service-card-two__bottom -->
-                    </div><!-- /.service-card-two__content -->
-                </div><!-- /.service-card-two -->
-            </div><!-- /.item -->
-            <div class="item">
-                <div class="service-card-two">
-                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
-                    <div class="service-card-two__image">
-                        <img src="assets/images/services/service-2-6.jpg" alt="Vein Patterns">
-                    </div><!-- /.service-card-two__image -->
-                    <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href='service-d-vein-patterns.html'>Vein Patterns</a></h3><!-- /.service-card-two__title -->
-                        <div class="service-card-two__bottom">
-                            <a href='service-d-vein-patterns.html' class="service-card-two__link floens-btn">
-                                <span>service details</span>
-                                <i class="icon-right-arrow"></i>
-                            </a>
-                            <span class="service-card-two__icon icon-stones"></span>
-                        </div><!-- /.service-card-two__bottom -->
-                    </div><!-- /.service-card-two__content -->
-                </div><!-- /.service-card-two -->
-            </div><!-- /.item -->
+            @endif
+                <!-- /End Single Banner  -->
+            @endforeach
+        @endif
         </div><!-- /.services-two__carousel -->
     </div><!-- /.container-fluid -->
 </section><!-- /.services-two section-space-two -->
 <!-- services end -->
 <!-- Start Small Banner  -->
-<section class="small-banner section">
-    <div class="container-fluid">
-        <div class="row">
-            @php
-            $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
-            @endphp
-            @if($category_lists)
-                @foreach($category_lists as $cat)
-                    @if($cat->is_parent==1)
-                        <!-- Single Banner  -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="single-banner">
-                                @if($cat->photo)
-                                    <img src="{{$cat->photo}}" alt="{{$cat->photo}}">
-                                @else
-                                    <img src="https://via.placeholder.com/600x370" alt="#">
-                                @endif
-                                <div class="content">
-                                    <h3>{{$cat->title}}</h3>
-                                        <a href="{{route('product-cat',$cat->slug)}}">Discover Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                    <!-- /End Single Banner  -->
-                @endforeach
-            @endif
-        </div>
-    </div>
-</section>
 <!-- End Small Banner -->
 <section class="product-home">
     <div class="product-home__bg" style="background-image: url(assets/images/backgrounds/shop-bg-1.png);"></div>
     <!-- /.product-home__bg -->
     <div class="container">
         <div class="sec-title sec-title--center">
-
-            <h6 class="sec-title__tagline">our shop</h6>
-            <!-- /.sec-title__tagline -->
-
-            <h3 class="sec-title__title">Let’s Explore Latest <br> Product in Shop</h3>
-            <!-- /.sec-title__title -->
+            <h3 class="sec-title__title">Trending Item</h3>
         </div>
         <!-- /.sec-title -->
 
 
         <div class="row gutter-y-30">
+            @if($product_lists)
+            @foreach($product_lists as $key=>$product)
             <div class="col-xl-3 col-lg-4 col-md-6 ">
                 <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
                     <div class="product__item__image">
@@ -240,7 +127,7 @@
                             <span class="icon-star"></span>
                         </div>
                         <!-- /.product-ratings -->
-                        <h4 class="product__item__title"><a href="shop-details.html">Natural Stone Tiles</a></h4>
+                        <h4 class="product__item__title"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
                         <!-- /.product-title -->
                         <div class="product__item__price">$82.00</div>
                         <!-- /.product-price -->
@@ -253,6 +140,9 @@
                 </div>
                 <!-- /.product-item -->
             </div>
+            @endforeach
+             <!--/ End Single Tab -->
+            @endif
             <!-- /.col-md-6 col-lg-4 -->
             <div class="col-xl-3 col-lg-4 col-md-6 ">
                 <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>

@@ -5,7 +5,7 @@
 <div class="card">
     <h5 class="card-header">Edit Post</h5>
     <div class="card-body">
-    <form method="post" action="{{route('settings.update')}}">
+    <form enctype="multipart/form-data" method="post" action="{{route('settings.update')}}">
         @csrf 
         {{-- @method('PATCH') --}}
         {{-- {{dd($data)}} --}}
@@ -25,34 +25,16 @@
         </div>
 
         <div class="form-group">
-          <label for="inputPhoto" class="col-form-label">Logo <span class="text-danger">*</span></label>
-          <div class="input-group">
-              <span class="input-group-btn">
-                  <a id="lfm1" data-input="thumbnail1" data-preview="holder1" class="btn btn-primary">
-                  <i class="fa fa-picture-o"></i> Choose
-                  </a>
-              </span>
-          <input id="thumbnail1" class="form-control" type="text" name="logo" value="{{$data->logo}}">
-        </div>
-        <div id="holder1" style="margin-top:15px;max-height:100px;"></div>
-
-          @error('logo')
+          <label for="address" class="col-form-label">Logo <span class="text-danger">*</span></label>
+          <input type="file" class="form-control" name="logo" required>
+          @error('photo')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
 
         <div class="form-group">
-          <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
-          <div class="input-group">
-              <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                  <i class="fa fa-picture-o"></i> Choose
-                  </a>
-              </span>
-          <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$data->photo}}">
-        </div>
-        <div id="holder" style="margin-top:15px;max-height:100px;"></div>
-
+          <label for="address" class="col-form-label">Photo <span class="text-danger">*</span></label>
+          <input type="file" class="form-control" name="photo" >
           @error('photo')
           <span class="text-danger">{{$message}}</span>
           @enderror
@@ -60,7 +42,7 @@
 
         <div class="form-group">
           <label for="address" class="col-form-label">Address <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" name="address" required value="{{$data->address}}">
+          <input type="text" class="form-control" name="address"  value="{{$data->address}}">
           @error('address')
           <span class="text-danger">{{$message}}</span>
           @enderror

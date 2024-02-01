@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helper\Cmf;
 use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\User;
@@ -58,17 +58,28 @@ class AdminController extends Controller
         $this->validate($request,[
             'short_des'=>'required|string',
             'description'=>'required|string',
-            'photo'=>'required',
-            'logo'=>'required',
             'address'=>'required|string',
             'email'=>'required|email',
             'phone'=>'required|string',
         ]);
         $data=$request->all();
         // return $data;
-        $settings=Settings::first();
+        $settings= Settings::first();
         // return $settings;
         $status=$settings->fill($data)->save();
+
+        if($request->photo)
+        {
+            $update = Settings::find($settings->id);
+            $update->photo = Cmf::sendimagetodirectory($request->photo);
+            $update->save();
+        }
+        if($request->logo)
+        {
+            $update = Settings::find($settings->id);
+            $update->logo = Cmf::sendimagetodirectory($request->logo);
+            $update->save();
+        }
         if($status){
             request()->session()->flash('success','Setting successfully updated');
         }

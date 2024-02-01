@@ -238,6 +238,7 @@ return [
         'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Helper' => App\Helper\Helper::class,
+        'Cmf' => App\Helper\Cmf::class,
     ],
 
 ];

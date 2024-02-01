@@ -1,40 +1,182 @@
 @extends('frontend.layouts.master')
-@section('title','E-SHOP || HOME PAGE')
+@section('title')
+<title>E-SHOP || HOME PAGE</title>
+@endsection
 @section('main-content')
 <!-- Slider Area -->
-@if(count($banners)>0)
-    <section id="Gslider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            @foreach($banners as $key=>$banner)
-        <li data-target="#Gslider" data-slide-to="{{$key}}" class="{{(($key==0)? 'active' : '')}}"></li>
-            @endforeach
-
-        </ol>
-        <div class="carousel-inner" role="listbox">
-                @foreach($banners as $key=>$banner)
-                <div class="carousel-item {{(($key==0)? 'active' : '')}}">
-                    <img class="first-slide" src="{{$banner->photo}}" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block text-left">
-                        <h1 class="wow fadeInDown">{{$banner->title}}</h1>
-                        <p>{!! html_entity_decode($banner->description) !!}</p>
-                        <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">Shop Now<i class="far fa-arrow-alt-circle-right"></i></i></a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#Gslider" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#Gslider" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-        </a>
-    </section>
-@endif
-
+@include('frontend.mainslider')
 <!--/ End Slider Area -->
+<!-- services start -->
+<section class="services-two section-space-two">
+    <div class="container">
+        <div class="services-two__top">
+            <div class="row gutter-y-50 align-items-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="sec-title @@extraClassName">
 
+                        <h6 class="sec-title__tagline">services</h6><!-- /.sec-title__tagline -->
+
+                        <h3 class="sec-title__title">We Provides Best florring Services for you</h3><!-- /.sec-title__title -->
+                    </div><!-- /.sec-title -->
+
+
+                </div><!-- /.col-lg-8 -->
+            </div><!-- /.row -->
+        </div><!-- /.services-two__top -->
+    </div><!-- /.container -->
+    <div class="container-fluid">
+        <div class="services-two__carousel floens-owl__carousel floens-owl__carousel--basic-nav owl-carousel owl-theme" data-owl-options='{
+    "items": 1,
+    "margin": 0,
+    "loop": true,
+    "smartSpeed": 700,
+    "nav": true,
+    "navText": ["<span class=\"icon-slide-left-arrow\"></span>","<span class=\"icon-slide-right-arrow\"></span>"],
+    "dots": false,
+    "autoplay": 600,
+    "responsive":{
+        "0":{
+            "items": 1,
+            "margin": 15
+        },
+        "576":{
+            "items": 1,
+            "margin": 15
+        },
+        "768":{
+            "items": 2,
+            "margin": 30
+        },
+        "992":{
+            "items": 2,
+            "margin": 30
+        },
+        "1200":{
+            "items": 3,
+            "margin": 30
+        },
+        "1400":{
+            "items": 3,
+            "margin": 30
+        },
+        "1600":{
+            "items": 4,
+            "margin": 30
+        }
+    }
+}'>
+            <div class="item">
+                <div class="service-card-two">
+                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__image">
+                        <img src="assets/images/services/service-2-1.jpg" alt="Tiling & concrete">
+                    </div><!-- /.service-card-two__image -->
+                    <div class="service-card-two__content">
+                        <h3 class="service-card-two__title"><a href='service-d-tiling-concrete.html'>Tiling & concrete</a></h3><!-- /.service-card-two__title -->
+                        <div class="service-card-two__bottom">
+                            <a href='service-d-tiling-concrete.html' class="service-card-two__link floens-btn">
+                                <span>service details</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
+                            <span class="service-card-two__icon icon-tile"></span>
+                        </div><!-- /.service-card-two__bottom -->
+                    </div><!-- /.service-card-two__content -->
+                </div><!-- /.service-card-two -->
+            </div><!-- /.item -->
+            <div class="item">
+                <div class="service-card-two">
+                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__image">
+                        <img src="assets/images/services/service-2-2.jpg" alt="Industrial Flooring">
+                    </div><!-- /.service-card-two__image -->
+                    <div class="service-card-two__content">
+                        <h3 class="service-card-two__title"><a href='service-d-industrial-flooring.html'>Industrial Flooring</a></h3><!-- /.service-card-two__title -->
+                        <div class="service-card-two__bottom">
+                            <a href='service-d-industrial-flooring.html' class="service-card-two__link floens-btn">
+                                <span>service details</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
+                            <span class="service-card-two__icon icon-parquet"></span>
+                        </div><!-- /.service-card-two__bottom -->
+                    </div><!-- /.service-card-two__content -->
+                </div><!-- /.service-card-two -->
+            </div><!-- /.item -->
+            <div class="item">
+                <div class="service-card-two">
+                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__image">
+                        <img src="assets/images/services/service-2-3.jpg" alt="Vinyl Plank">
+                    </div><!-- /.service-card-two__image -->
+                    <div class="service-card-two__content">
+                        <h3 class="service-card-two__title"><a href='service-d-vinyl-plank.html'>Vinyl Plank</a></h3><!-- /.service-card-two__title -->
+                        <div class="service-card-two__bottom">
+                            <a href='service-d-vinyl-plank.html' class="service-card-two__link floens-btn">
+                                <span>service details</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
+                            <span class="service-card-two__icon icon-tiles"></span>
+                        </div><!-- /.service-card-two__bottom -->
+                    </div><!-- /.service-card-two__content -->
+                </div><!-- /.service-card-two -->
+            </div><!-- /.item -->
+            <div class="item">
+                <div class="service-card-two">
+                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__image">
+                        <img src="assets/images/services/service-2-4.jpg" alt="Carpets & rugs">
+                    </div><!-- /.service-card-two__image -->
+                    <div class="service-card-two__content">
+                        <h3 class="service-card-two__title"><a href='service-d-carpets-rugs.html'>Carpets & rugs</a></h3><!-- /.service-card-two__title -->
+                        <div class="service-card-two__bottom">
+                            <a href='service-d-carpets-rugs.html' class="service-card-two__link floens-btn">
+                                <span>service details</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
+                            <span class="service-card-two__icon icon-carpet"></span>
+                        </div><!-- /.service-card-two__bottom -->
+                    </div><!-- /.service-card-two__content -->
+                </div><!-- /.service-card-two -->
+            </div><!-- /.item -->
+            <div class="item">
+                <div class="service-card-two">
+                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__image">
+                        <img src="assets/images/services/service-2-5.jpg" alt="Oak Flooring">
+                    </div><!-- /.service-card-two__image -->
+                    <div class="service-card-two__content">
+                        <h3 class="service-card-two__title"><a href='service-d-oak-flooring.html'>Oak Flooring</a></h3><!-- /.service-card-two__title -->
+                        <div class="service-card-two__bottom">
+                            <a href='service-d-oak-flooring.html' class="service-card-two__link floens-btn">
+                                <span>service details</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
+                            <span class="service-card-two__icon icon-wood-board"></span>
+                        </div><!-- /.service-card-two__bottom -->
+                    </div><!-- /.service-card-two__content -->
+                </div><!-- /.service-card-two -->
+            </div><!-- /.item -->
+            <div class="item">
+                <div class="service-card-two">
+                    <div class="service-card-two__bg" style="background-image: url('assets/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
+                    <div class="service-card-two__image">
+                        <img src="assets/images/services/service-2-6.jpg" alt="Vein Patterns">
+                    </div><!-- /.service-card-two__image -->
+                    <div class="service-card-two__content">
+                        <h3 class="service-card-two__title"><a href='service-d-vein-patterns.html'>Vein Patterns</a></h3><!-- /.service-card-two__title -->
+                        <div class="service-card-two__bottom">
+                            <a href='service-d-vein-patterns.html' class="service-card-two__link floens-btn">
+                                <span>service details</span>
+                                <i class="icon-right-arrow"></i>
+                            </a>
+                            <span class="service-card-two__icon icon-stones"></span>
+                        </div><!-- /.service-card-two__bottom -->
+                    </div><!-- /.service-card-two__content -->
+                </div><!-- /.service-card-two -->
+            </div><!-- /.item -->
+        </div><!-- /.services-two__carousel -->
+    </div><!-- /.container-fluid -->
+</section><!-- /.services-two section-space-two -->
+<!-- services end -->
 <!-- Start Small Banner  -->
 <section class="small-banner section">
     <div class="container-fluid">
@@ -67,7 +209,143 @@
     </div>
 </section>
 <!-- End Small Banner -->
+<section class="product-home">
+    <div class="product-home__bg" style="background-image: url(assets/images/backgrounds/shop-bg-1.png);"></div>
+    <!-- /.product-home__bg -->
+    <div class="container">
+        <div class="sec-title sec-title--center">
 
+            <h6 class="sec-title__tagline">our shop</h6>
+            <!-- /.sec-title__tagline -->
+
+            <h3 class="sec-title__title">Let’s Explore Latest <br> Product in Shop</h3>
+            <!-- /.sec-title__title -->
+        </div>
+        <!-- /.sec-title -->
+
+
+        <div class="row gutter-y-30">
+            <div class="col-xl-3 col-lg-4 col-md-6 ">
+                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                    <div class="product__item__image">
+                        <img src="assets/images/products/product-1-1.jpg" alt="Natural Stone Tiles">
+                    </div>
+                    <!-- /.product-image -->
+                    <div class="product__item__content">
+                        <div class="floens-ratings product__item__ratings">
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                        </div>
+                        <!-- /.product-ratings -->
+                        <h4 class="product__item__title"><a href="shop-details.html">Natural Stone Tiles</a></h4>
+                        <!-- /.product-title -->
+                        <div class="product__item__price">$82.00</div>
+                        <!-- /.product-price -->
+                        <a href="cart.html" class="floens-btn product__item__link">
+                            <span>Add to Cart</span>
+                            <i class="icon-cart"></i>
+                        </a>
+                    </div>
+                    <!-- /.product-content -->
+                </div>
+                <!-- /.product-item -->
+            </div>
+            <!-- /.col-md-6 col-lg-4 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 ">
+                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='100ms'>
+                    <div class="product__item__image">
+                        <img src="assets/images/products/product-1-2.jpg" alt="Mosaic Tiles">
+                    </div>
+                    <!-- /.product-image -->
+                    <div class="product__item__content">
+                        <div class="floens-ratings product__item__ratings">
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                        </div>
+                        <!-- /.product-ratings -->
+                        <h4 class="product__item__title"><a href="shop-details.html">Mosaic Tiles</a></h4>
+                        <!-- /.product-title -->
+                        <div class="product__item__price">$78.00</div>
+                        <!-- /.product-price -->
+                        <a href="cart.html" class="floens-btn product__item__link">
+                            <span>Add to Cart</span>
+                            <i class="icon-cart"></i>
+                        </a>
+                    </div>
+                    <!-- /.product-content -->
+                </div>
+                <!-- /.product-item -->
+            </div>
+            <!-- /.col-md-6 col-lg-4 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 ">
+                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='200ms'>
+                    <div class="product__item__image">
+                        <img src="assets/images/products/product-1-3.jpg" alt="Terracotta Tiles">
+                    </div>
+                    <!-- /.product-image -->
+                    <div class="product__item__content">
+                        <div class="floens-ratings product__item__ratings">
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                        </div>
+                        <!-- /.product-ratings -->
+                        <h4 class="product__item__title"><a href="shop-details.html">Terracotta Tiles</a></h4>
+                        <!-- /.product-title -->
+                        <div class="product__item__price">$22.00</div>
+                        <!-- /.product-price -->
+                        <a href="cart.html" class="floens-btn product__item__link">
+                            <span>Add to Cart</span>
+                            <i class="icon-cart"></i>
+                        </a>
+                    </div>
+                    <!-- /.product-content -->
+                </div>
+                <!-- /.product-item -->
+            </div>
+            <!-- /.col-md-6 col-lg-4 -->
+            <div class="col-xl-3 col-lg-4 col-md-6 ">
+                <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='300ms'>
+                    <div class="product__item__image">
+                        <img src="assets/images/products/product-1-9.jpg" alt="Encaustic Tiless">
+                    </div>
+                    <!-- /.product-image -->
+                    <div class="product__item__content">
+                        <div class="floens-ratings product__item__ratings">
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                        </div>
+                        <!-- /.product-ratings -->
+                        <h4 class="product__item__title"><a href="shop-details.html">Encaustic Tiless</a></h4>
+                        <!-- /.product-title -->
+                        <div class="product__item__price">$49.00</div>
+                        <!-- /.product-price -->
+                        <a href="cart.html" class="floens-btn product__item__link">
+                            <span>Add to Cart</span>
+                            <i class="icon-cart"></i>
+                        </a>
+                    </div>
+                    <!-- /.product-content -->
+                </div>
+                <!-- /.product-item -->
+            </div>
+            <!-- /.col-md-6 col-lg-4 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
 <!-- Start Product Area -->
 <div class="product-area section">
         <div class="container">

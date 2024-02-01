@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helper\Cmf;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Str;
@@ -43,7 +43,6 @@ class CategoryController extends Controller
         $this->validate($request,[
             'title'=>'string|required',
             'summary'=>'string|nullable',
-            'photo'=>'string|nullable',
             'status'=>'required|in:active,inactive',
             'is_parent'=>'sometimes|in:1',
             'parent_id'=>'nullable|exists:categories,id',
@@ -58,6 +57,16 @@ class CategoryController extends Controller
         $data['is_parent']=$request->input('is_parent',0);
         // return $data;   
         $status=Category::create($data);
+
+
+        if($request->photo)
+        {
+            $update = Category::find($status->id);
+            $update->photo = Cmf::sendimagetodirectory($request->photo);
+            $update->save();
+        }
+
+
         if($status){
             request()->session()->flash('success','Category successfully added');
         }
@@ -107,15 +116,19 @@ class CategoryController extends Controller
         $this->validate($request,[
             'title'=>'string|required',
             'summary'=>'string|nullable',
-            'photo'=>'string|nullable',
             'status'=>'required|in:active,inactive',
             'is_parent'=>'sometimes|in:1',
             'parent_id'=>'nullable|exists:categories,id',
         ]);
         $data= $request->all();
         $data['is_parent']=$request->input('is_parent',0);
+        if($request->photo)
+        {
+            $data['photo']=Cmf::sendimagetodirectory($request->photo);
+        }
         // return $data;
         $status=$category->fill($data)->save();
+        
         if($status){
             request()->session()->flash('success','Category successfully updated');
         }

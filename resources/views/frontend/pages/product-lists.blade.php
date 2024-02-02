@@ -5,11 +5,6 @@
 @endsection
 
 @section('main-content')
-<style type="text/css">
-	.main-header--one{
-		background-color: white;
-	}
-</style>
 <section class="page-header">
     <div class="page-header__bg" style="background-image: url('assets/images/backgrounds/page-header-bg-1-1.png');"></div><!-- /.page-header__bg -->
     <div class="container">

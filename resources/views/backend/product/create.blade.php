@@ -2,7 +2,8 @@
 
 @section('main-content')
 
-<div class="card">
+<div class="container-fluid">
+  <div class="card">
     <h5 class="card-header">Add Product</h5>
     <div class="card-body">
       <form enctype="multipart/form-data" method="post" action="{{route('product.store')}}">
@@ -17,7 +18,7 @@
 
         <div class="form-group">
           <label for="summary" class="col-form-label">Summary <span class="text-danger">*</span></label>
-          <textarea class="form-control" id="summary" name="summary">{{old('summary')}}</textarea>
+          <textarea class="form-control" name="summary">{{old('summary')}}</textarea>
           @error('summary')
           <span class="text-danger">{{$message}}</span>
           @enderror
@@ -65,57 +66,37 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-
-        <div class="form-group">
-          <label for="discount" class="col-form-label">Discount(%)</label>
-          <input id="discount" type="number" name="discount" min="0" max="100" placeholder="Enter discount"  value="{{old('discount')}}" class="form-control">
-          @error('discount')
-          <span class="text-danger">{{$message}}</span>
-          @enderror
-        </div>
-        <div class="form-group">
-          <label for="size">Size</label>
-          <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
-              <option value="">--Select any size--</option>
-              <option value="S">Small (S)</option>
-              <option value="M">Medium (M)</option>
-              <option value="L">Large (L)</option>
-              <option value="XL">Extra Large (XL)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="brand_id">Brand</label>
-          {{-- {{$brands}} --}}
-
-          <select name="brand_id" class="form-control">
-              <option value="">--Select Brand--</option>
-             @foreach($brands as $brand)
-              <option value="{{$brand->id}}">{{$brand->title}}</option>
-             @endforeach
-          </select>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="size">Size</label>
+              <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
+                  <option value="">--Select any size--</option>
+                  <option value="S">Small (S)</option>
+                  <option value="M">Medium (M)</option>
+                  <option value="L">Large (L)</option>
+                  <option value="XL">Extra Large (XL)</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="color">Color</label>
+              <select name="color[]" class="form-control selectpicker"  multiple data-live-search="true">
+                  <option value="">--Select any size--</option>
+                  <option value="Black">Black</option>
+                  <option value="Red">Red</option>
+                  <option value="White">White</option>
+                  <option value="Orange">Orange</option>
+              </select>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="condition">Condition</label>
-          <select name="condition" class="form-control">
-              <option value="">--Select Condition--</option>
-              <option value="default">Default</option>
-              <option value="new">New</option>
-              <option value="hot">Hot</option>
-          </select>
-        </div>
 
-        <div class="form-group">
-          <label for="stock">Quantity <span class="text-danger">*</span></label>
-          <input id="quantity" type="number" name="stock" min="0" placeholder="Enter quantity"  value="{{old('stock')}}" class="form-control">
-          @error('stock')
-          <span class="text-danger">{{$message}}</span>
-          @enderror
-        </div>
         <div class="form-group">
           <label for="address" class="col-form-label">Photo <span class="text-danger">*</span></label>
-          <input type="file" class="form-control" name="photo" >
+          <input multiple type="file" class="form-control" name="photo[]" >
           @error('photo')
           <span class="text-danger">{{$message}}</span>
           @enderror
@@ -138,20 +119,19 @@
       </form>
     </div>
 </div>
+</div>
 
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
+<link rel="stylesheet" href="{{asset('public/backend/summernote/summernote.min.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 @endpush
 @push('scripts')
-<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-<script src="{{asset('backend/summernote/summernote.min.js')}}"></script>
+<script src="{{asset('public/backend/summernote/summernote.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
 <script>
-    $('#lfm').filemanager('image');
 
     $(document).ready(function() {
       $('#summary').summernote({

@@ -3038,7 +3038,7 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: transparent;
+    background-color: white;
     width: 100%;
     z-index: 99;
     border-bottom: 1px solid var(--floens-border-color, #DED8D3);

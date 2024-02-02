@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
-
+use App\Models\product_images;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -49,17 +49,12 @@ class ProductController extends Controller
             'title'=>'string|required',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'photo'=>'required',
             'size'=>'nullable',
-            'stock'=>"required|numeric",
             'cat_id'=>'required|exists:categories,id',
-            'brand_id'=>'nullable|exists:brands,id',
             'child_cat_id'=>'nullable|exists:categories,id',
             'is_featured'=>'sometimes|in:1',
             'status'=>'required|in:active,inactive',
-            'condition'=>'required|in:default,new,hot',
             'price'=>'required|numeric',
-            'discount'=>'nullable|numeric'
         ]);
 
         $data=$request->all();
@@ -69,7 +64,6 @@ class ProductController extends Controller
             $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
         }
         $data['slug']=$slug;
-        $data['photo']=Cmf::sendimagetodirectory($request->photo);
         $data['is_featured']=$request->input('is_featured',0);
         $size=$request->input('size');
         if($size){
@@ -78,9 +72,13 @@ class ProductController extends Controller
         else{
             $data['size']='';
         }
-        // return $size;
-        // return $data;
         $status=Product::create($data);
+        foreach ($request->photo as $r) {
+            $images = new product_images();
+            $images->image = Cmf::sendimagetodirectory($r);
+            $images->product_id = $status->id;
+            $images->save();
+        }
         if($status){
             request()->session()->flash('success','Product Successfully added');
         }

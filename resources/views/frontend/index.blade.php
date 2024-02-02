@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title')
-<title>E-SHOP || HOME PAGE</title>
+<title>CARGOZ</title>
 @endsection
 @section('main-content')
 <!-- Slider Area -->
@@ -102,9 +102,9 @@
 <section class="product-home">
     <div class="product-home__bg" style="background-image: url(assets/images/backgrounds/shop-bg-1.png);"></div>
     <!-- /.product-home__bg -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="sec-title sec-title--center">
-            <h3 class="sec-title__title">Trending Item</h3>
+            <h3 class="sec-title__title">Trending Designs</h3>
         </div>
         <!-- /.sec-title -->
 
@@ -115,7 +115,7 @@
             <div class="col-xl-3 col-lg-4 col-md-6 ">
                 <div class="product__item wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
                     <div class="product__item__image">
-                        <img src="assets/images/products/product-1-1.jpg" alt="Natural Stone Tiles">
+                        <img src="{{ url('public/images') }}/{{ $product->photo }}" alt="Natural Stone Tiles">
                     </div>
                     <!-- /.product-image -->
                     <div class="product__item__content">
@@ -129,9 +129,9 @@
                         <!-- /.product-ratings -->
                         <h4 class="product__item__title"><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h4>
                         <!-- /.product-title -->
-                        <div class="product__item__price">$82.00</div>
+                        <div class="product__item__price">Starting From ${{ $product->price }}</div>
                         <!-- /.product-price -->
-                        <a href="cart.html" class="floens-btn product__item__link">
+                        <a href="{{route('add-to-cart',$product->slug)}}" class="floens-btn product__item__link">
                             <span>Add to Cart</span>
                             <i class="icon-cart"></i>
                         </a>
@@ -154,100 +154,6 @@
     <!-- /.container -->
 </section>
 <!-- Start Product Area -->
-<div class="product-area section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2>Trending Item</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="product-info">
-                        <div class="nav-main">
-                            <!-- Tab Nav -->
-                            <ul class="nav nav-tabs filter-tope-group" id="myTab" role="tablist">
-                                @php
-                                    $categories=DB::table('categories')->where('status','active')->where('is_parent',1)->get();
-                                    // dd($categories);
-                                @endphp
-                                @if($categories)
-                                <button class="btn" style="background:black"data-filter="*">
-                                    All Products
-                                </button>
-                                    @foreach($categories as $key=>$cat)
-
-                                    <button class="btn" style="background:none;color:black;"data-filter=".{{$cat->id}}">
-                                        {{$cat->title}}
-                                    </button>
-                                    @endforeach
-                                @endif
-                            </ul>
-                            <!--/ End Tab Nav -->
-                        </div>
-                        <div class="tab-content isotope-grid" id="myTabContent">
-                             <!-- Start Single Tab -->
-                            @if($product_lists)
-                                @foreach($product_lists as $key=>$product)
-                                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{$product->cat_id}}">
-                                    <div class="single-product">
-                                        <div class="product-img">
-                                            <a href="{{route('product-detail',$product->slug)}}">
-                                                @php
-                                                    $photo=explode(',',$product->photo);
-                                                // dd($photo);
-                                                @endphp
-                                                <img class="default-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                <img class="hover-img" src="{{$photo[0]}}" alt="{{$photo[0]}}">
-                                                @if($product->stock<=0)
-                                                    <span class="out-of-stock">Sale out</span>
-                                                @elseif($product->condition=='new')
-                                                    <span class="new">New</span
-                                                @elseif($product->condition=='hot')
-                                                    <span class="hot">Hot</span>
-                                                @else
-                                                    <span class="price-dec">{{$product->discount}}% Off</span>
-                                                @endif
-
-
-                                            </a>
-                                            <div class="button-head">
-                                                <div class="product-action">
-                                                    <a data-toggle="modal" data-target="#{{$product->id}}" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                                    <a title="Wishlist" href="{{route('add-to-wishlist',$product->slug)}}" ><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                                </div>
-                                                <div class="product-action-2">
-                                                    <a title="Add to cart" href="{{route('add-to-cart',$product->slug)}}">Add to cart</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
-                                            <div class="product-price">
-                                                @php
-                                                    $after_discount=($product->price-($product->price*$product->discount)/100);
-                                                @endphp
-                                                <span>${{number_format($after_discount,2)}}</span>
-                                                <del style="padding-left:4%;">${{number_format($product->price,2)}}</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-
-                             <!--/ End Single Tab -->
-                            @endif
-
-                        <!--/ End Single Tab -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
 <!-- End Product Area -->
 {{-- @php
     $featured=DB::table('products')->where('is_featured',1)->where('status','active')->orderBy('id','DESC')->limit(1)->get();
@@ -387,220 +293,65 @@
     </div>
 </section>
 <!-- End Shop Home List  -->
-
-<!-- Start Shop Blog  -->
-<section class="shop-blog section">
+<section class="blog-one section-space-two">
+    <div class="blog-one__bg" style="background-image: url(assets/images/backgrounds/blog-bg-1.jpg);"></div>
+    <!-- /.blog-one__bg -->
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <h2>From Our Blog</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
+        <div class="blog-one__top">
+            <div class="row gutter-y-50 align-items-center">
+                <div class="col-lg-8">
+                    <div class="sec-title @@extraClassName">
+
+                        <h6 class="sec-title__tagline">news room</h6><!-- /.sec-title__tagline -->
+
+                        <h3 class="sec-title__title">See Latest News <br> from the Blog Posts</h3><!-- /.sec-title__title -->
+                    </div><!-- /.sec-title -->
+
+
+                </div><!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="blog-one__top__button">
+                        <a href="blog-grid-right.html" class="floens-btn floens-btn--border">
+                            <span>view all</span>
+                            <i class="icon-right-arrow"></i>
+                        </a><!-- /.floens-btn floens-btn--border -->
+                    </div><!-- /.blog-one__top__button -->
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+        </div><!-- /.blog-one__top -->
+        <div class="row gutter-y-30">
             @if($posts)
                 @foreach($posts as $post)
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <!-- Start Single Blog  -->
-                        <div class="shop-single-blog">
-                            <img src="{{$post->photo}}" alt="{{$post->photo}}">
-                            <div class="content">
-                                <p class="date">{{$post->created_at->format('d M , Y. D')}}</p>
-                                <a href="{{route('blog.detail',$post->slug)}}" class="title">{{$post->title}}</a>
-                                <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">Continue Reading</a>
-                            </div>
-                        </div>
-                        <!-- End Single Blog  -->
-                    </div>
-                @endforeach
-            @endif
-
-        </div>
-    </div>
-</section>
+            <div class="col-md-6 col-lg-4">
+                <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
+                    <div class="blog-card__image">
+                        <img src="{{ url('public/images') }}/{{ $post->photo }}" alt="{{$post->title}}">
+                        <a href="{{route('blog.detail',$post->slug)}}" class="blog-card__image__link"><span class="sr-only">{{$post->title}}</span>
+                            <!-- /.sr-only --></a>
+                    </div><!-- /.blog-card__image -->
+                    <div class="blog-card__date">
+                        <span class="blog-card__date__day">{{$post->created_at->format('d')}}</span>
+                        <span class="blog-card__date__month">{{$post->created_at->format('M')}}</span>
+                    </div><!-- /.blog-card__date -->
+                    <div class="blog-card__content">
+                        <h3 class="blog-card__title"><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h3><!-- /.blog-card__title -->
+                        <p class="blog-card__text">Tiles company, also known as a tile manufacturer or distributor, specializes in the production.</p><!-- /.blog-card__text -->
+                    </div><!-- /.blog-card__content -->
+                </div><!-- /.blog-card -->
+            </div><!-- /.col-md-6 col-lg-4 -->
+            @endforeach
+        @endif
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.blog-one section-space-two -->
+<!-- blog end -->
+<!-- Start Shop Blog  -->
 <!-- End Shop Blog  -->
 
 <!-- Start Shop Services Area -->
-<section class="shop-services section home">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-rocket"></i>
-                    <h4>Free shiping</h4>
-                    <p>Orders over $100</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-reload"></i>
-                    <h4>Free Return</h4>
-                    <p>Within 30 days returns</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-lock"></i>
-                    <h4>Sucure Payment</h4>
-                    <p>100% secure payment</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Service -->
-                <div class="single-service">
-                    <i class="ti-tag"></i>
-                    <h4>Best Peice</h4>
-                    <p>Guaranteed price</p>
-                </div>
-                <!-- End Single Service -->
-            </div>
-        </div>
-    </div>
-</section>
 <!-- End Shop Services Area -->
 
-@include('frontend.layouts.newsletter')
 
-<!-- Modal -->
-@if($product_lists)
-    @foreach($product_lists as $key=>$product)
-        <div class="modal fade" id="{{$product->id}}" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row no-gutters">
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <!-- Product Slider -->
-                                        <div class="product-gallery">
-                                            <div class="quickview-slider-active">
-                                                @php
-                                                    $photo=explode(',',$product->photo);
-                                                // dd($photo);
-                                                @endphp
-                                                @foreach($photo as $data)
-                                                    <div class="single-slider">
-                                                        <img src="{{$data}}" alt="{{$data}}">
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    <!-- End Product slider -->
-                                </div>
-                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="quickview-content">
-                                        <h2>{{$product->title}}</h2>
-                                        <div class="quickview-ratting-review">
-                                            <div class="quickview-ratting-wrap">
-                                                <div class="quickview-ratting">
-                                                    {{-- <i class="yellow fa fa-star"></i>
-                                                    <i class="yellow fa fa-star"></i>
-                                                    <i class="yellow fa fa-star"></i>
-                                                    <i class="yellow fa fa-star"></i>
-                                                    <i class="fa fa-star"></i> --}}
-                                                    @php
-                                                        $rate=DB::table('product_reviews')->where('product_id',$product->id)->avg('rate');
-                                                        $rate_count=DB::table('product_reviews')->where('product_id',$product->id)->count();
-                                                    @endphp
-                                                    @for($i=1; $i<=5; $i++)
-                                                        @if($rate>=$i)
-                                                            <i class="yellow fa fa-star"></i>
-                                                        @else
-                                                        <i class="fa fa-star"></i>
-                                                        @endif
-                                                    @endfor
-                                                </div>
-                                                <a href="#"> ({{$rate_count}} customer review)</a>
-                                            </div>
-                                            <div class="quickview-stock">
-                                                @if($product->stock >0)
-                                                <span><i class="fa fa-check-circle-o"></i> {{$product->stock}} in stock</span>
-                                                @else
-                                                <span><i class="fa fa-times-circle-o text-danger"></i> {{$product->stock}} out stock</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        @php
-                                            $after_discount=($product->price-($product->price*$product->discount)/100);
-                                        @endphp
-                                        <h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
-                                        <div class="quickview-peragraph">
-                                            <p>{!! html_entity_decode($product->summary) !!}</p>
-                                        </div>
-                                        @if($product->size)
-                                            <div class="size">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-12">
-                                                        <h5 class="title">Size</h5>
-                                                        <select>
-                                                            @php
-                                                            $sizes=explode(',',$product->size);
-                                                            // dd($sizes);
-                                                            @endphp
-                                                            @foreach($sizes as $size)
-                                                                <option>{{$size}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    {{-- <div class="col-lg-6 col-12">
-                                                        <h5 class="title">Color</h5>
-                                                        <select>
-                                                            <option selected="selected">orange</option>
-                                                            <option>purple</option>
-                                                            <option>black</option>
-                                                            <option>pink</option>
-                                                        </select>
-                                                    </div> --}}
-                                                </div>
-                                            </div>
-                                        @endif
-                                        <form action="{{route('single-add-to-cart')}}" method="POST" class="mt-4">
-                                            @csrf
-                                            <div class="quantity">
-                                                <!-- Input Order -->
-                                                <div class="input-group">
-                                                    <div class="button minus">
-                                                        <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                                            <i class="ti-minus"></i>
-                                                        </button>
-                                                    </div>
-													<input type="hidden" name="slug" value="{{$product->slug}}">
-                                                    <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
-                                                    <div class="button plus">
-                                                        <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-                                                            <i class="ti-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <!--/ End Input Order -->
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <button type="submit" class="btn">Add to cart</button>
-                                                <a href="{{route('add-to-wishlist',$product->slug)}}" class="btn min"><i class="ti-heart"></i></a>
-                                            </div>
-                                        </form>
-                                        <div class="default-social">
-                                        <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    @endforeach
-@endif
-<!-- Modal end -->
 @endsection
 
 @push('styles')

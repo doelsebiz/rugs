@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helper\Cmf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Post;
@@ -50,7 +50,7 @@ class PostController extends Controller
             'quote'=>'string|nullable',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'photo'=>'string|nullable',
+            'photo'=>'required',
             'tags'=>'nullable',
             'added_by'=>'nullable',
             'post_cat_id'=>'required',
@@ -73,6 +73,7 @@ class PostController extends Controller
         else{
             $data['tags']='';
         }
+        $data['photo'] = Cmf::sendimagetodirectory($request->photo);
         // return $data;
 
         $status=Post::create($data);
@@ -127,7 +128,6 @@ class PostController extends Controller
             'quote'=>'string|nullable',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'photo'=>'string|nullable',
             'tags'=>'nullable',
             'added_by'=>'nullable',
             'post_cat_id'=>'required',
@@ -146,6 +146,12 @@ class PostController extends Controller
         // return $data;
 
         $status=$post->fill($data)->save();
+        if($request->photo)
+        {
+            $product=Post::find($id);
+            $product->photo = Cmf::sendimagetodirectory($request->photo);
+            $product->save();
+        }
         if($status){
             request()->session()->flash('success','Post Successfully updated');
         }

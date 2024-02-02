@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helper\Cmf;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -49,7 +49,7 @@ class ProductController extends Controller
             'title'=>'string|required',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'photo'=>'string|required',
+            'photo'=>'required',
             'size'=>'nullable',
             'stock'=>"required|numeric",
             'cat_id'=>'required|exists:categories,id',
@@ -69,6 +69,7 @@ class ProductController extends Controller
             $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
         }
         $data['slug']=$slug;
+        $data['photo']=Cmf::sendimagetodirectory($request->photo);
         $data['is_featured']=$request->input('is_featured',0);
         $size=$request->input('size');
         if($size){
@@ -133,7 +134,6 @@ class ProductController extends Controller
             'title'=>'string|required',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'photo'=>'string|required',
             'size'=>'nullable',
             'stock'=>"required|numeric",
             'cat_id'=>'required|exists:categories,id',
@@ -155,8 +155,15 @@ class ProductController extends Controller
         else{
             $data['size']='';
         }
+
         // return $data;
         $status=$product->fill($data)->save();
+        if($request->photo)
+        {
+            $product=Product::find($id);
+            $product->photo = Cmf::sendimagetodirectory($request->photo);
+            $product->save();
+        }
         if($status){
             request()->session()->flash('success','Product Successfully updated');
         }

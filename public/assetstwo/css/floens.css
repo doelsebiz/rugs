@@ -4731,7 +4731,7 @@ body.megamenu-popup-active .mobile-nav__content {
     background-color: var(--floens-black2, #2B1E16);
     position: relative;
     padding-top: 107px;
-    padding-bottom: 119px;
+    padding-bottom: 50px;
 }
 
 @media (max-width: 991px) {
@@ -11504,11 +11504,13 @@ li:hover .sidebar__comments__icon::after {
     background-color: var(--floens-white, #ffffff);
     position: relative;
     overflow: hidden;
+    height: 270px;
 }
 
 .product__item__image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: fill;
     transition: all 500ms ease;
     transform: scale(1);
 }
@@ -11639,7 +11641,7 @@ li:hover .sidebar__comments__icon::after {
 }
 
 .product-page {
-    padding-top: 95px;
+    padding-top: 35px;
 }
 
 @media (max-width: 767px) {

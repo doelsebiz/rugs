@@ -224,14 +224,16 @@ class FrontendController extends Controller
     }
     public function productCat(Request $request){
         $products=Category::getProductByCat($request->slug);
+        $categoryname = DB::Table('categories')->where('slug' , $request->slug)->first();
         // return $request->slug;
+        $products = $products->products;
         $recent_products=Product::where('status','active')->orderBy('id','DESC')->limit(3)->get();
 
         if(request()->is('e-shop.loc/product-grids')){
-            return view('frontend.pages.product-grids')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-grids' ,compact('categoryname','products'));
         }
         else{
-            return view('frontend.pages.product-lists')->with('products',$products->products)->with('recent_products',$recent_products);
+            return view('frontend.pages.product-lists' ,compact('categoryname','products'));
         }
 
     }

@@ -60,6 +60,8 @@
     Route::get('login/{provider}/callback/', [LoginController::class, 'Callback'])->name('login.callback');
 
     Route::get('/', [FrontendController::class, 'home'])->name('home');
+    Route::get('all-products', [FrontendController::class, 'allproducts']);
+
 
 // Frontend Routes
     Route::get('/home', [FrontendController::class, 'index']);

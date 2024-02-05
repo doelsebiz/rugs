@@ -23,11 +23,15 @@
                             <a href="{{ url('rugs') }}">Rugs</a>
                             <ul>
                                 @foreach(Helper::getAllCategory() as $cat)
-                                <li><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></li>
+                                @if($cat->title != 'Carpets')
+                                    <li><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></li>
+                                @endif
                                 @endforeach
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="{{ url('product-cat/carpets') }}">Carpets</a>
+                        </li>
                         <li>
                             <a href="{{ url('all-products') }}">All Products</a>
                         </li>

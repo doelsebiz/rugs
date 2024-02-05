@@ -11500,6 +11500,7 @@ li:hover .sidebar__comments__icon::after {
     position: relative;
     background-color: var(--floens-white, #ffffff);
     transition: all 500ms ease;
+    border: 1px solid var(--floens-border-color, #DED8D3);
 }
 
 .product__item__image {
@@ -11522,9 +11523,6 @@ li:hover .sidebar__comments__icon::after {
 }
 
 .product__item__content {
-    border-left: 1px solid var(--floens-border-color, #DED8D3);
-    border-right: 1px solid var(--floens-border-color, #DED8D3);
-    border-bottom: 1px solid var(--floens-border-color, #DED8D3);
     position: relative;
     text-align: center;
     padding: 30.24px 25px 29px;

@@ -228,7 +228,7 @@ class FrontendController extends Controller
 
     }
     public function productCat(Request $request){
-        $products=Category::getProductByCat($request->slug);
+        $products = Category::getProductByCat($request->slug);
         $categoryname = DB::Table('categories')->where('slug' , $request->slug)->first();
         // return $request->slug;
         $products = $products->products;

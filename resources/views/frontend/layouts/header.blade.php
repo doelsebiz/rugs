@@ -36,6 +36,9 @@
                             <a href="{{ url('all-products') }}">All Products</a>
                         </li>
                         <li>
+                            <a href="{{ url('blogs') }}">News & Blogs</a>
+                        </li>
+                        <li>
                             <a href="{{ url('contact-us') }}">Contact</a>
                         </li>
                     </ul>

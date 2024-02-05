@@ -82,7 +82,7 @@
     }
 }'>
         @php
-        $category_lists=DB::table('categories')->where('status','active')->orderby('id' , 'desc')->limit(6)->get();
+        $category_lists=DB::table('categories')->where('status','active')->limit(5)->get();
         @endphp
         @if($category_lists)
             @foreach($category_lists as $cat)

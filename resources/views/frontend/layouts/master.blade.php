@@ -72,9 +72,11 @@
         <!-- /.mobile-nav__overlay -->
         <div class="mobile-nav__content">
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
-
+            @php
+                $settings = DB::table('settings')->first();
+            @endphp  
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="{{ url('public/assetstwo/images/logo-light.png') }}" width="155" alt="logo-light" /></a>
+                <a href="{{ url('') }}" aria-label="logo image"><img src="{{ url('public/images') }}/{{$settings->logo}}" width="155" alt="logo-light" /></a>
             </div>
             <!-- /.logo-box -->
             <div class="mobile-nav__container"></div>
@@ -83,11 +85,11 @@
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fa fa-envelope"></i>
-                    <a href="mailto:needhelp@floens.com">needhelp@floens.com</a>
+                    <a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a>
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="tel:+9156980036420">+91 5698 0036 420</a>
+                    <a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a>
                 </li>
             </ul>
             <!-- /.mobile-nav__contact -->

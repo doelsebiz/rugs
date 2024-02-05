@@ -72,15 +72,9 @@
                 <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
-
-              <div class="form-group">
-                <label for="discount" class="col-form-label">Discount(%)</label>
-                <input id="discount" type="number" name="discount" min="0" max="100" placeholder="Enter discount"  value="{{$product->discount}}" class="form-control">
-                @error('discount')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
-              </div>
-              <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
                 <label for="size">Size</label>
                 <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
                     <option value="">--Select any size--</option>
@@ -95,42 +89,28 @@
                     <option value="XL"  @if( in_array( "XL",$data ) ) selected @endif>Extra Large</option>
                     @endforeach
                 </select>
-              </div>
-              <div class="form-group">
-                <label for="brand_id">Brand</label>
-                <select name="brand_id" class="form-control">
-                    <option value="">--Select Brand--</option>
-                   @foreach($brands as $brand)
-                    <option value="{{$brand->id}}" {{(($product->brand_id==$brand->id)? 'selected':'')}}>{{$brand->title}}</option>
-                   @endforeach
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="condition">Condition</label>
-                <select name="condition" class="form-control">
-                    <option value="">--Select Condition--</option>
-                    <option value="default" {{(($product->condition=='default')? 'selected':'')}}>Default</option>
-                    <option value="new" {{(($product->condition=='new')? 'selected':'')}}>New</option>
-                    <option value="hot" {{(($product->condition=='hot')? 'selected':'')}}>Hot</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="stock">Quantity <span class="text-danger">*</span></label>
-                <input id="quantity" type="number" name="stock" min="0" placeholder="Enter quantity"  value="{{$product->stock}}" class="form-control">
-                @error('stock')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
-              </div>
-              <div class="form-group">
-                <label for="address" class="col-form-label">Photo <span class="text-danger">*</span></label>
-                <input type="file" class="form-control" name="photo" >
-                @error('photo')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
-              </div>
-              
+              </div> 
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="color">Color</label>
+                    <select name="color[]" class="form-control selectpicker"  multiple data-live-search="true">
+                        <option value="">--Select any size--</option>
+                        @foreach($items as $item)              
+                          @php 
+                          $color=explode(',',$item->color);
+                          // dd($data);
+                          @endphp
+                        <option value="Black"  @if( in_array( "Black",$color ) ) selected @endif>Black</option>
+                        <option value="Red"  @if( in_array( "Red",$color ) ) selected @endif>Red</option>
+                        <option value="White"  @if( in_array( "White",$color ) ) selected @endif>White</option>
+                        <option value="Orange"  @if( in_array( "Orange",$color ) ) selected @endif>Orange</option>
+                        @endforeach
+                    </select>
+                  </div>
+                </div> 
+              </div>  
+                      
               <div class="form-group">
                 <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
                 <select name="status" class="form-control">
@@ -152,8 +132,9 @@
     <div class="card">
           <h5 class="card-header">Add Product Images</h5>
           <div class="card-body">
-            <form enctype="multipart/form-data" method="post" action="{{ url('admin/product/addproductimages') }}">
+            <form enctype="multipart/form-data" method="post" action="{{url('admin/product/addproductimages')}}">
               @csrf 
+              <input type="hidden" value="{{ $product->id }}" name="id">
               <div class="form-group">
                 <label for="address" class="col-form-label">Photo <span class="text-danger">*</span></label>
                 <input type="file" class="form-control" name="photo" >
@@ -172,7 +153,8 @@
           <div class="card-body">
               <div class="row">
                 @foreach(DB::table('product_images')->where('product_id' , $product->id)->get() as $r)
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2">
+                    <a href="{{ url('admin/product/deleteimage') }}/{{ $r->id }}" class="fas fa-trash-alt"></a>
                     <img style="width: 100px;height: 100px;object-fit: cover;" src="{{ url('public/images') }}/{{ $r->image }}">
                 </div>
                 @endforeach

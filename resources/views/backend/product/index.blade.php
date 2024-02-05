@@ -2,7 +2,8 @@
 
 @section('main-content')
  <!-- DataTales Example -->
- <div class="card shadow mb-4">
+<div class="container-fluid">
+   <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
             @include('backend.layouts.notification')
@@ -18,7 +19,6 @@
         <table class="table table-bordered" id="product-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>S.N.</th>
               <th>Title</th>
               <th>Category</th>
               <th>Is Featured</th>
@@ -30,7 +30,6 @@
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
               <th>Title</th>
               <th>Category</th>
               <th>Is Featured</th>
@@ -49,7 +48,6 @@
               $brands=DB::table('brands')->select('title')->where('id',$product->brand_id)->get();
               @endphp
                 <tr>
-                    <td>{{$product->id}}</td>
                     <td>{{$product->title}}</td>
                     <td>{{$product->cat_info['title']}}
                       <sub>
@@ -57,16 +55,12 @@
                       </sub>
                     </td>
                     <td>{{(($product->is_featured==1)? 'Yes': 'No')}}</td>
-                    <td>Rs. {{$product->price}} /-</td>
+                    <td>${{$product->price}} /-</td>
                     <td>
-                        @if($product->photo)
-                            @php
-                              $photo=explode(',',$product->photo);
-                              // dd($photo);
-                            @endphp
-                            <img src="{{ url('public/images') }}/{{ $product->photo }}" class="img-fluid zoom" style="max-width:80px" alt="{{$product->photo}}">
+                        @if(DB::table('product_images')->where('product_id' , $product->id)->first())
+                        <img src="{{ url('public/images') }}/{{ DB::table('product_images')->where('product_id' , $product->id)->first()->image }}" alt="{{$product->title}}" class="zoom" style="max-width:80px">
                         @else
-                            <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid" style="max-width:80px" alt="avatar.png">
+                        <img class="zoom" style="max-width:80px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_2e8C2K5k5slozTp96XOBMD6aYMlj2YQ223BxU-kQA&s">
                         @endif
                     </td>
                     <td>
@@ -88,12 +82,15 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$products->links()}}</span>
+        <div style="margin-top:10px;" class="row">
+            {!! $products->links('frontend.pagination') !!}
+        </div>
         @else
           <h6 class="text-center">No Products found!!! Please create Product</h6>
         @endif
       </div>
     </div>
+</div>
 </div>
 @endsection
 

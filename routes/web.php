@@ -40,6 +40,11 @@
     Route::get('storage-link',[AdminController::class,'storageLink'])->name('storage.link');
 
 
+    Route::POST('admin/product/addproductimages',[AdminController::class,'addproductimages']);
+    Route::get('admin/product/deleteimage/{id}',[AdminController::class,'deleteimage']);
+    
+
+
     Auth::routes(['register' => false]);
 
     Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');

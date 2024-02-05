@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Helper\Cmf;
 use Illuminate\Http\Request;
 use App\Models\Settings;
+use App\Models\Product;
+use App\Models\product_images;
 use App\User;
 use App\Rules\MatchOldPassword;
 use Hash;
@@ -27,7 +29,21 @@ class AdminController extends Controller
     //  return $data;
      return view('backend.index')->with('users', json_encode($array));
     }
-
+    public function addproductimages(Request $request)
+    {
+        $images = new product_images();
+        $images->image = Cmf::sendimagetodirectory($request->photo);
+        $images->product_id = $request->id;
+        $images->save();
+        request()->session()->flash('success','Product Image Added Successfully');
+        return redirect()->back();
+    }
+    public function deleteimage($id)
+    {
+        product_images::where('id' , $id)->delete();
+        request()->session()->flash('success','Product Image Added Successfully');
+        return redirect()->back();
+    }
     public function profile(){
         $profile=Auth()->user();
         // return $profile;

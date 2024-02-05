@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @yield('title')
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('public/assetstwo/images/favicons/apple-touch-icon.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('public/assetstwo/images/favicons/favicon-32x32.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('public/assetstwo/images/favicons/favicon-16x16.png') }}" />
-    
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('public/assetstwo/images/favicons/appleicon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('public/assetstwo/images/favicons/favicon32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('public/assetstwo/images/favicons/favicon16x16.png') }}" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,21 +134,24 @@
         <div class="sidebar-one__content">
             <span class="sidebar-one__close sidebar-btn__toggler"><i class="fa fa-times"></i></span>
             <div class="sidebar-one__logo sidebar-one__item">
-                <a href="index.html" aria-label="logo image"><img src="{{ url('public/assetstwo/images/logo-light.png') }}" width="123" alt="logo-dark" /></a>
+                @php
+                    $settings = DB::table('settings')->first();
+                @endphp  
+                <a href="index.html" aria-label="logo image"><img src="{{ url('public/images') }}/{{$settings->logo}}" width="123" alt="logo-dark" /></a>
             </div>
             <!-- /.sidebar-one__logo -->
             <div class="sidebar-one__about sidebar-one__item">
-                <p class="sidebar-one__about__text">Tiles company, also known as a tile manufacturer or distributor, specializes in the production and distri</p>
+                <p class="sidebar-one__about__text">{{ $settings->short_des }}</p>
             </div>
             <!-- /.sidebar-one__about -->
             <div class="sidebar-one__info sidebar-one__item">
                 <h4 class="sidebar-one__title">Information</h4>
                 <ul class="sidebar-one__info__list">
                     <li><span class="icon-location-2"></span>
-                        <address>85 Ketch Harbour Road Bensal PA 19020</address>
+                        <address>{{ $settings->address }}</address>
                     </li>
-                    <li><span class="icon-paper-plane"></span> <a href="mailto:needhelp@company.com">needhelp@company.com</a></li>
-                    <li><span class="icon-phone-call"></span> <a href="tel:+9156980036420">+91 5698 0036 420</a></li>
+                    <li><span class="icon-paper-plane"></span> <a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></li>
+                    <li><span class="icon-phone-call"></span> <a href="tel:+{{ $settings->phone }}">{{ $settings->phone }}</a></li>
                 </ul>
                 <!-- /.sidebar-one__info__list -->
             </div>
@@ -174,22 +175,13 @@
                 </a>
             </div>
             <!-- /sidebar-one__social -->
-            <div class="sidebar-one__newsletter sidebar-one__item">
-                <label class="sidebar-one__title" for="sidebar-email">Newsletter Subscribe</label>
-                <form action="#" class="sidebar-one__newsletter__inner mc-form" data-url="MAILCHIMP_FORM_URL">
-                    <input type="email" name="sidebar-email" id="sidebar-email" class="sidebar-one__newsletter__input" placeholder="Email Address">
-                    <button type="submit" class="sidebar-one__newsletter__btn"><span class="icon-email" aria-hidden="true"></span></button>
-                </form>
-                <div class="mc-form__response"></div>
-                <!-- /.mc-form__response -->
-            </div>
             <!-- /.sidebar-one__form -->
         </div>
         <!-- /.sidebar__content -->
     </aside>
     <!-- /.sidebar-one -->
 
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+    <a href="javascript:void(0)" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__text">back top</span>
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
     </a>

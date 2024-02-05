@@ -89,20 +89,15 @@
                 @if($cat->is_parent==1)
             <div class="item">
                 <div class="service-card-two">
+                    <a href="{{route('product-cat',$cat->slug)}}">
                     <div class="service-card-two__bg" style="background-image: url('{{ url("") }}/public/assetstwo/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
                     <div class="service-card-two__image">
                         <img src="{{ url('') }}/public/images/{{ $cat->photo  }}" alt="Tiling & concrete">
                     </div><!-- /.service-card-two__image -->
                     <div class="service-card-two__content">
                         <h3 class="service-card-two__title"><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></h3><!-- /.service-card-two__title -->
-                        <div class="service-card-two__bottom">
-                            <a href="{{route('product-cat',$cat->slug)}}" class="service-card-two__link floens-btn">
-                                <span>View Category</span>
-                                <i class="icon-right-arrow"></i>
-                            </a>
-                            <span class="service-card-two__icon icon-tile"></span>
-                        </div><!-- /.service-card-two__bottom -->
                     </div><!-- /.service-card-two__content -->
+                    </a>
                 </div><!-- /.service-card-two -->
             </div><!-- /.item -->
             @endif

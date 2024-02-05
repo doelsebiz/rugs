@@ -596,7 +596,7 @@ p {
 .floens-btn span {
     position: relative;
     top: 1px;
-    color: inherit;
+    color: black;
 }
 
 .floens-btn i {
@@ -5365,7 +5365,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .footer-widget__info li span {
     font-size: 18px;
-    color: var(--floens-base, #C7844F);
+    color: white;
     margin-right: 15px;
 }
 
@@ -5639,7 +5639,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .main-slider__image {
     position: relative;
-    padding: 30px;
+    padding: 10px;
     width: 100%;
     max-width: 670px;
     margin-left: auto;
@@ -10203,7 +10203,7 @@ body.megamenu-popup-active .mobile-nav__content {
     position: relative;
     top: -1px;
     font-size: 18px;
-    color: var(--floens-base, #C7844F);
+    color: inherit;
     margin-right: 15px;
 }
 
@@ -10230,7 +10230,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .sidebar-one__info__list li a:hover {
-    color: var(--floens-base, #C7844F);
+    color: inherit;
 }
 
 .sidebar-one .floens-social a {
@@ -15559,7 +15559,7 @@ li:hover .sidebar__comments__icon::after {
 }
 
 .service-card-two__link {
-    color: var(--floens-base, #C7844F);
+    color: var(--floens-base, #C7844F) !important;
     top: 13px;
     padding: 0 70px 0 0;
     background-color: transparent;

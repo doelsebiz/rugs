@@ -6,17 +6,8 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
                     <div class="footer-widget footer-widget--about">
-                        <a href="index.html" class="footer-widget__logo">
-                            <img src="assets/images/logo-light.png" width="123" alt="Floens HTML Template">
-                        </a>
-                        <p class="footer-widget__about-text">Tiles company, also known as a tile manufacturer or distributor, specializes in the production and distri</p>
+                        <p class="footer-widget__about-text">Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.</p>
                         <!-- /.footer-widget__about-text -->
-                        <form action="#" data-url="MAILCHIMP_FORM_URL" class="footer-widget__newsletter mc-form">
-                            <input type="text" name="EMAIL" placeholder="enter email">
-                            <button type="submit" class="icon-right-arrow">
-                                <span class="sr-only">submit</span><!-- /.sr-only -->
-                            </button>
-                        </form>
                         <!-- /.footer-widget__newsletter mc-form -->
                         <div class="mc-form__response"></div>
                         <!-- /.mc-form__response -->
@@ -120,7 +111,7 @@
                     <div class="col-md-7 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
                         <div class="main-footer__bottom__copyright">
                             <p class="main-footer__copyright">
-                                &copy; Copyright <span class="dynamic-year"></span> by Floens HTML Template.
+                                &copy; Copyright <span class="dynamic-year"></span> by CARGOZ.
                             </p>
                         </div>
                         <!-- /.main-footer__bottom__copyright -->

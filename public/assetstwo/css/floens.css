@@ -596,7 +596,7 @@ p {
 .floens-btn span {
     position: relative;
     top: 1px;
-    color: black;
+    color: inherit;
 }
 
 .floens-btn i {
@@ -15559,7 +15559,7 @@ li:hover .sidebar__comments__icon::after {
 }
 
 .service-card-two__link {
-    color: var(--floens-base, #C7844F) !important;
+    color: var(--floens-base, #C7844F);
     top: 13px;
     padding: 0 70px 0 0;
     background-color: transparent;

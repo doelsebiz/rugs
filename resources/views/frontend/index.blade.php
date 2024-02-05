@@ -1,6 +1,22 @@
 @extends('frontend.layouts.master')
 @section('title')
-<title>CARGOZ</title>
+<title>CARGOZ: Discover Premium Rugs & Carpets Online for Elegant Home Decor</title>
+<meta name="description" content="Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home." />
+<meta name="DC.Title" content="ARGOZ: Discover Premium Rugs & Carpets Online for Elegant Home Decor">
+<meta name="rating" content="general">
+<meta name="description" content="Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.">
+<meta property="og:type" content="website">
+@php
+    $settings= DB::table('settings')->first();
+@endphp 
+<meta property="og:image" content="{{ url('public/images') }}/{{$settings->logo}}">
+<meta property="og:title" content="ARGOZ: Discover Premium Rugs & Carpets Online for Elegant Home Decor">
+<meta property="og:description" content="Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.">
+<meta property="og:site_name" content="CARGOZ">
+<meta property="og:url" content="{{ URL::current() }}">
+<link rel="canonical" href="{{ URL::current() }}">
+<meta property="og:locale" content="it_IT">
+<meta name="keywords" content="Rugs, Carpets, Area Rugs, Persian Rugs, Oriental Rugs, Handmade Rugs, Modern Rugs, Traditional Rugs, Wool Rugs, Silk Rugs, Vintage Rugs, Designer Carpets, Contemporary Rugs, Rug Store, Carpet Shop, Home Decor, Interior Design, Floor Coverings, Rug Patterns, Rug Sizes">
 @endsection
 @section('main-content')
 <!-- Slider Area -->

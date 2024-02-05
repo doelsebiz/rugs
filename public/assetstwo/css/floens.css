@@ -2247,6 +2247,8 @@ p {
     position: relative;
     overflow: hidden;
     margin-bottom: 13px;
+    height: 300px;
+    width: 100%;
 }
 
 .blog-card__image img {

@@ -15978,11 +15978,6 @@ li:hover .sidebar__comments__icon::after {
     margin-bottom: 50px;
 }
 
-.services-two .container-fluid {
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 @media (min-width: 992px) {
     .services-two__carousel .owl-nav {

@@ -127,12 +127,12 @@
                                             <label for="cash" class="custom-radio__title">Cash On Delivery</label>
                                         </div>
                                     </div>
-                                    <div class="checkout-page__radio-box checkout-page__radio-box--right">
+                                    <!-- <div class="checkout-page__radio-box checkout-page__radio-box--right">
                                         <div class="checkout-page__input-item custom-radio">
                                             <input type="radio" value="paypal" id="paypal" name="payment_method" class="custom-radio__input">
                                             <label for="paypal" class="custom-radio__title">Pay Via Paypal</label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="checkout-page__radio-box checkout-page__radio-box--right">
                                         <div class="checkout-page__input-item custom-radio">
                                             <input type="radio" value="stripe" id="stripe" name="payment_method" class="custom-radio__input">

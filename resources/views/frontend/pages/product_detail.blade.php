@@ -91,12 +91,41 @@
 	                    </div><!-- /.product-details__size__box -->
 	                </div><!-- /.product-details__size -->
 	                @endif
+	                @if($product_detail->cat_id == 6)
+	                	<form method="POST" action="{{ url('enquery') }}">
+	                		@csrf
+		                    <div class="">
+		                        <h5 style=" margin-top: 2rem; margin-bottom: 2rem; top: 0; left: 1em; font-weight: 300; font-size: 2rem; text-transform: uppercase; ">ENQUIRE ABOUT {{$product_detail->title}}</h5>
+		                    </div><!-- /.contact-one__form__top -->
+		                    <div class="form-one__group form-one__group--grid">
+		                        <div class="form-one__control form-one__control--input form-one__control--full">
+		                            <input type="text" class="form-control" name="name" placeholder="Your name">
+		                        </div><!-- /.form-one__control form-one__control--full -->
+		                        <div class="form-one__control form-one__control--full">
+		                            <input type="email" class="form-control" name="email" placeholder="your email">
+		                        </div><!-- /.form-one__control form-one__control--full -->
+		                        <div class="form-one__control form-one__control--full">
+		                            <input class="form-control"  type="text" name="phone" placeholder="your Contact Number">
+		                        </div><!-- /.form-one__control form-one__control--full -->
+		                        <div class="form-one__control form-one__control--mesgae form-one__control--full">
+		                            <textarea class="form-control" name="message" placeholder="Write message"></textarea><!-- /# -->
+		                        </div><!-- /.form-one__control -->
+		                        <div class="form-one__control form-one__control--full">
+		                            <button type="submit" class="floens-btn">
+		                                <span>ENQUIRE NOW</span>
+		                                <i class="icon-right-arrow"></i>
+		                            </button>
+		                        </div><!-- /.form-one__control -->
+		                    </div><!-- /.form-one__group -->
+		                </form>
+	                @else
 	                <div class="product-details__buttons">
-	                    <a href="cart.html" class="product-details__btn-cart floens-btn">
+	                    <a href="{{url('add-to-cart')}}/{{ $product_detail->id }}" class="product-details__btn-cart floens-btn">
 	                        <span>Add to Cart</span>
 	                        <i class="icon-cart"></i>
 	                    </a>
 	                </div><!-- /.qty-btn -->
+	                @endif
 	            </div>
 	        </div>
 	    </div>

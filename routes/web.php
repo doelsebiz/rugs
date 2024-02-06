@@ -43,7 +43,8 @@
     Route::POST('admin/product/addproductimages',[AdminController::class,'addproductimages']);
     Route::get('admin/product/deleteimage/{id}',[AdminController::class,'deleteimage']);
     
-
+    
+    Route::post('enquery', [FrontendController::class, 'enquery']);
 
     Auth::routes(['register' => false]);
 

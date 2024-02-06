@@ -19,10 +19,17 @@
             <!-- /.product-title -->
             <div class="product__item__price">Starting From ${{ $r->price }}</div>
             <!-- /.product-price -->
+            @if($r->cat_id == 6)
+            <a href="{{route('product-detail',$r->slug)}}" class="floens-btn product__item__link">
+                <span>ENQUIRE Now</span>
+                <i class="fa fa-question-circle"></i>
+            </a>
+            @else
             <a href="{{url('add-to-cart')}}/{{ $r->id }}" class="floens-btn product__item__link">
                 <span>Add to Cart</span>
-                <i class="icon-cart"></i>
+                <i class="fa fa-shopping-cart"></i>
             </a>
+            @endif
         </div><!-- /.product-content -->
     </div><!-- /.product-item -->
 </div><!-- /.col-md-6 col-lg-4 -->

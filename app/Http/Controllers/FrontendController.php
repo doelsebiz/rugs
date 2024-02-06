@@ -48,6 +48,10 @@ class FrontendController extends Controller
         return view('frontend.allproducts')
                 ->with('data',$data);
     }
+    public function enquery(Request $request)
+    {
+        
+    }
     public function stripepayment($id)
     {
         $data = DB::table('orders')->where('order_number' , $id)->first();

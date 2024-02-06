@@ -2,7 +2,8 @@
 
 @section('main-content')
  <!-- DataTales Example -->
- <div class="card shadow mb-4">
+<div class="container-fluid">
+   <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
             @include('backend.layouts.notification')
@@ -96,6 +97,7 @@
         <span style="float:right">{{$users->links()}}</span>
       </div>
     </div>
+</div>
 </div>
 @endsection
 

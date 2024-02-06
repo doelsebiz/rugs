@@ -1,9 +1,10 @@
 @extends('backend.layouts.master')
 
 @section('main-content')
-
+<div class="container-fluid">
+  
 <div class="card">
-    <h5 class="card-header">Edit Post</h5>
+    <h5 class="card-header">Update Website Settings</h5>
     <div class="card-body">
     <form enctype="multipart/form-data" method="post" action="{{route('settings.update')}}">
         @csrf 
@@ -67,6 +68,7 @@
         </div>
       </form>
     </div>
+</div>
 </div>
 
 @endsection

@@ -25,11 +25,10 @@
                         </div>
                         <!-- /.footer-widget__top -->
                         <ul class="list-unstyled footer-widget__links">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="services.html">Our Services</a></li>
-                            <li><a href="team.html">Meet the Team</a></li>
-                            <li><a href="blog-grid-right.html">Recent News</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{{ url('about-us') }}">About Us</a></li>
+                            <li><a href="{{ url('blogs') }}">News & Blogs</a></li>
+                            <li><a href="{{ url('all-products') }}">All Products</a></li>
+                            <li><a href="{{ url('contact-us') }}">Contact</a></li>
                         </ul>
                         <!-- /.list-unstyled footer-widget__links -->
                     </div>
@@ -41,21 +40,22 @@
                         <div class="footer-widget__top">
                             <div class="footer-widget__title-box"></div>
                             <!-- /.footer-widget__title-box -->
-                            <h2 class="footer-widget__title">Services</h2>
+                            <h2 class="footer-widget__title">Carpets</h2>
                             <!-- /.footer-widget__title -->
                         </div>
                         <!-- /.footer-widget__top -->
                         <ul class="list-unstyled footer-widget__links">
-                            <li><a href="services.html">flooring service</a></li>
-                            <li><a href="services.html">wooden Services</a></li>
-                            <li><a href="services.html">corporate tiles</a></li>
-                            <li><a href="services.html">carpet setup</a></li>
-                            <li><a href="services.html">tiles setup</a></li>
+                            @foreach(DB::table('categories')->orderby('id' , 'desc')->limit(4)->where('parent_id' , 6)->get() as $r)
+                            <li><a href="{{route('product-cat',$r->slug)}}">{{ $r->title }}</a></li>
+                            @endforeach
                         </ul>
                         <!-- /.list-unstyled footer-widget__links -->
                     </div>
                     <!-- /.footer-widget -->
                 </div>
+                @php
+                    $settings=DB::table('settings')->get();
+                @endphp
                 <!-- /.col-xl-3 col-lg-3 col-md-4 col-sm-6 -->
                 <div class="col-xl-3 col-lg-6 col-md-5 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="600ms">
                     <div class="footer-widget footer-widget--contact">
@@ -67,9 +67,9 @@
                         </div>
                         <!-- /.footer-widget__top -->
                         <ul class="list-unstyled footer-widget__info">
-                            <li><a href="https://www.google.com/maps">85 Ketch Harbour Road Bensal PA 19020</a></li>
-                            <li><span class="icon-paper-plane"></span> <a href="mailto:needhelp@company.com">needhelp@company.com</a></li>
-                            <li><span class="icon-phone-call"></span> <a href="tel:+9156980036420">+91 5698 0036 420</a></li>
+                            <li><a href="https://www.google.com/maps">@foreach($settings as $data) {{$data->address}} @endforeach</a></li>
+                            <li><span class="icon-paper-plane"></span> <a href="mailto:@foreach($settings as $data) {{$data->email}} @endforeach">@foreach($settings as $data) {{$data->email}} @endforeach</a></li>
+                            <li><span class="icon-phone-call"></span> <a href="tel:@foreach($settings as $data) {{$data->phone}} @endforeach">@foreach($settings as $data) {{$data->phone}} @endforeach</a></li>
                         </ul>
                         <!-- /.list-unstyled -->
                     </div>

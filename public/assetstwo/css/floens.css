@@ -5335,7 +5335,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .footer-widget__links li a:hover {
-    color: var(--floens-base, #C7844F);
+    color: white;
 }
 
 .footer-widget__info {
@@ -5382,7 +5382,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .footer-widget__info li a:hover {
-    color: var(--floens-base, #C7844F);
+    color: white;
 }
 
 .footer-widget__text {

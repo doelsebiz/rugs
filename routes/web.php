@@ -66,7 +66,7 @@
 // Frontend Routes
     Route::get('/home', [FrontendController::class, 'index']);
     Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about-us');
-    Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact');
     Route::post('/contact/message', [MessageController::class, 'store'])->name('contact.store');
     Route::get('product-detail/{slug}', [FrontendController::class, 'productDetail'])->name('product-detail');
     Route::post('/product/search', [FrontendController::class, 'productSearch'])->name('product.search');
@@ -100,7 +100,7 @@
     Route::get('/product/track', [OrderController::class, 'orderTrack'])->name('order.track');
     Route::post('product/track/order', [OrderController::class, 'productTrackOrder'])->name('product.track.order');
 // Blog
-    Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+    Route::get('/blogs', [FrontendController::class, 'blog'])->name('blog');
     Route::get('/blog-detail/{slug}', [FrontendController::class, 'blogDetail'])->name('blog.detail');
     Route::get('/blog/search', [FrontendController::class, 'blogSearch'])->name('blog.search');
     Route::post('/blog/filter', [FrontendController::class, 'blogFilter'])->name('blog.filter');

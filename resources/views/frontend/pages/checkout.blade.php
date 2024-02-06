@@ -15,12 +15,14 @@
 </section>
 <section class="checkout-page section-space">
     <div class="container">
+        <form method="POST" action="{{route('cart.order')}}" class="checkout-page__form row gutter-y-17">
+             @csrf
         <div class="row gutter-y-30">
             <div class="col-xl-8 col-lg-7">
                 <div class="checkout-page__billing-address">
                     <h2 class="checkout-page__billing-address__title checkout-page__title">Billing Details</h2>
-                    <form method="POST" action="{{route('cart.order')}}" class="checkout-page__form row gutter-y-17">
-                        @csrf
+                    
+                       
                         <div class="col-xl-12">
                             <div class="checkout-page__input-box">
                                 <label for="full-name">your Name *</label>
@@ -36,7 +38,7 @@
                         <div class="col-xl-12">
                             <div class="checkout-page__input-box">
                                 <label for="phone">Phone *</label>
-                                <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="">
+                                <input type="tel" name="phone" id="phone"  required="">
                             </div>
                         </div>
                         <div class="col-xl-12">
@@ -71,7 +73,7 @@
                         <div class="col-xl-12">
                             <div class="checkout-page__input-box checkout-page__input-box--address">
                                 <label for="address">Street Address *</label>
-                                <input type="text" name="address" id="address"  required="">
+                                <input type="text" name="address1" id="address"  required="">
                             </div>
                         </div>
                         
@@ -79,17 +81,17 @@
                         <div class="col-xl-12">
                             <div class="checkout-page__input-box">
                                 <label for="zip-code">ZIP Code *</label>
-                                <input name="zip-code" id="zipcode" type="text" pattern="[0-9]*" required>
+                                <input name="post_code" id="zipcode" type="text" pattern="[0-9]*" required>
                             </div>
                         </div>
                         
                         <div class="col-xl-12">
                             <div class="checkout-page__input-box checkout-page__input-box--message">
                                 <label for="order-notes">Order Notes (Optional)</label>
-                                <textarea name="order-notes" id="order-notes" cols="30" rows="10" placeholder="note about your order . . ."></textarea>
+                                <textarea name="ordernotes" id="order-notes" cols="30" rows="10" placeholder="note about your order . . ."></textarea>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5">
@@ -121,7 +123,7 @@
                                 <td colspan="2">
                                     <div class="checkout-page__radio-box checkout-page__radio-box--right">
                                         <div class="checkout-page__input-item custom-radio">
-                                            <input type="radio" id="cash" name="order-info" class="custom-radio__input">
+                                            <input checked type="radio" value="cod" id="cash" name="payment_method" class="custom-radio__input">
                                             <label for="cash" class="custom-radio__title">Cash On Delivery</label>
                                         </div>
                                     </div>
@@ -134,10 +136,8 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="javascript:void(0)" class="checkout-page__order-btn floens-btn">
-                                        <span>Complete Order</span>
-                                        <i class="icon-right-arrow"></i>
-                                    </a>
+                                    <button class="checkout-page__order-btn floens-btn" type="submit"><span>Complete Order</span>
+                                        <i class="icon-right-arrow"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -145,6 +145,7 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </section><!-- /.checkout-page -->            
 @endsection

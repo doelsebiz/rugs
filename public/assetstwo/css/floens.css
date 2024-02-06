@@ -12320,31 +12320,6 @@ li:hover .sidebar__comments__icon::after {
     }
 }
 
-.cart-page__coupone__form input[type=text] {
-    display: block;
-    width: 268px;
-    height: 62px;
-    border: none;
-    font-size: 16px;
-    color: var(--floens-text, #7A736A);
-    font-weight: normal;
-    line-height: normal;
-    background-color: var(--floens-white, #ffffff);
-    padding-left: 18px;
-    padding-right: 18px;
-    outline: none;
-    border: 1px solid var(--floens-border-color, #DED8D3);
-    transition: all 400ms ease;
-}
-
-.cart-page__coupone__form input[type=text]::placeholder {
-    text-transform: capitalize;
-}
-
-.cart-page__coupone__form input[type=text]:focus {
-    color: var(--floens-black2, #2B1E16);
-    border-color: var(--floens-base, #C7844F);
-}
 
 @media (max-width: 767px) {
     .cart-page__coupone__form input[type=text] {
@@ -12523,19 +12498,21 @@ li:hover .sidebar__comments__icon::after {
 .checkout-page__input-box input[type=email],
 .checkout-page__input-box input[type=tel],
 .checkout-page__input-box textarea {
-    height: 65px;
-    width: 100%;
-    border: none;
-    background-color: var(--floens-white, #ffffff);
-    padding-left: 30px;
-    padding-right: 30px;
-    outline: none;
-    font-size: 14px;
-    color: var(--floens-text, #7A736A);
-    font-family: var(--floens-font, "DM Sans", sans-serif);
     display: block;
-    line-height: normal;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
     font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: var(--bs-border-radius);
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .checkout-page__input-box input[type=text]::placeholder,

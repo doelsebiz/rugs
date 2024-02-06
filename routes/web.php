@@ -74,15 +74,15 @@
     Route::get('/product-sub-cat/{slug}/{sub_slug}', [FrontendController::class, 'productSubCat'])->name('product-sub-cat');
     Route::get('/product-brand/{slug}', [FrontendController::class, 'productBrand'])->name('product-brand');
 // Cart section
-    Route::get('/add-to-cart/{slug}', [CartController::class, 'addToCart'])->name('add-to-cart')->middleware('user');
+    Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart'])->name('add-to-cart');
     Route::post('/add-to-cart', [CartController::class, 'singleAddToCart'])->name('single-add-to-cart')->middleware('user');
-    Route::get('cart-delete/{id}', [CartController::class, 'cartDelete'])->name('cart-delete');
-    Route::post('cart-update', [CartController::class, 'cartUpdate'])->name('cart.update');
+    Route::delete('remove-from-cart', [FrontendController::class, 'cartDelete'])->name('remove.from.cart');
+    Route::post('cart-update', [CartController::class, 'cartUpdate'])->name('update.cart');
 
     Route::get('/cart', function () {
         return view('frontend.pages.cart');
     })->name('cart');
-    Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout')->middleware('user');
+    Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 // Wishlist
     Route::get('/wishlist', function () {
         return view('frontend.pages.wishlist');

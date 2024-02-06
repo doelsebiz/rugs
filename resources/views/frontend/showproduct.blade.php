@@ -19,7 +19,7 @@
             <!-- /.product-title -->
             <div class="product__item__price">Starting From ${{ $r->price }}</div>
             <!-- /.product-price -->
-            <a href="{{route('add-to-cart',$r->slug)}}" class="floens-btn product__item__link">
+            <a href="{{url('add-to-cart')}}/{{ $r->id }}" class="floens-btn product__item__link">
                 <span>Add to Cart</span>
                 <i class="icon-cart"></i>
             </a>

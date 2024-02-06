@@ -23,6 +23,22 @@ class FrontendController extends Controller
     public function index(Request $request){
         return redirect()->route($request->user()->role);
     }
+    public function addToCart($id){
+        $product = Product::findOrFail($id);
+        $cart = session()->get('cart', []);
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+                "product_id" => $product->id
+            ];
+        }
+        session()->put('cart', $cart);
+        return redirect()->back();
+    }
     public function allproducts()
     {
         $data = Product::where('status','active')->orderBy('price','DESC')->paginate(12);

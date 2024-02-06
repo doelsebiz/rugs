@@ -50,9 +50,9 @@
                     <span></span>
                 </div>
                 <!-- /.mobile-nav__toggler -->
-                <a href="cart.html" class="main-header__cart">
+                <a href="{{ url('cart') }}" class="main-header__cart">
                     <i class="icon-cart" aria-hidden="true"></i>
-                    <span class="badge badge-danger">1</span>
+                    <span class="badge" style="color: red;">{{ count((array) session('cart')) }}</span>
                     <span class="sr-only">Cart</span>
                 </a>
                 <!-- /.shopping card -->

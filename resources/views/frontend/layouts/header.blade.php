@@ -64,10 +64,13 @@
                 <button class="main-header__sidebar-btn sidebar-btn__toggler">
                     <span class="icon-grid"></span>
                 </button>
+                @php
+                    $settings=DB::table('settings')->get();
+                @endphp
                 <!-- /.main-header__sidebar-btn sidebar-btn__toggler -->
-                <a href="tel:(502)203-7840" class="main-header__phone">(502) 203-7840</a>
+                <a href="tel:@foreach($settings as $data) {{$data->phone}} @endforeach" class="main-header__phone">@foreach($settings as $data) {{$data->phone}} @endforeach</a>
                 <!-- /.main-header__phone -->
-                <a href="contact.html" class="floens-btn main-header__btn">
+                <a href="{{ url('contact-us') }}" class="floens-btn main-header__btn">
                     <span>GET A QUOTE</span>
                 </a>
                 <!-- /.thm-btn main-header__btn -->

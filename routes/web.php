@@ -76,6 +76,12 @@
 // Cart section
     Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart'])->name('add-to-cart');
     Route::post('/add-to-cart', [CartController::class, 'singleAddToCart'])->name('single-add-to-cart')->middleware('user');
+
+    
+    Route::post('stripe', [FrontendController::class, 'stripePost'])->name('stripe.post');
+
+
+    Route::get('/stripepayment/{id}', [FrontendController::class, 'stripepayment']);
     Route::delete('remove-from-cart', [FrontendController::class, 'cartDelete'])->name('remove.from.cart');
     Route::post('cart-update', [CartController::class, 'cartUpdate'])->name('update.cart');
 

@@ -8,13 +8,16 @@ use App\Models\PostTag;
 use App\Models\PostCategory;
 use App\Models\Post;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Brand;
 use App\User;
 use Auth;
 use Session;
 use Newsletter;
 use DB;
+use Stripe;
 use Hash;
+use Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 class FrontendController extends Controller
@@ -44,6 +47,36 @@ class FrontendController extends Controller
         $data = Product::where('status','active')->orderBy('price','DESC')->paginate(12);
         return view('frontend.allproducts')
                 ->with('data',$data);
+    }
+    public function stripepayment($id)
+    {
+        $data = DB::table('orders')->where('order_number' , $id)->first();
+        return view('frontend.stripepayment')->with('data',$data);
+    }
+    public function stripePost(Request $request)
+    {
+        $data = DB::table('orders')->where('id' , $request->orderid)->first();     
+        $totalprice = $data->total_amount;
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $payement = Stripe\Charge::create ([
+                "amount" => $totalprice,
+                "currency" => "USD",
+                "source" => $request->stripeToken,
+                "description" => 'test'
+        ]);
+        if(!empty($payement->id))
+        {
+            $order=Order::find($request->orderid);
+            $order->payment_status = 'paid';
+            $order->save();
+            session()->forget('cart');
+            $url = url('');
+            return Redirect::to($url);
+        }
+        else
+        {
+            
+        }   
     }
     public function home(){
         $featured=Product::where('status','active')->where('is_featured',1)->orderBy('price','DESC')->limit(2)->get();

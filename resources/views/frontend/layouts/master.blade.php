@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/owl-carousel/css/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/owl-carousel/css/owl.theme.default.min.css') }}" />
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/slick/slick.css') }}" />
-
+    <script src="{{ url('public/assetstwo/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
     <!-- template styles -->
     <link rel="stylesheet" href="{{ url('public/assetstwo/css/floens.css') }}" />
 </head>
@@ -188,7 +188,7 @@
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
     </a>
 
-    <script src="{{ url('public/assetstwo/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
+    
     <script src="{{ url('public/assetstwo/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('public/assetstwo/vendors/bootstrap-select/bootstrap-select.min.js') }}"></script>
     <script src="{{ url('public/assetstwo/vendors/jarallax/jarallax.min.js') }}"></script>

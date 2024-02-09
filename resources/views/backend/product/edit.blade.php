@@ -72,6 +72,13 @@
                 <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
+              <div class="form-group">
+                <label for="stock" class="col-form-label">Stock <span class="text-danger">*</span></label>
+                <input id="stock" type="number" name="stock" placeholder="Enter price"  value="{{$product->stock}}" class="form-control">
+                @error('stock')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+              </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">

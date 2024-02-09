@@ -63,6 +63,8 @@
     Route::get('/', [FrontendController::class, 'home'])->name('home');
     Route::get('all-products', [FrontendController::class, 'allproducts']);
 
+    Route::get('/retailer-dashboard', [FrontendController::class, 'retailerdashboard'])->name('retailerdashboard');
+
 
 // Frontend Routes
     Route::get('/home', [FrontendController::class, 'index']);

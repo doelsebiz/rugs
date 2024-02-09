@@ -29,6 +29,7 @@
                             <li><a href="{{ url('blogs') }}">News & Blogs</a></li>
                             <li><a href="{{ url('all-products') }}">All Products</a></li>
                             <li><a href="{{ url('contact-us') }}">Contact</a></li>
+                            <li><a href="{{ url('user/login') }}">Retailer Login</a></li>
                         </ul>
                         <!-- /.list-unstyled footer-widget__links -->
                     </div>
@@ -45,7 +46,7 @@
                         </div>
                         <!-- /.footer-widget__top -->
                         <ul class="list-unstyled footer-widget__links">
-                            @foreach(DB::table('categories')->orderby('id' , 'desc')->limit(4)->where('parent_id' , 6)->get() as $r)
+                            @foreach(DB::table('categories')->orderby('id' , 'desc')->limit(5)->where('parent_id' , 6)->get() as $r)
                             <li><a href="{{route('product-cat',$r->slug)}}">{{ $r->title }}</a></li>
                             @endforeach
                         </ul>

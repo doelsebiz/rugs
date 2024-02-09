@@ -14,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::orderBy('id','ASC')->paginate(10);
+        $users=User::where('role' , 'user')->orderby('created_at' , 'desc')->paginate(10);
         return view('backend.users.index')->with('users',$users);
     }
 
@@ -98,9 +98,7 @@ class UsersController extends Controller
         [
             'name'=>'string|required|max:30',
             'email'=>'string|required',
-            'role'=>'required|in:admin,user',
             'status'=>'required|in:active,inactive',
-            'photo'=>'nullable|string',
         ]);
         // dd($request->all());
         $data=$request->all();

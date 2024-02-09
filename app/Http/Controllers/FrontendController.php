@@ -411,17 +411,30 @@ class FrontendController extends Controller
     }
     public function loginSubmit(Request $request){
         $data= $request->all();
-        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password'],'status'=>'active'])){
-            Session::put('user',$data['email']);
-            request()->session()->flash('success','Successfully login');
-            return redirect()->route('home');
+        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+            if(Auth::user()->status == 'inactive')
+            {
+                Auth::logout();
+                return back()->with('errormessage','This Retailor is In Active Please Contact For Approval');
+            }else{
+                return redirect()->route('retailerdashboard');
+            }
         }
         else{
-            request()->session()->flash('error','Invalid email and password pleas try again!');
-            return redirect()->back();
+            return back()->with('errormessage','Credentials Not Matched');
         }
     }
-
+    public function retailerdashboard()
+    {
+        if(Auth::check())
+        {
+            $products=Product::getAllProduct();
+            return view('retailerdashboard')->with('products',$products);
+        }else{
+            Auth::logout();
+            return redirect()->route('home');
+        }
+    }
     public function logout(){
         Session::forget('user');
         Auth::logout();
@@ -442,10 +455,12 @@ class FrontendController extends Controller
         $data=$request->all();
         // dd($data);
         $check=$this->create($data);
-        Session::put('user',$data['email']);
+
+        $update = User::find($check->id);
+        $update->status = 'inactive';
+        $update->save();
         if($check){
-            request()->session()->flash('success','Successfully registered');
-            return redirect()->route('home');
+            return back()->with('message','Retailor Registerd Successfully. Please Wait For Approval.');
         }
         else{
             request()->session()->flash('error','Please try again!');

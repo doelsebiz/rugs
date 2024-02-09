@@ -1,41 +1,38 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Register Page')
+@section('title')
+<title>Retailer Register</title>
+@endsection
 
 @section('main-content')
-	<!-- Breadcrumbs -->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="bread-inner">
-                        <ul class="bread-list">
-                            <li><a href="{{route('home')}}">Home<i class="ti-arrow-right"></i></a></li>
-                            <li class="active"><a href="javascript:void(0);">Register</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Breadcrumbs -->
-            
-    <!-- Shop Login -->
-    <section class="shop login section">
-        <div class="container">
-            <div class="row"> 
-                <div class="col-lg-6 offset-lg-3 col-12">
-                    <div class="login-form">
-                        <h2>Register</h2>
-                        <p>Please register in order to checkout more quickly</p>
-                        <!-- Form -->
+<section class="page-header">
+    <div class="container">
+        <h2 class="page-header__title">Retailer Register</h2>
+        <ul class="floens-breadcrumb list-unstyled">
+            <li><i class="icon-home"></i> <a href="{{ url('') }}">Home</a></li>
+            <li><span style="color: white;">Retailer Register</span></li>
+        </ul><!-- /.thm-breadcrumb list-unstyled -->
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
+<section class="about-one section-space" id="about">
+    <div class="container">
+        <div class="row gutter-y-60">
+            <div class="col-lg-6 offset-3">
+                @if(session()->has('message'))
+                <div class="alert alert-success alert-dismissible">
+                    <strong>Success!</strong> {{ session()->get('message') }}
+                  </div>
+                @endif 
+                <div class="card">
+                    <div class="card-body">
                         <form class="form" method="post" action="{{route('register.submit')}}">
                             @csrf
+                            <input type="hidden" value="inactive" name="status">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Your Name<span>*</span></label>
-                                        <input type="text" name="name" placeholder="" required="required" value="{{old('name')}}">
+                                        <input class="form-control" type="text" name="name" placeholder="" required="required" value="{{old('name')}}">
                                         @error('name')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -44,7 +41,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Your Email<span>*</span></label>
-                                        <input type="text" name="email" placeholder="" required="required" value="{{old('email')}}">
+                                        <input class="form-control" type="text" name="email" placeholder="" required="required" value="{{old('email')}}">
                                         @error('email')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -53,7 +50,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Your Password<span>*</span></label>
-                                        <input type="password" name="password" placeholder="" required="required" value="{{old('password')}}">
+                                        <input class="form-control" type="password" name="password" placeholder="" required="required" value="{{old('password')}}">
                                         @error('password')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -62,57 +59,26 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Confirm Password<span>*</span></label>
-                                        <input type="password" name="password_confirmation" placeholder="" required="required" value="{{old('password_confirmation')}}">
+                                        <input class="form-control" type="password" name="password_confirmation" placeholder="" required="required" value="{{old('password_confirmation')}}">
                                         @error('password_confirmation')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 mt-2">
                                     <div class="form-group login-btn">
-                                        <button class="btn" type="submit">Register</button>
-                                        <a href="{{route('login.form')}}" class="btn">Login</a>
-                                        OR
-                                        <a href="{{route('login.redirect','facebook')}}" class="btn btn-facebook"><i class="ti-facebook"></i></a>
-                                        <a href="{{route('login.redirect','github')}}" class="btn btn-github"><i class="ti-github"></i></a>
-                                        <a href="{{route('login.redirect','google')}}" class="btn btn-google"><i class="ti-google"></i></a>
+                                        <button class="btn btn-primary" type="submit">Register</button>
                                     </div>
+                                </div>
+                                <div class="col-md-12 mt-2" style="text-align:center;">
+                                    <a href="{{route('login.form')}}" style="text-align:center;">Already Meber? Login</a>
                                 </div>
                             </div>
                         </form>
-                        <!--/ End Form -->
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!--/ End Login -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.about-one section-space -->
 @endsection
-
-@push('styles')
-<style>
-    .shop.login .form .btn{
-        margin-right:0;
-    }
-    .btn-facebook{
-        background:#39579A;
-    }
-    .btn-facebook:hover{
-        background:#073088 !important;
-    }
-    .btn-github{
-        background:#444444;
-        color:white;
-    }
-    .btn-github:hover{
-        background:black !important;
-    }
-    .btn-google{
-        background:#ea4335;
-        color:white;
-    }
-    .btn-google:hover{
-        background:rgb(243, 26, 26) !important;
-    }
-</style>
-@endpush

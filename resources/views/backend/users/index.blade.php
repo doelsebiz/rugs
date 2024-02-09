@@ -10,18 +10,16 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Users List</h6>
+      <h6 class="m-0 font-weight-bold text-primary float-left">Retailers List</h6>
       <a href="{{route('users.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add User</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="user-dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>S.N.</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Photo</th>
               <th>Join Date</th>
               <th>Role</th>
               <th>Status</th>
@@ -30,10 +28,8 @@
           </thead>
           <tfoot>
             <tr>
-                <th>S.N.</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Photo</th>
                 <th>Join Date</th>
                 <th>Role</th>
                 <th>Status</th>
@@ -43,16 +39,8 @@
           <tbody>
             @foreach($users as $user)   
                 <tr>
-                    <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>
-                        @if($user->photo)
-                            <img src="{{$user->photo}}" class="img-fluid rounded-circle" style="max-width:50px" alt="{{$user->photo}}">
-                        @else
-                            <img src="{{asset('backend/img/avatar.png')}}" class="img-fluid rounded-circle" style="max-width:50px" alt="avatar.png">
-                        @endif
-                    </td>
                     <td>{{(($user->created_at)? $user->created_at->diffForHumans() : '')}}</td>
                     <td>{{$user->role}}</td>
                     <td>

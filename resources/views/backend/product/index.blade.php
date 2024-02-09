@@ -21,10 +21,10 @@
             <tr>
               <th>Title</th>
               <th>Category</th>
-              <th>Is Featured</th>
               <th>Price</th>
               <th>Photo</th>
               <th>Status</th>
+              <th>Stock</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -32,7 +32,6 @@
             <tr>
               <th>Title</th>
               <th>Category</th>
-              <th>Is Featured</th>
               <th>Price</th>
               <th>Photo</th>
               <th>Status</th>
@@ -54,7 +53,6 @@
                           {{$product->sub_cat_info->title ?? ''}}
                       </sub>
                     </td>
-                    <td>{{(($product->is_featured==1)? 'Yes': 'No')}}</td>
                     <td>${{$product->price}} /-</td>
                     <td>
                         @if(DB::table('product_images')->where('product_id' , $product->id)->first())
@@ -71,12 +69,17 @@
                         @endif
                     </td>
                     <td>
+                      {{$product->stock}}
+                    </td>
+                    <td>
+                      <div class="btn-group">
                         <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{route('product.destroy',[$product->id])}}">
                       @csrf
                       @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$product->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

@@ -208,7 +208,7 @@
      <li class="nav-item">
         <a class="nav-link" href="{{route('users.index')}}">
             <i class="fas fa-users"></i>
-            <span>Users</span></a>
+            <span>Retailers</span></a>
     </li>
      <!-- General settings -->
      <li class="nav-item">

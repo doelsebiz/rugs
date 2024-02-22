@@ -11500,6 +11500,12 @@ li:hover .sidebar__comments__icon::after {
     background-color: var(--floens-white, #ffffff);
     transition: all 500ms ease;
     border: 1px solid var(--floens-border-color, #DED8D3);
+    padding: 1.3rem;
+    background-color: white;
+    border-radius: 14px;
+    margin: 7px;
+    transform: translate3d(0, 0, 0);
+    margin-bottom: 15px;
 }
 
 .product__item__image {
@@ -11507,6 +11513,7 @@ li:hover .sidebar__comments__icon::after {
     position: relative;
     overflow: hidden;
     height: 270px;
+    border-radius: 10px;
 }
 
 .product__item__image img {
@@ -11543,12 +11550,11 @@ li:hover .sidebar__comments__icon::after {
 }
 
 .product__item__title {
-    font-size: 20px;
+    font-size: 15px;
     line-height: normal;
     text-transform: uppercase;
     margin: 0;
     margin-bottom: 9px;
-    height: 50px;
 }
 
 .product__item__title a {
@@ -11729,6 +11735,10 @@ li:hover .sidebar__comments__icon::after {
 .product-details__gallery-top__img {
     width: 100%;
     display: block;
+    height: 400px;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background-color: #f2eeea;
 }
 
 .product-details__gallery-thumb {
@@ -11932,10 +11942,6 @@ li:hover .sidebar__comments__icon::after {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    width: 28px;
-    height: 28px;
-    border: 1px solid var(--floens-border-color, #DED8D3);
-    border-radius: 50%;
     transition: all 400ms ease;
 }
 

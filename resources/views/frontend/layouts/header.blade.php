@@ -5,7 +5,7 @@
                 @php
                     $settings= DB::table('settings')->first();
                 @endphp                    
-                <a href="{{route('home')}}"><img src="{{ url('public/images') }}/{{$settings->logo}}" width="125" alt="logo"></a>
+                <a href="{{route('home')}}"><img src="{{ url('public/images') }}/{{$settings->logo}}" width="200" alt="logo"></a>
             </div>
             <!-- /.main-header__logo -->
 
@@ -20,7 +20,7 @@
                             <a href="{{ url('about-us') }}">About</a>
                         </li>
                         <li class="dropdown">
-                            <a href="{{ url('rugs') }}">Rugs</a>
+                            <a href="{{route('product-cat','rugs')}}">Rugs</a>
                             <ul>
                                 @foreach(Helper::getAllCategory() as $cat)
                                 @if($cat->title != 'Carpets')

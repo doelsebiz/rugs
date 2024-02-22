@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Helper\Cmf;
 use App\Models\Banner;
 use App\Models\Product;
 use App\Models\Category;
@@ -9,6 +10,7 @@ use App\Models\PostCategory;
 use App\Models\Post;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\enquiries;
 use App\Models\Brand;
 use App\User;
 use Auth;
@@ -24,6 +26,10 @@ class FrontendController extends Controller
 {
    
     public function index(Request $request){
+
+        
+
+
         return redirect()->route($request->user()->role);
     }
     public function addToCart($id){
@@ -50,8 +56,23 @@ class FrontendController extends Controller
     }
     public function enquery(Request $request)
     {
-        
+        $addsad = new enquiries();
+        $addsad->name = $request->name;
+        $addsad->product_id = $request->product_id;
+        $addsad->email = $request->email;
+        $addsad->phonenumber = $request->phonenumber;
+        $addsad->message = $request->message;
+        $addsad->save();
+        return 'Your Inquiry Submitted Successfully. We Will Be in Touch With You Within 24 Hours.';
     }
+    public function deleteenquiery($id)
+    {
+        enquiries::where('id' , $id)->delete();
+        request()->session()->flash('success','Deleted Successfully');
+        return redirect()->back();
+    }
+
+
     public function stripepayment($id)
     {
         $data = DB::table('orders')->where('order_number' , $id)->first();

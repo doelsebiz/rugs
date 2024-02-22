@@ -18,131 +18,123 @@
 @section('main-content')
 <section class="product-details section-space" style="padding-top: 150px;">
 	<div class="container">
+		<div style="position: relative;background-color: var(--floens-white2, #F2EEEA);border-radius: 10px;padding: 20px;">
+			<div class="row gutter-y-50">
+		        <div class="col-lg-6 col-xl-6 wow fadeInLeft" data-wow-delay="200ms">
+		            <div class="product-details__img">
+		                <div class="swiper product-details__gallery-top">
+		                    <div class="swiper-wrapper">
+		                    	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $r)
+		                        <div class="swiper-slide">
+		                            <img src="{{ url('public/images') }}/{{ $r->image }}" alt="{{$product_detail->title}}" class="product-details__gallery-top__img">
+		                        </div>
+		                        @endforeach
+		                    </div>
+		                </div>
+		                <div class="swiper product-details__gallery-thumb">
+		                    <div class="swiper-wrapper">
+		                    	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $r)
+		                        <div class="product-details__gallery-thumb-slide swiper-slide">
+		                            <img src="{{ url('public/images') }}/{{ $r->image }}" alt="{{$product_detail->title}}" class="product-details__gallery-thumb__img">
+		                        </div>
+		                        @endforeach
+		                    </div>
+		                </div>
+		            </div>
+		        </div><!-- /.column -->
+		        <div class="col-lg-6 col-xl-6 wow fadeInRight" data-wow-delay="300ms">
+		            <div class="product-details__content">
+		                <div class="product-details__top">
+		                    <div class="product-details__top__left">
+		                        <h3 class="product-details__name">{{ $product_detail->title }} {{ $product_detail->color }} {{ $product_detail->size }}</h3><!-- /.product-title -->
+		                        @if($product_detail->price != 0)
+		                        <h4 class="product-details__price">${{$product_detail->price}}</h4><!-- /.product-price -->
+		                        @endif
+		                    </div><!-- /.product-details__price -->
+		                </div>
+		                <div class="product-details__excerpt">
+		                    <p class="product-details__excerpt__text1">
+		                        {{$product_detail->summary}}
+		                    </p>
+		                </div><!-- /.excerp-text -->
+		                @if($product_detail->color)
+		                <div class="product-details__color">
+		                    <h3 class="product-details__content__title">Color</h3>
+		                    <div class="product-details__size__box">
+		                    	@foreach(explode(',' , $product_detail->color) as $r)
+		                        <button type="button" class="product-details__size__btn"><span>{{ $r }}</span></button>
+		                        @endforeach
+		                    </div><!-- /.product-details__size__box -->
+		                    <h3 class="product-details__content__title">Size</h3>
+		                    @foreach(explode(',' , $product_detail->size) as $r)
+		                        <button type="button" class="product-details__size__btn"><span>{{ $r }}</span></button>
+		                        @endforeach
+		                </div><!-- /.product-details__color -->
+		                @endif
+		                @if($product_detail->cat_id == 6)
+		                <div style="padding-right: 20px;padding-bottom: 20px;">
+		                	<form class="contact-one__form contact-form-validated form-one wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="200ms" method="POST" action="{{ url('enquery') }}" novalidate="novalidate" style="margin-left: 0px;">
+		                		@csrf
+		                		<div style="color: green;" class="result"></div>
+		                		<input type="hidden" value="{{ $product_detail->id }}" name="product_id">
+			                    <div class="contact-one__form__top">
+			                        <h2 class="contact-one__form__title">Inquire Now</h2><!-- /.contact-one__form__title -->
+			                    </div><!-- /.contact-one__form__top -->
+			                    <div class="form-one__group form-one__group--grid">
+			                        <div class="form-one__control form-one__control--input form-one__control--full">
+			                            <input type="text" name="name" placeholder="Your name">
+			                        </div><!-- /.form-one__control form-one__control--full -->
+			                        <div class="form-one__control form-one__control--full">
+			                            <input type="email" name="email" placeholder="your email">
+			                        </div><!-- /.form-one__control form-one__control--full -->
+			                        <div class="form-one__control form-one__control--full">
+			                            <input type="text" name="phonenumber" placeholder="your Contact Number">
+			                        </div><!-- /.form-one__control form-one__control--full -->
+			                        <div class="form-one__control form-one__control--mesgae form-one__control--full">
+			                            <textarea name="message" placeholder="Write message"></textarea><!-- /# -->
+			                        </div><!-- /.form-one__control -->
+			                        <div class="form-one__control form-one__control--full">
+			                            <button type="submit" class="floens-btn">
+			                                <span>Get Enquiry</span>
+			                                <i class="icon-right-arrow"></i>
+			                            </button>
+			                        </div><!-- /.form-one__control -->
+			                    </div><!-- /.form-one__group -->
+			                </form>
+			            </div>
+		                @else
+		                <div class="product-details__buttons">
+		                    <a href="{{url('add-to-cart')}}/{{ $product_detail->id }}" class="product-details__btn-cart floens-btn">
+		                        <span>Add to Cart</span>
+		                        <i class="icon-cart"></i>
+		                    </a>
+		                </div><!-- /.qty-btn -->
+		                @endif
+		            </div>
+		        </div>
+		        <div class="col-md-12">
+		        	<div class="product-details__description-wrapper">
+					    <div class="container">
+					        <!-- /.product-description -->
+					        <div class="product-details__description">
+					            <h3 class="product-details__description__title">product Description</h3>
+					            <div class="product-details__text__box wow fadeInUp" data-wow-delay="300ms">
+					                {!! ($product_detail->description) !!}
+					            </div><!-- /.product-details__text__box -->
+					        </div>
+					        <!-- /.product-description -->
+					    </div><!-- /.container -->
+					</div><!-- /.product-details__description__wrapper -->	
+		        </div>
+		    </div>
+
+
+		</div>
 	    <!-- /.product-details -->
-	    <div class="row gutter-y-50">
-	        <div class="col-lg-6 col-xl-6 wow fadeInLeft" data-wow-delay="200ms">
-	            <div class="product-details__img">
-	                <div class="swiper product-details__gallery-top">
-	                    <div class="swiper-wrapper">
-	                    	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $r)
-	                        <div class="swiper-slide">
-	                            <img src="{{ url('public/images') }}/{{ $r->image }}" alt="{{$product_detail->title}}" class="product-details__gallery-top__img">
-	                        </div>
-	                        @endforeach
-	                    </div>
-	                </div>
-	                <div class="swiper product-details__gallery-thumb">
-	                    <div class="swiper-wrapper">
-	                    	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $r)
-	                        <div class="product-details__gallery-thumb-slide swiper-slide">
-	                            <img src="{{ url('public/images') }}/{{ $r->image }}" alt="{{$product_detail->title}}" class="product-details__gallery-thumb__img">
-	                        </div>
-	                        @endforeach
-	                    </div>
-	                </div>
-	            </div>
-	        </div><!-- /.column -->
-	        <div class="col-lg-6 col-xl-6 wow fadeInRight" data-wow-delay="300ms">
-	            <div class="product-details__content">
-	                <div class="product-details__top">
-	                    <div class="product-details__top__left">
-	                        <h3 class="product-details__name">{{$product_detail->title}}</h3><!-- /.product-title -->
-	                        <h4 class="product-details__price">${{$product_detail->price}}</h4><!-- /.product-price -->
-	                    </div><!-- /.product-details__price -->
-	                    @if($product_detail->video)
-	                    <a href="https://www.youtube.com/watch?v=h9MbznbxlLc" class="product-details__video video-button video-popup">
-	                        <span class="icon-play"></span>
-	                        <i class="video-button__ripple"></i>
-	                    </a><!-- /.video-button -->
-	                    @endif
-	                </div>
-	                <div class="product-details__review">
-	                    <div class="floens-ratings @@extraClassName">
-	                        <span class="icon-star"></span>
-	                        <span class="icon-star"></span>
-	                        <span class="icon-star"></span>
-	                        <span class="icon-star"></span>
-	                        <span class="icon-star"></span>
-	                    </div><!-- /.product-ratings -->
-	                    <a href="product-details.html">(3 customer reviews)</a>
-	                </div><!-- /.review-ratings -->
-	                <div class="product-details__excerpt">
-	                    <p class="product-details__excerpt__text1">
-	                        {{$product_detail->summary}}
-	                    </p>
-	                </div><!-- /.excerp-text -->
-	                @if($product_detail->color)
-	                <div class="product-details__color">
-	                    <h3 class="product-details__content__title">Color</h3>
-	                    <div class="product-details__size__box">
-	                    	@foreach(explode(',' , $product_detail->color) as $r)
-	                        <button type="button" class="product-details__size__btn"><span>{{ $r }}</span></button>
-	                        @endforeach
-	                    </div><!-- /.product-details__size__box -->
-	                </div><!-- /.product-details__color -->
-	                @endif
-	                @if($product_detail->size)
-	                <div class="product-details__size mt-4">
-	                    <h3 class="product-details__content__title">Size</h3>
-	                    <div class="product-details__size__box">
-	                    	@foreach(explode(',' , $product_detail->size) as $r)
-	                        <button type="button" class="product-details__size__btn"><span>{{ $r }}</span></button>
-	                        @endforeach
-	                    </div><!-- /.product-details__size__box -->
-	                </div><!-- /.product-details__size -->
-	                @endif
-	                @if($product_detail->cat_id == 6)
-	                	<form method="POST" action="{{ url('enquery') }}">
-	                		@csrf
-		                    <div class="">
-		                        <h5 style=" margin-top: 2rem; margin-bottom: 2rem; top: 0; left: 1em; font-weight: 300; font-size: 2rem; text-transform: uppercase; ">ENQUIRE ABOUT {{$product_detail->title}}</h5>
-		                    </div><!-- /.contact-one__form__top -->
-		                    <div class="form-one__group form-one__group--grid">
-		                        <div class="form-one__control form-one__control--input form-one__control--full">
-		                            <input type="text" class="form-control" name="name" placeholder="Your name">
-		                        </div><!-- /.form-one__control form-one__control--full -->
-		                        <div class="form-one__control form-one__control--full">
-		                            <input type="email" class="form-control" name="email" placeholder="your email">
-		                        </div><!-- /.form-one__control form-one__control--full -->
-		                        <div class="form-one__control form-one__control--full">
-		                            <input class="form-control"  type="text" name="phone" placeholder="your Contact Number">
-		                        </div><!-- /.form-one__control form-one__control--full -->
-		                        <div class="form-one__control form-one__control--mesgae form-one__control--full">
-		                            <textarea class="form-control" name="message" placeholder="Write message"></textarea><!-- /# -->
-		                        </div><!-- /.form-one__control -->
-		                        <div class="form-one__control form-one__control--full">
-		                            <button type="submit" class="floens-btn">
-		                                <span>ENQUIRE NOW</span>
-		                                <i class="icon-right-arrow"></i>
-		                            </button>
-		                        </div><!-- /.form-one__control -->
-		                    </div><!-- /.form-one__group -->
-		                </form>
-	                @else
-	                <div class="product-details__buttons">
-	                    <a href="{{url('add-to-cart')}}/{{ $product_detail->id }}" class="product-details__btn-cart floens-btn">
-	                        <span>Add to Cart</span>
-	                        <i class="icon-cart"></i>
-	                    </a>
-	                </div><!-- /.qty-btn -->
-	                @endif
-	            </div>
-	        </div>
-	    </div>
+	    
 	    <!-- /.product-details -->
 	</div>
-	<div class="product-details__description-wrapper">
-	    <div class="container">
-	        <!-- /.product-description -->
-	        <div class="product-details__description">
-	            <h3 class="product-details__description__title">product Description</h3>
-	            <div class="product-details__text__box wow fadeInUp" data-wow-delay="300ms">
-	                {!! ($product_detail->description) !!}
-	            </div><!-- /.product-details__text__box -->
-	        </div>
-	        <!-- /.product-description -->
-	    </div><!-- /.container -->
-	</div><!-- /.product-details__description__wrapper -->	
+	
 </section>
 @endsection
 @push('styles')

@@ -45,7 +45,8 @@
     
     
     Route::post('enquery', [FrontendController::class, 'enquery']);
-
+    Route::get('deleteenquiery/{id}', [FrontendController::class, 'deleteenquiery']);
+    
     Auth::routes(['register' => false]);
 
     Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');

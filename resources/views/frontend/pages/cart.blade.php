@@ -14,6 +14,7 @@
 </section>
 <section class="cart-page section-space">
     <div class="container">
+        @if(session('cart'))
         <div class="row gutter-y-50">
             <div class="col-xl-8">
                 <div class="table-responsive">
@@ -83,6 +84,14 @@
                 </div>
             </div><!-- /.col-xl-4 -->
         </div><!-- /.row -->
+        @else
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="https://farmfreshshop.com/public/img/empty-cart1.gif">
+                    <h1 class="mt-4">Your cart is currently empty.</h1>
+                </div>
+            </div>
+        @endif
     </div><!-- /.container -->
 </section><!-- /.cart-page -->
 @endsection

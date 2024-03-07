@@ -23,90 +23,76 @@
 @include('frontend.mainslider')
 <!--/ End Slider Area -->
 <!-- services start -->
-<section class="services-two section-space-two">
-    <div class="container-fluid">
-        <div class="services-two__top">
-            <div class="row gutter-y-50 align-items-center">
-                <div class="col-lg-8 col-md-10">
-                    <div class="sec-title @@extraClassName">
+<section class="about-two section-space mt-4">
+    <!-- /.about-two__bg -->
+    <div class="container">
+        <div class="row gutter-y-60">
+            <div class="col-lg-6 wow fadeInLeft animated" data-wow-duration="1500ms" data-wow-delay="00ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInLeft;">
+                <div class="about-two__image">
+                    <div class="about-two__image__inner">
+                        <img src="{{ url('public/images/aboutimageone.jpg') }}" alt="about" class="about-two__image__one">
+                        <div class="about-two__image__inner__inner">
+                            <img src="{{ url('public/images/aboutimagetwo.jpg') }}" alt="about" class="about-two__image__two">
+                        </div><!-- /.about-two__image__inner__inner -->
+                        <div class="experience about-two__experience">
+                            <div class="experience__inner">
+                                <h3 class="experience__year">25</h3>
+                                <!-- /.experience__year -->
+                                <p class="experience__text">years of <br> experience</p>
+                                <!-- /.experience__text -->
+                            </div><!-- /.experience__inner -->
+                        </div><!-- /.experience -->
+                    </div><!-- /.about-two__image__inner -->
+                </div><!-- /.about-two__image-grid -->
+            </div><!-- /.col-lg-6 -->
+            <div class="col-lg-6">
+                <div class="about-two__content">
+                    <div class="sec-title sec-title--border">
 
-                        <!-- <h6 class="sec-title__tagline">Categories</h6> -->
+                        <h6 class="sec-title__tagline">about us</h6><!-- /.sec-title__tagline -->
 
-                        <h3 class="sec-title__title">Our Trending Categories</h3><!-- /.sec-title__title -->
+                        <h3 class="sec-title__title">Best Carpets &amp; <br> Rugs Company</h3><!-- /.sec-title__title -->
                     </div><!-- /.sec-title -->
 
 
-                </div><!-- /.col-lg-8 -->
-            </div><!-- /.row -->
-        </div><!-- /.services-two__top -->
+                    <div class="about-two__content__text wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="00ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
+                        <h5 class="about-two__text-title">We’re providing the best quality Carpets &amp; Rugs in town.</h5>
+                        <!-- /.about-two__text-title -->
+                        <p class="about-two__text">Discover unparalleled quality in Carpets & Rugs with us. We pride ourselves on offering the finest selection in town, ensuring your space exudes warmth and elegance. Experience our commitment to excellence firsthand.</p><!-- /.about-two__text -->
+                    </div><!-- /.about-two__content__text -->
+                    <div class="about-two__list wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="100ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 100ms; animation-name: fadeInUp;">
+                        <div class="about-two__list__left">
+                            <div class="about-two__list__item">
+                                <span class="icon-tick"></span>
+                                High-quality range
+                            </div>
+                            <div class="about-two__list__item">
+                                <span class="icon-tick"></span>
+                                Exquisite designs
+                            </div>
+                        </div><!-- /.about-two__list__left -->
+                        <div class="about-two__list__right">
+                            <div class="about-two__list__item">
+                                <span class="icon-tick"></span>
+                                Personalized service
+                            </div>
+                            <div class="about-two__list__item">
+                                <span class="icon-tick"></span>
+                                Timeless elegance
+                            </div>
+                        </div><!-- /.about-two__list__right -->
+                    </div><!-- /.about-two__list -->
+                    <div class="about-two__button wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="200ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms; animation-name: fadeInUp;">
+                        <a href="{{ url('about-us') }}" class="floens-btn">
+                            <span>more about us</span>
+                            <i class="icon-right-arrow"></i>
+                        </a><!-- /.floens-btn -->
+                    </div><!-- /.about-two__button -->
+                </div><!-- /.about-two__content -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
     </div><!-- /.container -->
-    <div class="container-fluid">
-        <div class="services-two__carousel floens-owl__carousel floens-owl__carousel--basic-nav owl-carousel owl-theme" data-owl-options='{
-    "items": 1,
-    "margin": 0,
-    "loop": true,
-    "smartSpeed": 700,
-    "nav": true,
-    "navText": ["<span class=\"icon-slide-left-arrow\"></span>","<span class=\"icon-slide-right-arrow\"></span>"],
-    "dots": false,
-    "autoplay": 600,
-    "responsive":{
-        "0":{
-            "items": 1,
-            "margin": 15
-        },
-        "576":{
-            "items": 1,
-            "margin": 15
-        },
-        "768":{
-            "items": 2,
-            "margin": 30
-        },
-        "992":{
-            "items": 2,
-            "margin": 30
-        },
-        "1200":{
-            "items": 3,
-            "margin": 30
-        },
-        "1400":{
-            "items": 3,
-            "margin": 30
-        },
-        "1600":{
-            "items": 4,
-            "margin": 30
-        }
-    }
-}'>
-        @php
-        $category_lists=DB::table('categories')->where('status','active')->limit(5)->get();
-        @endphp
-        @if($category_lists)
-            @foreach($category_lists as $cat)
-                @if($cat->is_parent==1)
-            <div class="item">
-                <div class="service-card-two">
-                    <a href="{{route('product-cat',$cat->slug)}}">
-                    <div class="service-card-two__bg" style="background-image: url('{{ url("") }}/public/assetstwo/images/services/service-bg-2-1.png');"></div><!-- /.service-card-two__bg -->
-                    <div class="service-card-two__image">
-                        <img src="{{ url('') }}/public/images/{{ $cat->photo  }}" alt="Tiling & concrete">
-                    </div><!-- /.service-card-two__image -->
-                    <div class="service-card-two__content">
-                        <h3 class="service-card-two__title"><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></h3><!-- /.service-card-two__title -->
-                    </div><!-- /.service-card-two__content -->
-                    </a>
-                </div><!-- /.service-card-two -->
-            </div><!-- /.item -->
-            @endif
-                <!-- /End Single Banner  -->
-            @endforeach
-        @endif
-        </div><!-- /.services-two__carousel -->
-    </div><!-- /.container-fluid -->
-</section><!-- /.services-two section-space-two -->
+</section>
 <!-- services end -->
 <!-- Start Small Banner  -->
 <!-- End Small Banner -->

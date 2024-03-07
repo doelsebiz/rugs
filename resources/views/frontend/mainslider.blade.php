@@ -1,9 +1,18 @@
 <!-- main slider start -->
-<section class="main-slider hero-slider">
+<style type="text/css">
+    .homecontainer{
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    .hero-slider{
+        margin-top: 80px;
+        border-radius: 20px;
+    }
+</style>
+<section class="main-slider hero-slider homecontainer">
     <div class="main-slider__bg" style="background-image: url('{{ url('') }}/public/images/sliderone.jpg');"></div>
     <!-- /.main-slider__bg -->
     <!-- /.hero-slider__social -->
-    <a href="#about" class="main-slider__scroll-btn"><span></span></a>
     <!-- /.main-slider__scroll-btn -->
     <div class="main-slider__carousel floens-slick__carousel--with-counter" data-slick-options='{
 "slidesToShow": 1,

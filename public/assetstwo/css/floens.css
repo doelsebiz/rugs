@@ -5566,8 +5566,8 @@ body.megamenu-popup-active .mobile-nav__content {
 
 @media (min-width: 1400px) {
     .main-slider__wrapper {
-        padding-left: 100px;
-        padding-right: 0;
+        padding-left: 30px;
+        padding-right: 30px;
         margin: 0;
     }
 }
@@ -7014,7 +7014,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .hero-slider__counter {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 24px;
     position: absolute;

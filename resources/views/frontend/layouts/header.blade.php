@@ -1,3 +1,4 @@
+<!-- <div style=" text-align: center; color: white; font-size: 40px; background-color: red; ">WEBSITE UNDER&nbsp;MAINTENANCE</div> -->
 <header class="main-header main-header--one sticky-header sticky-header--normal">
     <div class="container-fluid">
         <div class="main-header__inner">
@@ -19,21 +20,11 @@
                         <li>
                             <a href="{{ url('about-us') }}">About</a>
                         </li>
-                        <li class="dropdown">
+                        <li>
                             <a href="{{route('product-cat','rugs')}}">Rugs</a>
-                            <ul>
-                                @foreach(Helper::getAllCategory() as $cat)
-                                @if($cat->title != 'Carpets')
-                                    <li><a href="{{route('product-cat',$cat->slug)}}">{{$cat->title}}</a></li>
-                                @endif
-                                @endforeach
-                            </ul>
                         </li>
                         <li>
                             <a href="{{ url('product-cat/carpets') }}">Carpets</a>
-                        </li>
-                        <li>
-                            <a href="{{ url('all-products') }}">All Products</a>
                         </li>
                         <li>
                             <a href="{{ url('blogs') }}">News & Blogs</a>

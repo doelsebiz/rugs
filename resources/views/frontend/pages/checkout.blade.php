@@ -121,12 +121,12 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <div class="checkout-page__radio-box checkout-page__radio-box--right">
+                                    <!-- <div class="checkout-page__radio-box checkout-page__radio-box--right">
                                         <div class="checkout-page__input-item custom-radio">
                                             <input checked type="radio" value="cod" id="cash" name="payment_method" class="custom-radio__input">
                                             <label for="cash" class="custom-radio__title">Cash On Delivery</label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="checkout-page__radio-box checkout-page__radio-box--right">
                                         <div class="checkout-page__input-item custom-radio">
                                             <input type="radio" value="paypal" id="paypal" name="payment_method" class="custom-radio__input">
@@ -135,7 +135,7 @@
                                     </div> -->
                                     <div class="checkout-page__radio-box checkout-page__radio-box--right">
                                         <div class="checkout-page__input-item custom-radio">
-                                            <input type="radio" value="stripe" id="stripe" name="payment_method" class="custom-radio__input">
+                                            <input checked type="radio" value="stripe" id="stripe" name="payment_method" class="custom-radio__input">
                                             <label for="stripe" class="custom-radio__title">Pay Via Debit/Credit Card</label>
                                         </div>
                                     </div>

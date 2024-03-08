@@ -7,6 +7,11 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\product_images;
+
+use App\Models\product_sizes;
+use App\Models\product_colors;
+
+
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -133,8 +138,6 @@ class ProductController extends Controller
             'title'=>'string|required',
             'summary'=>'string|required',
             'description'=>'string|nullable',
-            'size'=>'nullable',
-            'stock'=>'required',
             'cat_id'=>'required|exists:categories,id',
             'child_cat_id'=>'nullable|exists:categories,id',
             'is_featured'=>'sometimes|in:1',
@@ -145,12 +148,24 @@ class ProductController extends Controller
         $data=$request->all();
         $data['is_featured']=$request->input('is_featured',0);
         $size=$request->input('size');
-        if($size){
-            $data['size']=implode(',',$size);
+
+       if($request->color)
+       {
+            foreach ($request->color as $c) {
+            foreach ($request->size as $s) {
+                $check  = product_colors::where('product_id' , $id)->where('colors' , $c)->where('sizes' , $s)->count();
+                if($check == 0)
+                {
+                    $addnew = new product_colors();
+                    $addnew->product_id = $id;
+                    $addnew->colors = $c;
+                    $addnew->sizes = $s;
+                    $addnew->save();   
+                }
+            }
         }
-        else{
-            $data['size']='';
-        }
+       }
+        
 
         // return $data;
         $status=$product->fill($data)->save();

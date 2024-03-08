@@ -93,82 +93,25 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section>
-<!-- services end -->
-<!-- Start Small Banner  -->
-<!-- End Small Banner -->
 <section class="product-home">
-    <div class="product-home__bg" style="background-image: url(assets/images/backgrounds/shop-bg-1.png);"></div>
-    <!-- /.product-home__bg -->
     <div class="container-fluid">
         <div class="sec-title sec-title--center">
-            <h3 class="sec-title__title">Trending Designs</h3>
+            <h3 class="sec-title__title" style="color:black;">Trending Designs</h3>
         </div>
-        <!-- /.sec-title -->
-
-
         <div class="row gutter-y-30">
             @if($product_lists)
             @foreach($product_lists as $key=>$r)
                 @include('frontend.showproduct')
             @endforeach
-             <!--/ End Single Tab -->
             @endif
-            <!-- /.col-md-6 col-lg-4 -->
-
-            <!-- /.col-md-6 col-lg-4 -->
-            <!-- /.col-md-6 col-lg-4 -->
-            <!-- /.col-md-6 col-lg-4 -->
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /.container -->
 </section>
-@foreach(DB::table('categories')->where('homepage' , 1)->orderby('id' , 'desc')->get() as $c)
-<section class="product-page section-space-bottom">
+<section class="blog-one section-space-two" style="background-color: var(--floens-white2, #F2EEEA);">
     <div class="container-fluid">
-        <div class="sec-title text-left mb-4">
-            <h3 class="sec-title__title">{{ $c->title }}</h3>
+        <div class="sec-title sec-title--center mb-5">
+            <h3 class="sec-title__title" style="text-align:left;">News & Blogs</h3>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="row gutter-y-30">
-                    @foreach(DB::table('products')->where('cat_id' , $c->id)->limit(4)->orderby('id' , 'desc')->where('status','active')->get() as $r)
-                        @include('frontend.showproduct')
-                    @endforeach
-                </div><!-- /.row -->
-            </div><!-- /.col-lg-9 -->
-        </div><!-- /.row -->
-    </div><!-- /.container -->
-</section>
-@endforeach
-<!-- Start Shop Home List  -->
-<!-- End Shop Home List  -->
-<section class="blog-one section-space-two">
-    <div class="blog-one__bg" style="background-image: url(assets/images/backgrounds/blog-bg-1.jpg);"></div>
-    <!-- /.blog-one__bg -->
-    <div class="container">
-        <div class="blog-one__top">
-            <div class="row gutter-y-50 align-items-center">
-                <div class="col-lg-8">
-                    <div class="sec-title @@extraClassName">
-
-                        <h6 class="sec-title__tagline">news room</h6><!-- /.sec-title__tagline -->
-
-                        <h3 class="sec-title__title">See Latest News <br> from the Blog Posts</h3><!-- /.sec-title__title -->
-                    </div><!-- /.sec-title -->
-
-
-                </div><!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="blog-one__top__button">
-                        <a href="blog-grid-right.html" class="floens-btn floens-btn--border">
-                            <span>view all</span>
-                            <i class="icon-right-arrow"></i>
-                        </a><!-- /.floens-btn floens-btn--border -->
-                    </div><!-- /.blog-one__top__button -->
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
-        </div><!-- /.blog-one__top -->
         <div class="row gutter-y-30">
             @if($posts)
                 @foreach($posts as $post)
@@ -192,14 +135,6 @@
             @endforeach
         @endif
         </div><!-- /.row -->
-    </div><!-- /.container -->
-</section><!-- /.blog-one section-space-two -->
-<!-- blog end -->
-<!-- Start Shop Blog  -->
-<!-- End Shop Blog  -->
-
-<!-- Start Shop Services Area -->
-<!-- End Shop Services Area -->
-
-
+    </div>
+</section>
 @endsection

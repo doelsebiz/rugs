@@ -12,6 +12,8 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\enquiries;
 use App\Models\Brand;
+use App\Models\product_variation_images;
+use App\Models\product_colors;
 use App\User;
 use Auth;
 use Session;
@@ -24,24 +26,32 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
-   
+    public function getstock(Request $request)
+    {
+        $data = product_colors::where('product_id' , $request->product_id)->where('colors' , $request->color)->where('sizes' , $request->size)->get()->first();
+        return response()->json(['stock' =>$data->stock, 'price' =>$data->price]);
+    }
+    public function selectcolor(Request $request)
+    {
+        $data = product_variation_images::where('product_id' , $request->product_id)->where('color' , $request->id)->get();
+        $html = view('frontend.pages.productappendimages', compact('data'))->render();
+        return $html;
+    }
     public function index(Request $request){
-
-        
-
-
         return redirect()->route($request->user()->role);
     }
-    public function addToCart($id){
-        $product = Product::findOrFail($id);
+    public function addToCart(Request $request){
+        $product = Product::findOrFail($request->product_id);
         $cart = session()->get('cart', []);
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+        if(isset($cart[$request->product_id])) {
+            $cart[$request->product_id]['quantity']++;
         } else {
-            $cart[$id] = [
+            $cart[$request->product_id] = [
                 "name" => $product->name,
+                "size" => $request->size,
+                "color" => $request->color,
                 "quantity" => 1,
-                "price" => $product->price,
+                "price" => $request->price,
                 "product_id" => $product->id
             ];
         }

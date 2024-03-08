@@ -72,28 +72,14 @@
                 <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
-              <div class="form-group">
-                <label for="stock" class="col-form-label">Stock <span class="text-danger">*</span></label>
-                <input id="stock" type="number" name="stock" placeholder="Enter price"  value="{{$product->stock}}" class="form-control">
-                @error('stock')
-                <span class="text-danger">{{$message}}</span>
-                @enderror
-              </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                 <label for="size">Size</label>
                 <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
                     <option value="">--Select any size--</option>
-                    @foreach($items as $item)              
-                      @php 
-                      $data=explode(',',$item->size);
-                      // dd($data);
-                      @endphp
-                    <option value="S"  @if( in_array( "S",$data ) ) selected @endif>Small</option>
-                    <option value="M"  @if( in_array( "M",$data ) ) selected @endif>Medium</option>
-                    <option value="L"  @if( in_array( "L",$data ) ) selected @endif>Large</option>
-                    <option value="XL"  @if( in_array( "XL",$data ) ) selected @endif>Extra Large</option>
+                    @foreach(DB::table('sizeandcolors')->groupby('size')->get() as $r)              
+                    <option value="{{ $r->size }}">{{ $r->size }}</option>
                     @endforeach
                 </select>
               </div> 
@@ -103,21 +89,14 @@
                     <label for="color">Color</label>
                     <select name="color[]" class="form-control selectpicker"  multiple data-live-search="true">
                         <option value="">--Select any size--</option>
-                        @foreach($items as $item)              
-                          @php 
-                          $color=explode(',',$item->color);
-                          // dd($data);
-                          @endphp
-                        <option value="Black"  @if( in_array( "Black",$color ) ) selected @endif>Black</option>
-                        <option value="Red"  @if( in_array( "Red",$color ) ) selected @endif>Red</option>
-                        <option value="White"  @if( in_array( "White",$color ) ) selected @endif>White</option>
-                        <option value="Orange"  @if( in_array( "Orange",$color ) ) selected @endif>Orange</option>
+                        @foreach(DB::table('sizeandcolors')->groupby('colors')->get() as $r)              
+                        <option value="{{ $r->colors }}">{{ $r->colors }}</option>
                         @endforeach
                     </select>
                   </div>
                 </div> 
               </div>  
-                      
+              <a target="_blank" href="{{ url('admin/product/Variations') }}/{{ $product->id }}">First Save and then Variations</a>
               <div class="form-group">
                 <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
                 <select name="status" class="form-control">
@@ -183,7 +162,11 @@
 @push('scripts')
 <script src="{{asset('public/backend/summernote/summernote.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-
+<script type="text/javascript">
+  function getvariations() {
+      
+  }
+</script>
 <script>
 
     $(document).ready(function() {

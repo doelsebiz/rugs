@@ -42,13 +42,21 @@
 
     Route::POST('admin/product/addproductimages',[AdminController::class,'addproductimages']);
     Route::get('admin/product/deleteimage/{id}',[AdminController::class,'deleteimage']);
+    Route::get('admin/product/Variations/{id}',[AdminController::class,'getvariations']);
+    Route::POST('admin/product/updatevariations',[AdminController::class,'updatevariations']);
+
+    Route::POST('admin/product/updatevariationsimages',[AdminController::class,'updatevariationsimages']);
     
+    Route::POST('getstock',[FrontendController::class,'getstock']);
+
     
     Route::post('enquery', [FrontendController::class, 'enquery']);
     Route::get('deleteenquiery/{id}', [FrontendController::class, 'deleteenquiery']);
     
     Auth::routes(['register' => false]);
 
+
+    Route::post('selectcolor', [FrontendController::class, 'selectcolor']);
     Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');
     Route::post('user/login', [FrontendController::class, 'loginSubmit'])->name('login.submit');
     Route::get('user/logout', [FrontendController::class, 'logout'])->name('user.logout');
@@ -78,8 +86,7 @@
     Route::get('/product-sub-cat/{slug}/{sub_slug}', [FrontendController::class, 'productSubCat'])->name('product-sub-cat');
     Route::get('/product-brand/{slug}', [FrontendController::class, 'productBrand'])->name('product-brand');
 // Cart section
-    Route::get('/add-to-cart/{id}', [FrontendController::class, 'addToCart'])->name('add-to-cart');
-    Route::post('/add-to-cart', [CartController::class, 'singleAddToCart'])->name('single-add-to-cart')->middleware('user');
+    Route::POST('add-to-cart', [FrontendController::class, 'addToCart']);
 
     
     Route::post('stripe', [FrontendController::class, 'stripePost'])->name('stripe.post');

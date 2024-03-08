@@ -35,6 +35,8 @@
     <script src="{{ url('public/assetstwo/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
     <!-- template styles -->
     <link rel="stylesheet" href="{{ url('public/assetstwo/css/floens.css') }}" />
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -212,6 +214,7 @@
     <script src="{{ url('public/assetstwo/vendors/slick/slick.min.js') }}"></script>
     <!-- template js -->
     <script src="{{ url('public/assetstwo/js/floens.js') }}"></script>
+     @stack('scripts')
 </body>
 
 </html>

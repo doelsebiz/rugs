@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Settings;
 use App\Models\Product;
 use App\Models\product_images;
+use App\Models\product_colors;
+use App\Models\product_variation_images;
 use App\User;
 use App\Rules\MatchOldPassword;
 use Hash;
@@ -13,8 +15,40 @@ use Carbon\Carbon;
 use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
+use DB;
 class AdminController extends Controller
 {
+    public function getvariations($id)
+    {
+        $colors = DB::table('product_colors')->where('product_id' , $id)->get();
+        return view('backend.product.getvariations')->with(array('colors' => $colors,'id'=>$id));
+    }
+    public function updatevariationsimages(Request $request)
+    {
+        $input  = $request->all();
+        foreach ($request->images as $i) {
+            $addimage = new product_variation_images();
+            $addimage->product_id = $request->product_id;
+            $addimage->color = $request->color;
+            $addimage->image = Cmf::sendimagetodirectory($i);
+            $addimage->save();
+        }  
+        request()->session()->flash('success','Product Image Added Successfully');
+        return redirect()->back();
+    }
+    public function updatevariations(Request $request)
+    {
+        $input  = $request->all();
+        foreach ($request->id as $key => $id) {
+            $updatevariation = product_colors::find($input['id'][$key]);
+            $updatevariation->stock = $input['stock'][$key];
+            $updatevariation->sku = $input['sku'][$key];
+            $updatevariation->price = $input['price'][$key]; 
+            $updatevariation->save();
+        }
+        request()->session()->flash('success','Product Variations Updated Successfully');
+        return redirect()->back();
+    }
     public function index(){
         $data = User::select(\DB::raw("COUNT(*) as count"), \DB::raw("DAYNAME(created_at) as day_name"), \DB::raw("DAY(created_at) as day"))
         ->where('created_at', '>', Carbon::today()->subDay(6))

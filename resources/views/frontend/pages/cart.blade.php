@@ -23,8 +23,8 @@
                             <tr>
                                 <th>Product</th>
                                 <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Sub Total</th>
+                                <th>Color</th>
+                                <th>Size</th>
                                 <th>Remove</th>
                             </tr>
                         </thead>
@@ -47,17 +47,11 @@
                                         </h3>
                                     </div>
                                 </td>
-                                <td class="cart-page__table__price">${{ DB::table('products')->where('id' , $details['product_id'])->first()->price }}</td>
-                                <td>
-                                    <div class="product-details__quantity">
-                                        <div class="quantity-box">
-                                            <button type="button" class="sub"><i class="fa fa-minus"></i></button>
-                                            <input type="text" value="{{$details['quantity']}}">
-                                            <button type="button" class="add"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
+                                <td class="cart-page__table__price">${{ $details['price'] }}</td>
+                                <td class="cart-page__table__price"><span style="background-color: black;padding: 10px;border-radius:5px;color: white;">{{ $details['size'] }}</span></td>
+                                <td class="cart-page__table__price">
+                                    <span style="background-color: black;padding: 10px;border-radius:5px;color: white;">{{ $details['color'] }}</span>
                                 </td>
-                                <td class="cart-page__table__total">${{ DB::table('products')->where('id' , $details['product_id'])->first()->price*$details['quantity'] }}</td>
                                 <td>
                                     <a href="javascript:void(0)" class="cart-page__table__remove remove-from-cart"><i class="fas fa-times"></i> remove</a>
                                 </td>

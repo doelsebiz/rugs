@@ -46,9 +46,9 @@
 		            <div class="product-details__content">
 		                <div class="product-details__top">
 		                    <div class="product-details__top__left">
-		                        <h3 class="product-details__name">{{ $product_detail->title }} {{ $product_detail->color }} {{ $product_detail->size }}</h3><!-- /.product-title -->
+		                        <h3 class="product-details__name">{{ $product_detail->title }}</h3><!-- /.product-title -->
 		                        @if($product_detail->price != 0)
-		                        <h4 class="product-details__price">${{$product_detail->price}}</h4><!-- /.product-price -->
+		                        <h4 class="product-details__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $product_detail->id)->first()->price }}</h4><!-- /.product-price -->
 		                        @endif
 		                    </div><!-- /.product-details__price -->
 		                </div>
@@ -57,19 +57,21 @@
 		                        {{$product_detail->summary}}
 		                    </p>
 		                </div><!-- /.excerp-text -->
-		                @if($product_detail->color)
+		                @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->count() > 0)
 		                <div class="product-details__color">
 		                    <h3 class="product-details__content__title">Color</h3>
 		                    <div class="product-details__size__box">
-		                    	@foreach(explode(',' , $product_detail->color) as $r)
-		                        <button type="button" class="product-details__size__btn"><span>{{ $r }}</span></button>
+		                    	@foreach(DB::table('product_colors')->where('product_id' , $product_detail->id)->groupby('colors')->get() as $r)
+		                        <button onclick="selectcolor('{{ $r->colors }}')" type="button" class="product-details__size__btn allcolorbutton color{{ $r->colors }}">{{ $r->colors }}</button>
 		                        @endforeach
-		                    </div><!-- /.product-details__size__box -->
+		                    </div>
 		                    <h3 class="product-details__content__title">Size</h3>
-		                    @foreach(explode(',' , $product_detail->size) as $r)
-		                        <button type="button" class="product-details__size__btn"><span>{{ $r }}</span></button>
+		                    <div class="product-details__size__box">
+		                    	@foreach(DB::table('product_colors')->where('product_id' , $product_detail->id)->groupby('sizes')->get() as $r)
+		                        <button onclick="selectsize('{{ $r->id }}' , '{{ $r->sizes }}')" type="button" class="product-details__size__btn allsizebutton size{{ $r->id }}">{{ $r->sizes }}</button>
 		                        @endforeach
-		                </div><!-- /.product-details__color -->
+		                    </div>
+		                </div>
 		                @endif
 		                @if($product_detail->cat_id == 6)
 		                <div style="padding-right: 20px;padding-bottom: 20px;">
@@ -103,12 +105,19 @@
 			                </form>
 			            </div>
 		                @else
+		                <form method="POST" action="{{ url('add-to-cart') }}">
+		                @csrf
+		                <input type="hidden" name="price" id="priceforcart">
+		                <input type="hidden" name="product_id" value="{{ $product_detail->id }}">
+		                <input type="hidden"  name="color" id="colorforcart">
+		                <input type="hidden"  name="size" id="sizeforcart">
 		                <div class="product-details__buttons">
-		                    <a href="{{url('add-to-cart')}}/{{ $product_detail->id }}" class="product-details__btn-cart floens-btn">
+		                    <button disabled class="product-details__btn-cart floens-btn">
 		                        <span>Add to Cart</span>
 		                        <i class="icon-cart"></i>
-		                    </a>
+		                    </button>
 		                </div><!-- /.qty-btn -->
+		                </form>
 		                @endif
 		            </div>
 		        </div>
@@ -188,7 +197,67 @@
 @endpush
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
+<script type="text/javascript">
+	function getstock() {
+		var product_id = '{{ $product_detail->id }}';
+		var color = $('#colorforcart').val();
+		var size = $('#sizeforcart').val();
+		$.ajax({
+            type: "POST",
+            url: "{{ url('getstock') }}",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                color:color,
+                size:size,
+                product_id:product_id
+            },
+            success: function(res) {
+            	$('.product-details__price').html('Price : $'+res.price);
+            	$('#priceforcart').val(res.price);
+            	if(res.stock > 0)
+            	{
+            		$('.product-details__buttons').html('<button class="product-details__btn-cart floens-btn"> <span>Add to Cart</span> <i class="icon-cart"></i> </button>')
+            	}else{
+            		$('.product-details__buttons').html('<span style="color:red;">Not Available in Stock</span>');
+            	}
+            },
+            error: function(error) {
+                
+            }
+        });
+	}
+	function selectsize(id,size) {
+		$('.allsizebutton').removeClass('activecolor');
+		$('.size'+id).addClass('activecolor');
+		$('#sizeforcart').val(size);
+		getstock();
+	}
+	function selectcolor(id) {
+		var product_id = '{{ $product_detail->id }}';
+		$.ajax({
+            type: "POST",
+            url: "{{ url('selectcolor') }}",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                id:id,
+                product_id:product_id
+            },
+            success: function(res) {
+            	$('.product-details__img').html(res);
+            	$('#colorforcart').val(id);
+               $('.allcolorbutton').removeClass('activecolor');
+			   $('.color'+id).addClass('activecolor');
+            },
+            error: function(error) {
+                
+            }
+        });
+	}
+</script>
     {{-- <script>
         $('.cart').click(function(){
             var quantity=$('#quantity').val();

@@ -8,9 +8,9 @@
             @endif
         </div>
         <div class="product__item__content">
-            <h4 class="product__item__title"><a href="{{route('product-detail',$r->slug)}}">{{ $r->title }} {{ $r->color }} {{ $r->size }}</a></h4>
+            <h4 class="product__item__title"><a href="{{route('product-detail',$r->slug)}}">{{ $r->title }}</a></h4>
             @if($r->price != 0)
-            <div class="product__item__price">Starting From ${{ $r->price }}</div>
+            <div class="product__item__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $r->id)->first()->price }}</div>
             @endif
             @if($r->cat_id == 6)
             <a href="{{route('product-detail',$r->slug)}}" class="floens-btn product__item__link">
@@ -18,7 +18,7 @@
                 <i class="fa fa-question-circle"></i>
             </a>
             @else
-            <a href="{{url('add-to-cart')}}/{{ $r->id }}" class="floens-btn product__item__link">
+            <a href="{{route('product-detail',$r->slug)}}" class="floens-btn product__item__link">
                 <span>Add to Cart</span>
                 <i class="fa fa-shopping-cart"></i>
             </a>

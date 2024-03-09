@@ -1,18 +1,18 @@
 @extends('frontend.layouts.master')
 @section('title')
-<title>CARGOZ: Discover Premium Rugs & Carpets Online for Elegant Home Decor</title>
-<meta name="description" content="Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home." />
-<meta name="DC.Title" content="CARGOZ: Discover Premium Rugs & Carpets Online for Elegant Home Decor">
+<title>Jagkrishome: Discover Premium Rugs & Carpets Online for Elegant Home Decor</title>
+<meta name="description" content="Explore the finest selection of rugs and carpets at Jagkrishome, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home." />
+<meta name="DC.Title" content="Jagkrishome: Discover Premium Rugs & Carpets Online for Elegant Home Decor">
 <meta name="rating" content="general">
-<meta name="description" content="Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.">
+<meta name="description" content="Explore the finest selection of rugs and carpets at Jagkrishome, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.">
 <meta property="og:type" content="website">
 @php
     $settings= DB::table('settings')->first();
 @endphp 
 <meta property="og:image" content="{{ url('public/images') }}/{{$settings->logo}}">
-<meta property="og:title" content="CARGOZ: Discover Premium Rugs & Carpets Online for Elegant Home Decor">
-<meta property="og:description" content="Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.">
-<meta property="og:site_name" content="CARGOZ">
+<meta property="og:title" content="Jagkrishome: Discover Premium Rugs & Carpets Online for Elegant Home Decor">
+<meta property="og:description" content="Explore the finest selection of rugs and carpets at Jagkrishome, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.">
+<meta property="og:site_name" content="Jagkrishome">
 <meta property="og:url" content="{{ URL::current() }}">
 <link rel="canonical" href="{{ URL::current() }}">
 <meta property="og:locale" content="it_IT">

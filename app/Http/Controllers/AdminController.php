@@ -65,10 +65,12 @@ class AdminController extends Controller
     }
     public function addproductimages(Request $request)
     {
-        $images = new product_images();
-        $images->image = Cmf::sendimagetodirectory($request->photo);
-        $images->product_id = $request->id;
-        $images->save();
+        foreach ($request->photo as $r) {
+            $images = new product_images();
+            $images->image = Cmf::sendimagetodirectory($r);
+            $images->product_id = $request->id;
+            $images->save();
+        }
         request()->session()->flash('success','Product Image Added Successfully');
         return redirect()->back();
     }

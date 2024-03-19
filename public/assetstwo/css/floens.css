@@ -5013,7 +5013,7 @@ body.megamenu-popup-active .mobile-nav__content {
 .form-one input[type=text]::placeholder,
 .form-one input[type=email]::placeholder,
 .form-one textarea::placeholder {
-    text-transform: capitalize;
+    text-transform: capitalize; 
 }
 
 .form-one input[type=text]:focus,

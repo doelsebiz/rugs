@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="00ms">
                     <div class="footer-widget footer-widget--about">
-                        <p class="footer-widget__about-text">Explore the finest selection of rugs and carpets at CARGOZ, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.</p>
+                        <p class="footer-widget__about-text">Explore the finest selection of rugs and carpets at jagkrishome, your premier destination for luxurious home decor. Discover handcrafted rugs, elegant carpets, and exquisite tapestries in a variety of styles and materials to elevate your living spaces. Shop now to experience unparalleled quality and timeless elegance for your home.</p>
                         <!-- /.footer-widget__about-text -->
                         <!-- /.footer-widget__newsletter mc-form -->
                         <div class="mc-form__response"></div>
@@ -29,7 +29,7 @@
                             <li><a href="{{ url('blogs') }}">News & Blogs</a></li>
                             <li><a href="{{ url('all-products') }}">All Products</a></li>
                             <li><a href="{{ url('contact-us') }}">Contact</a></li>
-                            <li><a href="{{ url('user/login') }}">Retailer Login</a></li>
+                            
                         </ul>
                         <!-- /.list-unstyled footer-widget__links -->
                     </div>
@@ -41,14 +41,13 @@
                         <div class="footer-widget__top">
                             <div class="footer-widget__title-box"></div>
                             <!-- /.footer-widget__title-box -->
-                            <h2 class="footer-widget__title">Carpets</h2>
+                            <h2 class="footer-widget__title">Use Full Links</h2>
                             <!-- /.footer-widget__title -->
                         </div>
                         <!-- /.footer-widget__top -->
                         <ul class="list-unstyled footer-widget__links">
-                            @foreach(DB::table('categories')->orderby('id' , 'desc')->limit(5)->where('parent_id' , 6)->get() as $r)
-                            <li><a href="{{route('product-cat',$r->slug)}}">{{ $r->title }}</a></li>
-                            @endforeach
+                            <li><a href="{{ url('user/login') }}">Retailer Login</a></li>
+                            <li><a href="{{ url('return-policy') }}">Return Policy</a></li>
                         </ul>
                         <!-- /.list-unstyled footer-widget__links -->
                     </div>

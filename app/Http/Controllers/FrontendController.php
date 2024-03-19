@@ -132,7 +132,10 @@ class FrontendController extends Controller
     public function aboutUs(){
         return view('frontend.pages.about-us');
     }
-
+    public function returnpolicy()
+    {
+        return view('frontend.pages.returnpolicy');
+    }
     public function contact(){
         return view('frontend.pages.contact');
     }

@@ -90,7 +90,7 @@
 
     
     Route::post('stripe', [FrontendController::class, 'stripePost'])->name('stripe.post');
-
+    Route::get('return-policy', [FrontendController::class, 'returnpolicy']);
 
     Route::get('/stripepayment/{id}', [FrontendController::class, 'stripepayment']);
     Route::delete('remove-from-cart', [FrontendController::class, 'cartDelete'])->name('remove.from.cart');

@@ -132,57 +132,8 @@
         <!-- /.search-popup__content -->
     </div>
     <!-- /.search-popup -->
-    <aside class="sidebar-one">
-        <div class="sidebar-one__overlay sidebar-btn__toggler"></div>
-        <!-- /.siderbar-ovarlay -->
-        <div class="sidebar-one__content">
-            <span class="sidebar-one__close sidebar-btn__toggler"><i class="fa fa-times"></i></span>
-            <div class="sidebar-one__logo sidebar-one__item">
-                @php
-                    $settings = DB::table('settings')->first();
-                @endphp  
-                <a href="index.html" aria-label="logo image"><img src="{{ url('public/images') }}/{{$settings->logo}}" width="123" alt="logo-dark" /></a>
-            </div>
-            <!-- /.sidebar-one__logo -->
-            <div class="sidebar-one__about sidebar-one__item">
-                <p class="sidebar-one__about__text">{{ $settings->short_des }}</p>
-            </div>
-            <!-- /.sidebar-one__about -->
-            <div class="sidebar-one__info sidebar-one__item">
-                <h4 class="sidebar-one__title">Information</h4>
-                <ul class="sidebar-one__info__list">
-                    <li><span class="icon-location-2"></span>
-                        <address>{{ $settings->address }}</address>
-                    </li>
-                    <li><span class="icon-paper-plane"></span> <a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></li>
-                    <li><span class="icon-phone-call"></span> <a href="tel:+{{ $settings->phone }}">{{ $settings->phone }}</a></li>
-                </ul>
-                <!-- /.sidebar-one__info__list -->
-            </div>
-            <!-- /.sidebar-one__info -->
-            <div class="sidebar-one__social floens-social sidebar-one__item">
-                <a href="https://facebook.com">
-                    <i class="icon-facebook" aria-hidden="true"></i>
-                    <span class="sr-only">Facebook</span>
-                </a>
-                <a href="https://twitter.com">
-                    <i class="icon-twitter" aria-hidden="true"></i>
-                    <span class="sr-only">Twitter</span>
-                </a>
-                <a href="https://instagram.com">
-                    <i class="icon-instagram" aria-hidden="true"></i>
-                    <span class="sr-only">Instagram</span>
-                </a>
-                <a href="https://youtube.com">
-                    <i class="icon-youtube" aria-hidden="true"></i>
-                    <span class="sr-only">Youtube</span>
-                </a>
-            </div>
-            <!-- /sidebar-one__social -->
-            <!-- /.sidebar-one__form -->
-        </div>
-        <!-- /.sidebar__content -->
-    </aside>
+    @yield('sidebar')
+    
     <!-- /.sidebar-one -->
 
     <a href="javascript:void(0)" data-target="html" class="scroll-to-target scroll-to-top">

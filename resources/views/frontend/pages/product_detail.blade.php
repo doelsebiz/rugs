@@ -14,7 +14,6 @@
 <meta property="og:image" content="{{$product_detail->photo}}">
 <meta property="og:description" content="{{$product_detail->description}}">
 @endsection
-@section('title','E-SHOP || PRODUCT DETAIL')
 @section('main-content')
 <section class="product-details section-space" style="padding-top: 150px;">
 	<div class="container">
@@ -65,45 +64,21 @@
 		                        <button onclick="selectcolor('{{ $r->colors }}')" type="button" class="product-details__size__btn allcolorbutton color{{ $r->colors }}">{{ $r->colors }}</button>
 		                        @endforeach
 		                    </div>
+		                    @if($product_detail->cat_id != 6)
 		                    <h3 class="product-details__content__title">Size</h3>
 		                    <div class="product-details__size__box">
 		                    	@foreach(DB::table('product_colors')->where('product_id' , $product_detail->id)->groupby('sizes')->get() as $r)
 		                        <button onclick="selectsize('{{ $r->id }}' , '{{ $r->sizes }}')" type="button" class="product-details__size__btn allsizebutton size{{ $r->id }}">{{ $r->sizes }}</button>
 		                        @endforeach
 		                    </div>
+		                    @endif
 		                </div>
 		                @endif
 		                @if($product_detail->cat_id == 6)
-		                <div style="padding-right: 20px;padding-bottom: 20px;">
-		                	<form class="contact-one__form contact-form-validated form-one wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="200ms" method="POST" action="{{ url('enquery') }}" novalidate="novalidate" style="margin-left: 0px;">
-		                		@csrf
-		                		<div style="color: green;" class="result"></div>
-		                		<input type="hidden" value="{{ $product_detail->id }}" name="product_id">
-			                    <div class="contact-one__form__top">
-			                        <h2 class="contact-one__form__title">Inquire Now</h2><!-- /.contact-one__form__title -->
-			                    </div><!-- /.contact-one__form__top -->
-			                    <div class="form-one__group form-one__group--grid">
-			                        <div class="form-one__control form-one__control--input form-one__control--full">
-			                            <input type="text" name="name" placeholder="Your name">
-			                        </div><!-- /.form-one__control form-one__control--full -->
-			                        <div class="form-one__control form-one__control--full">
-			                            <input type="email" name="email" placeholder="your email">
-			                        </div><!-- /.form-one__control form-one__control--full -->
-			                        <div class="form-one__control form-one__control--full">
-			                            <input type="text" name="phonenumber" placeholder="your Contact Number">
-			                        </div><!-- /.form-one__control form-one__control--full -->
-			                        <div class="form-one__control form-one__control--mesgae form-one__control--full">
-			                            <textarea name="message" placeholder="Write message"></textarea><!-- /# -->
-			                        </div><!-- /.form-one__control -->
-			                        <div class="form-one__control form-one__control--full">
-			                            <button type="submit" class="floens-btn">
-			                                <span>Get Enquiry</span>
-			                                <i class="icon-right-arrow"></i>
-			                            </button>
-			                        </div><!-- /.form-one__control -->
-			                    </div><!-- /.form-one__group -->
-			                </form>
-			            </div>
+		                <button type="button" class="floens-btn sidebar-btn__toggler">
+                            <span>Get Enquiry</span>
+                            <i class="icon-right-arrow"></i>
+                        </button>
 		                @else
 		                <form method="POST" action="{{ url('add-to-cart') }}">
 		                @csrf
@@ -195,6 +170,53 @@
 
 	</style>
 @endpush
+@section('sidebar')
+<aside class="sidebar-one">
+    <div class="sidebar-one__overlay sidebar-btn__toggler"></div>
+    <!-- /.siderbar-ovarlay -->
+    <div class="sidebar-one__content">
+        <span class="sidebar-one__close sidebar-btn__toggler"><i class="fa fa-times"></i></span>
+        <!-- /.sidebar-one__logo -->
+        <div class="sidebar-one__about sidebar-one__item">
+            <div style="padding-right: 20px;padding-bottom: 20px;">
+                <form class="contact-one__form contact-form-validated form-one wow fadeInUp animated" data-wow-duration="1500ms" data-wow-delay="200ms" method="POST" action="{{ url('enquery') }}" novalidate="novalidate" style="margin-left: 0px;">
+                    @csrf
+                    <div style="color: green;" class="result"></div>
+                    <input type="hidden" value="{{ $product_detail->id }}" name="product_id">
+                    <div class="contact-one__form__top">
+                        <h2 class="contact-one__form__title">Inquire Now</h2><!-- /.contact-one__form__title -->
+                    </div><!-- /.contact-one__form__top -->
+                    <div class="form-one__group form-one__group--grid">
+                        <div class="form-one__control form-one__control--input form-one__control--full">
+                            <input type="text" name="name" placeholder="Your name">
+                        </div><!-- /.form-one__control form-one__control--full -->
+                        <div class="form-one__control form-one__control--full">
+                            <input type="email" name="email" placeholder="your email">
+                        </div><!-- /.form-one__control form-one__control--full -->
+                        <div class="form-one__control form-one__control--full">
+                            <input type="text" name="phonenumber" placeholder="your Contact Number">
+                        </div><!-- /.form-one__control form-one__control--full -->
+                        <div class="form-one__control form-one__control--mesgae form-one__control--full">
+                            <textarea name="message" placeholder="Write message"></textarea><!-- /# -->
+                        </div><!-- /.form-one__control -->
+                        <div class="form-one__control form-one__control--full">
+                            <button type="submit" class="floens-btn">
+                                <span>Get Enquiry</span>
+                                <i class="icon-right-arrow"></i>
+                            </button>
+                        </div><!-- /.form-one__control -->
+                    </div><!-- /.form-one__group -->
+                </form>
+            </div>
+        </div>
+        <!-- /.sidebar-one__about -->
+        <!-- /.sidebar-one__info -->
+        <!-- /sidebar-one__social -->
+        <!-- /.sidebar-one__form -->
+    </div>
+    <!-- /.sidebar__content -->
+</aside>
+@endsection
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script type="text/javascript">

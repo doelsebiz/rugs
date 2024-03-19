@@ -91,7 +91,7 @@ class FrontendController extends Controller
     public function stripePost(Request $request)
     {
         $data = DB::table('orders')->where('id' , $request->orderid)->first();     
-        $totalprice = $data->total_amount;
+        $totalprice = $data->total_amount*100;
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $payement = Stripe\Charge::create ([
                 "amount" => $totalprice,

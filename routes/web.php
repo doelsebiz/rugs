@@ -74,6 +74,7 @@
 
     Route::get('/retailer-dashboard', [FrontendController::class, 'retailerdashboard'])->name('retailerdashboard');
 
+   Route::get('color/{id}', [FrontendController::class, 'bycolor']);
 
 // Frontend Routes
     Route::get('/home', [FrontendController::class, 'index']);
@@ -88,12 +89,14 @@
 // Cart section
     Route::POST('add-to-cart', [FrontendController::class, 'addToCart']);
 
+    Route::get('removefromcart/{id}', [FrontendController::class, 'removefromcart']);
+    
     
     Route::post('stripe', [FrontendController::class, 'stripePost'])->name('stripe.post');
     Route::get('return-policy', [FrontendController::class, 'returnpolicy']);
 
     Route::get('/stripepayment/{id}', [FrontendController::class, 'stripepayment']);
-    Route::delete('remove-from-cart', [FrontendController::class, 'cartDelete'])->name('remove.from.cart');
+    
     Route::post('cart-update', [CartController::class, 'cartUpdate'])->name('update.cart');
 
     Route::get('/cart', function () {
@@ -137,7 +140,7 @@
 // Coupon
     Route::post('/coupon-store', [CouponController::class, 'couponStore'])->name('coupon-store');
 // Payment
-    Route::get('payment', [PayPalController::class, 'payment'])->name('payment');
+    Route::get('payment/{id}', [PayPalController::class, 'payment'])->name('payment');
     Route::get('cancel', [PayPalController::class, 'cancel'])->name('payment.cancel');
     Route::get('payment/success', [PayPalController::class, 'success'])->name('payment.success');
 

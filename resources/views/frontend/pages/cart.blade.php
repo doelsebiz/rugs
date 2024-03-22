@@ -53,7 +53,7 @@
                                     <span style="background-color: black;padding: 10px;border-radius:5px;color: white;">{{ $details['color'] }}</span>
                                 </td>
                                 <td>
-                                    <a href="javascript:void(0)" class="cart-page__table__remove remove-from-cart"><i class="fas fa-times"></i> remove</a>
+                                    <a href="{{ url('removefromcart') }}/{{ $details['product_id'] }}" class="cart-page__table__remove remove-from-cart"><i class="fas fa-times"></i> remove</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -81,7 +81,7 @@
         @else
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <img src="https://farmfreshshop.com/public/img/empty-cart1.gif">
+                    <img style="width: 200px;" src="https://i.pinimg.com/originals/5a/d0/47/5ad047a18772cf0488a908d98942f9bf.gif">
                     <h1 class="mt-4">Your cart is currently empty.</h1>
                 </div>
             </div>
@@ -111,25 +111,7 @@
         });
     });
   
-    $(".remove-from-cart").click(function (e) {
-        e.preventDefault();
-  
-        var ele = $(this);
-  
-        if(confirm("Are you sure want to remove?")) {
-            $.ajax({
-                url: '{{ route('remove.from.cart') }}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
-        }
-    });
+    
   
 </script>
 @endsection

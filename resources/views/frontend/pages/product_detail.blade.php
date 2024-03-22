@@ -220,6 +220,14 @@
 @push('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script type="text/javascript">
+	@if(session('cartadded'))
+	$( document ).ready(function() {
+	    swal('success','Product Added in Cart','success').then(function(){
+			// document.location.href=document.location.href;
+		});
+	});
+	    
+	@endif
 	function getstock() {
 		var product_id = '{{ $product_detail->id }}';
 		var color = $('#colorforcart').val();

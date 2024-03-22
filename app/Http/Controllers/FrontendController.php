@@ -26,6 +26,12 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
+    public function bycolor($id)
+    {
+        $color   = $id;
+        $products = product_colors::select('products.id', 'products.slug', 'products.title', 'products.cat_id', 'products.price')->leftJoin('products', 'products.id', '=', 'product_colors.product_id')->where('product_colors.colors' , $id)->groupBy('product_colors.product_id')->get();
+        return view('frontend.pages.product-color' ,compact('products','color'));
+    }
     public function getstock(Request $request)
     {
         $data = product_colors::where('product_id' , $request->product_id)->where('colors' , $request->color)->where('sizes' , $request->size)->get()->first();
@@ -43,19 +49,26 @@ class FrontendController extends Controller
     public function addToCart(Request $request){
         $product = Product::findOrFail($request->product_id);
         $cart = session()->get('cart', []);
-        if(isset($cart[$request->product_id])) {
-            $cart[$request->product_id]['quantity']++;
-        } else {
-            $cart[$request->product_id] = [
-                "name" => $product->name,
-                "size" => $request->size,
-                "color" => $request->color,
-                "quantity" => 1,
-                "price" => $request->price,
-                "product_id" => $product->id
-            ];
-        }
+        $cart[$request->product_id] = [
+            "name" => $product->title,
+            "size" => $request->size,
+            "color" => $request->color,
+            "quantity" => 1,
+            "price" => $request->price,
+            "product_id" => $product->id
+        ];
         session()->put('cart', $cart);
+        request()->session()->flash('cartadded','Product Added in Cart');
+        return redirect()->back();
+    }
+    public function removefromcart($id)
+    {
+        $cart = session()->get('cart');
+        if(isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
+        session()->flash('success', 'Product removed successfully');
         return redirect()->back();
     }
     public function allproducts()

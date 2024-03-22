@@ -83,13 +83,15 @@ class OrderController extends Controller
             $cart->amount=$details['price'] * $details['quantity'];
             $cart->save();
         }
+
         if(request('payment_method')!='cod'){
             if(request('payment_method') == 'stripe')
             {
                 $url = url('stripepayment').'/'.$order->order_number;
                 return Redirect::to($url);
             }else{
-                return redirect()->route('payment')->with(['id'=>$order->id]);    
+                $url = url('payment').'/'.$order->order_number;
+                return Redirect::to($url);
             }
             
         }

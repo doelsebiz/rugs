@@ -1,3 +1,58 @@
+<div class="top-notice bg-primary text-white">
+    <div class="container text-center">
+        <h5 class="d-inline-block">Launching Discount Get Up to <b>40% OFF</b></h5>
+        <small>* Limited time only.</small>
+    </div>
+    <!-- End .container -->
+</div>
+<style type="text/css">
+.top-notice {
+    position: relative;
+    padding: 8px;
+    font-size: 1.3rem;
+    line-height: 2;
+    letter-spacing: 0.025em;
+}
+
+.top-notice h5 {
+    color: inherit;
+    font-size: inherit;
+    font-weight: 500
+}
+
+.top-notice small {
+    font-size: 10px;
+    letter-spacing: 0.025em;
+    opacity: 0.5
+}
+
+.top-notice a {
+    color: inherit;
+    font-weight: 700
+}
+
+.top-notice .category {
+    display: inline-block;
+    padding: 0.3em 0.8em;
+    background: #0075af;
+    font-size: 1rem
+}
+
+.top-notice .mfp-close {
+    top: 50%;
+    transform: translateY(-50%) rotateZ(45deg) translateZ(0);
+    color: inherit;
+    opacity: 0.7;
+    z-index: 10
+}
+
+.top-notice .mfp-close:hover {
+    opacity: 1
+}
+.bg-primary {
+    background-color: #08C !important;
+}
+</style>
 <!-- <div style=" text-align: center; color: white; font-size: 40px; background-color: red; ">WEBSITE UNDER&nbsp;MAINTENANCE</div> -->
 <header class="main-header main-header--one sticky-header sticky-header--normal">
     <div class="container-fluid">
@@ -26,11 +81,21 @@
                         <li>
                             <a href="{{ url('product-cat/carpets') }}">Carpets</a>
                         </li>
-                        <li>
-                            <a href="{{ url('blogs') }}">News & Blogs</a>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)">Colors</a>
+                            <ul>
+                                @foreach(DB::table('product_colors')->groupby('colors')->get() as $r)
+                                <li><a href="{{ url('color') }}/{{ $r->colors }}">{{ $r->colors }}</a></li>
+                                @endforeach
+                            </ul>
                         </li>
-                        <li>
-                            <a href="{{ url('contact-us') }}">Contact</a>
+                        <li class="dropdown">
+                            <a href="javascript:void(0)">Size</a>
+                            <ul>
+                                @foreach(DB::table('product_colors')->groupby('sizes')->get() as $r)
+                                <li><a href="{{ url('rug-by-size') }}/{{ $r->sizes }}">{{ $r->sizes }}</a></li>
+                                @endforeach
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -43,7 +108,9 @@
                 <!-- /.mobile-nav__toggler -->
                 <a href="{{ url('cart') }}" class="main-header__cart">
                     <i class="icon-cart" aria-hidden="true"></i>
-                    <span class="badge" style="color: red;">{{ count((array) session('cart')) }}</span>
+                    @if(count((array) session('cart')) > 0)
+                    <span class="badge" style="color: white;position: absolute;top: -12px;left: 15px;background-color: #231f1f;border-radius: 10px;font-size: 10px;">{{ count((array) session('cart')) }}</span>
+                    @endif
                     <span class="sr-only">Cart</span>
                 </a>
                 <!-- /.shopping card -->

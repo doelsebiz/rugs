@@ -5,11 +5,11 @@
         margin-right: 40px;
     }
     .hero-slider{
-        margin-top: 80px;
-        border-radius: 20px;
+/*        margin-top: 80px;*/
+/*        border-radius: 20px;*/
     }
 </style>
-<section class="main-slider hero-slider homecontainer">
+<section class="main-slider hero-slider">
     <div class="main-slider__bg" style="background-image: url('{{ url('') }}/public/images/sliderone.jpg');"></div>
     <!-- /.main-slider__bg -->
     <!-- /.hero-slider__social -->

@@ -23,6 +23,51 @@
 @include('frontend.mainslider')
 <!--/ End Slider Area -->
 <!-- services start -->
+<section class="section-space mt-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="cr-product-banner-image">
+                    <img src="data:image/png;base64,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" alt="product-banner">
+                    <div class="cr-product-banner-contain">
+                        <h5>Healthy <br> Bakery Products</h5>
+                        <p><span class="percent">30%</span> Off <span class="text">on first order</span>
+                        </p>
+                        <div class="cr-product-banner-buttons">
+                            <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cr-product-banner-image">
+                    <img src="data:image/png;base64,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" alt="product-banner">
+                    <div class="cr-product-banner-contain">
+                        <h5>Healthy <br> Bakery Products</h5>
+                        <p><span class="percent">30%</span> Off <span class="text">on first order</span>
+                        </p>
+                        <div class="cr-product-banner-buttons">
+                            <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cr-product-banner-image">
+                    <img src="data:image/png;base64,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" alt="product-banner">
+                    <div class="cr-product-banner-contain">
+                        <h5>Healthy <br> Bakery Products</h5>
+                        <p><span class="percent">30%</span> Off <span class="text">on first order</span>
+                        </p>
+                        <div class="cr-product-banner-buttons">
+                            <a href="shop-left-sidebar.html" class="cr-button">shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="about-two section-space mt-4">
     <!-- /.about-two__bg -->
     <div class="container">
@@ -95,46 +140,146 @@
 </section>
 <section class="product-home">
     <div class="container-fluid">
-        <div class="sec-title sec-title--center">
-            <h3 class="sec-title__title" style="color:black;">Trending Designs</h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mb-30">
+                    <div class="cr-banner">
+                        <h2>Popular Products</h2>
+                    </div>
+                    <div class="cr-banner-sub-title">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore lacus vel facilisis. </p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row gutter-y-30">
-            @if($product_lists)
-            @foreach($product_lists as $key=>$r)
-                @include('frontend.showproduct')
-            @endforeach
-            @endif
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-12 mb-24">
+                        <div class="row mb-minus-24 sticky">
+                            <div class="col-lg-12 col-sm-6 col-6 cr-product-box mb-24">
+                                <div class="cr-product-tabs">
+                                    <a href="{{ url('all-products') }}" class="active">All Products</a>
+                                    <a href="{{ url('all-products') }}" class="active">All Rugs</a>
+                                    <a href="{{ url('all-products') }}" class="active">All Carpets</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-6 col-6 cr-product-box banner-480 mb-24">
+                                <div class="cr-ice-cubes">
+                                    <img src="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/img/product/product-banner.jpg" alt="product banner">
+                                    <div class="cr-ice-cubes-contain">
+                                        <h4 class="title">Juicy </h4>
+                                        <h5 class="sub-title">Fruits</h5>
+                                        <span>100% Natural</span>
+                                        <a href="shop-left-sidebar.html" class="cr-button">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-8 col-12 mb-24">
+                        <div class="row">
+                            @if($product_lists)
+                            @foreach($product_lists as $key=>$r)
+                                @include('frontend.showproduct')
+                            @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </section>
-<section class="blog-one section-space-two" style="background-color: var(--floens-white2, #F2EEEA);">
+<!-- Blog -->
+<section class="section-blog padding-b-100">
     <div class="container-fluid">
-        <div class="sec-title sec-title--center mb-5">
-            <h3 class="sec-title__title" style="text-align:left;">News & Blogs</h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="mb-30" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="cr-banner">
+                        <h2>Latest News</h2>
+                    </div>
+                    <div class="cr-banner-sub-title">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                            ut labore lacus vel facilisis. </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row gutter-y-30">
-            @if($posts)
-                @foreach($posts as $post)
-            <div class="col-md-6 col-lg-4">
-                <div class="blog-card wow fadeInUp" data-wow-duration='1500ms' data-wow-delay='000ms'>
-                    <div class="blog-card__image">
-                        <img src="{{ url('public/images') }}/{{ $post->photo }}" alt="{{$post->title}}">
-                        <a href="{{route('blog.detail',$post->slug)}}" class="blog-card__image__link"><span class="sr-only">{{$post->title}}</span>
-                            <!-- /.sr-only --></a>
-                    </div><!-- /.blog-card__image -->
-                    <div class="blog-card__date">
-                        <span class="blog-card__date__day">{{$post->created_at->format('d')}}</span>
-                        <span class="blog-card__date__month">{{$post->created_at->format('M')}}</span>
-                    </div><!-- /.blog-card__date -->
-                    <div class="blog-card__content">
-                        <h3 class="blog-card__title"><a href="{{route('blog.detail',$post->slug)}}">{{$post->title}}</a></h3><!-- /.blog-card__title -->
-                        <p class="blog-card__text">Tiles company, also known as a tile manufacturer or distributor, specializes in the production.</p><!-- /.blog-card__text -->
-                    </div><!-- /.blog-card__content -->
-                </div><!-- /.blog-card -->
-            </div><!-- /.col-md-6 col-lg-4 -->
+        <div class="row">
+             @foreach($posts as $post)
+            <div class="col-lg-4">
+                <div class="cr-blog">
+                    <div class="cr-blog-content">
+                        <h5>{{$post->title}}</h5>
+                        <a class="read" href="{{route('blog.detail',$post->slug)}}">Read More</a>
+                    </div>
+                    <div class="cr-blog-image">
+                        <img src="{{ url('public/images') }}/{{ $post->photo }}" alt="blog-2">
+                        <div class="cr-blog-date">
+                            <span>
+                                {{$post->created_at->format('d')}}
+                                <code>{{$post->created_at->format('M')}}</code>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
-        @endif
-        </div><!-- /.row -->
+        </div>
+    </div>
+</section>
+<section style="margin-bottom: 40px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="cr-services">
+                    <div class="cr-services-image">
+                        <i class="fa fa-info"></i>
+                    </div>
+                    <div class="cr-services-contain">
+                        <h4>24X7 Support</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cr-services">
+                    <div class="cr-services-image">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <div class="cr-services-contain">
+                        <h4>Delivery in 5 Days</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cr-services">
+                    <div class="cr-services-image">
+                        <i class="fa fa-money-bill"></i>
+                    </div>
+                    <div class="cr-services-contain">
+                        <h4>Secure Payement</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="cr-services">
+                    <div class="cr-services-image">
+                        <i class="fa fa-suitcase"></i>
+                    </div>
+                    <div class="cr-services-contain">
+                        <h4>Product Packaging</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 @endsection

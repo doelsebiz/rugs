@@ -84,16 +84,16 @@
                         <li class="dropdown">
                             <a href="javascript:void(0)">Colors</a>
                             <ul>
-                                @foreach(DB::table('product_colors')->groupby('colors')->get() as $r)
-                                <li><a href="{{ url('color') }}/{{ $r->colors }}">{{ $r->colors }}</a></li>
+                                @foreach(DB::table('product_colors')->groupby('colors')->get() as $c)
+                                <li><a href="{{ url('color') }}/{{ $c->colors }}">{{ $c->colors }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="javascript:void(0)">Size</a>
                             <ul>
-                                @foreach(DB::table('product_colors')->groupby('sizes')->get() as $r)
-                                <li><a href="{{ url('rug-by-size') }}/{{ $r->sizes }}">{{ $r->sizes }}</a></li>
+                                @foreach(DB::table('product_colors')->groupby('sizes')->get() as $s)
+                                <li><a href="{{ url('rug-by-size') }}/{{ $s->sizes }}">{{ $s->sizes }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

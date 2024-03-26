@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/nouislider/nouislider.pips.css') }}" />
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/tiny-slider/tiny-slider.css') }}" />
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/floens-icons/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/css/vendor/swiper-bundle.min.css">
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/swiper/css/swiper-bundle.min.css') }}" />
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/owl-carousel/css/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ url('public/assetstwo/vendors/owl-carousel/css/owl.theme.default.min.css') }}" />
@@ -165,6 +166,8 @@
     <script src="{{ url('public/assetstwo/vendors/slick/slick.min.js') }}"></script>
     <!-- template js -->
     <script src="{{ url('public/assetstwo/js/floens.js') }}"></script>
+    <script src="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/js/vendor/swiper-bundle.min.js"></script>
+    <script src="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/js/main.js"></script>
      @stack('scripts')
 </body>
 

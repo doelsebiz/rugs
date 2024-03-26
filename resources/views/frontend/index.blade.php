@@ -161,18 +161,18 @@
                             <div class="col-lg-12 col-sm-6 col-6 cr-product-box mb-24">
                                 <div class="cr-product-tabs">
                                     <a href="{{ url('all-products') }}" class="active">All Products</a>
-                                    <a href="{{ url('all-products') }}" class="active">All Rugs</a>
-                                    <a href="{{ url('all-products') }}" class="active">All Carpets</a>
+                                    <a href="{{ url('product-cat/rugs') }}" class="active">All Rugs</a>
+                                    <a href="{{ url('product-cat/carpets    ') }}" class="active">All Carpets</a>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-sm-6 col-6 cr-product-box banner-480 mb-24">
                                 <div class="cr-ice-cubes">
-                                    <img src="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/img/product/product-banner.jpg" alt="product banner">
+                                    <img src="{{ url('public/images/bannerimage.jpg') }}" alt="product banner">
                                     <div class="cr-ice-cubes-contain">
-                                        <h4 class="title">Juicy </h4>
-                                        <h5 class="sub-title">Fruits</h5>
-                                        <span>100% Natural</span>
-                                        <a href="shop-left-sidebar.html" class="cr-button">Shop Now</a>
+                                        <h4 class="title">HANDMADE </h4>
+                                        <h5 class="sub-title">RUGS</h5>
+                                        <span style="color:white;">Discover the artistry of our handcrafted rugs, meticulously woven by skilled artisans to bring warmth and character to your space. Each rug is a unique masterpiece, blending tradition with modern design to create timeless elegance. With a commitment to quality and attention to detail, our rugs promise durability and beauty, adding a touch of luxury to your home décor.</span>
+                                        <a href="{{ url('product-cat/rugs') }}" class="cr-button">Shop Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +242,7 @@
                     </div>
                     <div class="cr-services-contain">
                         <h4>24X7 Support</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <p>Always available for your assistance, round the clock</p>
                     </div>
                 </div>
             </div>
@@ -253,7 +253,7 @@
                     </div>
                     <div class="cr-services-contain">
                         <h4>Delivery in 5 Days</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <p>Fast delivery within 5 days, hassle-free service.</p>
                     </div>
                 </div>
             </div>
@@ -264,7 +264,7 @@
                     </div>
                     <div class="cr-services-contain">
                         <h4>Secure Payement</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <p>Ensure secure transactions for peace of mind shopping.</p>
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@
                     </div>
                     <div class="cr-services-contain">
                         <h4>Product Packaging</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                        <p>Carefully packaged products for safe delivery to you.</p>
                     </div>
                 </div>
             </div>

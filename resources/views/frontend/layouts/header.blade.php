@@ -8,8 +8,8 @@
 <style type="text/css">
 .top-notice {
     position: relative;
-    padding: 8px;
-    font-size: 1.3rem;
+    padding: 5px;
+    font-size: 17px;
     line-height: 2;
     letter-spacing: 0.025em;
 }
@@ -50,7 +50,7 @@
     opacity: 1
 }
 .bg-primary {
-    background-color: #08C !important;
+    background-color: #231f1f !important;
 }
 </style>
 <!-- <div style=" text-align: center; color: white; font-size: 40px; background-color: red; ">WEBSITE UNDER&nbsp;MAINTENANCE</div> -->

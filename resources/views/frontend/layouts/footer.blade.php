@@ -111,7 +111,7 @@
                     <div class="col-md-7 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="200ms">
                         <div class="main-footer__bottom__copyright">
                             <p class="main-footer__copyright">
-                                &copy; Copyright <span class="dynamic-year"></span> by CARGOZ.
+                                &copy; Copyright <span class="dynamic-year"></span> by Jagkrishome.
                             </p>
                         </div>
                         <!-- /.main-footer__bottom__copyright -->

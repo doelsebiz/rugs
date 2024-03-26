@@ -15,9 +15,23 @@
 <meta property="og:description" content="{!! $product_detail->summary !!}">
 @endsection
 @section('main-content')
-<section class="product-details section-space" style="padding-top: 150px;">
-	<div class="container">
-		<div style="position: relative;background-color: var(--floens-white2, #F2EEEA);border-radius: 10px;padding: 20px;">
+<section class="section-breadcrumb">
+    <div class="cr-breadcrumb-image">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cr-breadcrumb-title">
+                        <h2>{{ $product_detail->title }}</h2>
+                        <span> <a href="{{ url('') }}">Home</a> - {{ $product_detail->title }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-details section-space" style="padding-top: 25px;">
+	<div class="container-fluid">
+		<div style="position: relative;background-color: #f7f7f8;border-radius: 10px;padding: 20px;">
 			<div class="row gutter-y-50">
 		        <div class="col-lg-6 col-xl-6 wow fadeInLeft" data-wow-delay="200ms">
 		            <div class="product-details__img">
@@ -97,18 +111,119 @@
 		            </div>
 		        </div>
 		        <div class="col-md-12">
-		        	<div class="product-details__description-wrapper">
-					    <div class="container">
-					        <!-- /.product-description -->
-					        <div class="product-details__description">
-					            <h3 class="product-details__description__title">product Description</h3>
-					            <div class="product-details__text__box wow fadeInUp" data-wow-delay="300ms">
-					                {!! ($product_detail->description) !!}
-					            </div><!-- /.product-details__text__box -->
-					        </div>
-					        <!-- /.product-description -->
-					    </div><!-- /.container -->
-					</div><!-- /.product-details__description__wrapper -->	
+		        	<div class="cr-paking-delivery">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
+                                    data-bs-target="#description" type="button" role="tab" aria-controls="description"
+                                    aria-selected="true">Description</button>
+                            </li>
+                            <!-- <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="additional-tab" data-bs-toggle="tab"
+                                    data-bs-target="#additional" type="button" role="tab" aria-controls="additional"
+                                    aria-selected="false">Information</button>
+                            </li> -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
+                                    type="button" role="tab" aria-controls="review"
+                                    aria-selected="false">Review</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="description" role="tabpanel"
+                                aria-labelledby="description-tab">
+                                <div class="cr-tab-content">
+                                    <div class="cr-description">
+                                        {!! ($product_detail->description) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="additional-tab">
+                                <div class="cr-tab-content">
+                                    <div class="cr-description">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error in vero
+                                            sapiente
+                                            doloribus debitis corporis, eaque dicta, repellat amet, illum adipisci vel
+                                            perferendis dolor! Quis vel consequuntur repellat distinctio rem. Corrupti
+                                            ratione alias odio, error dolore temporibus consequatur, nobis veniam odit
+                                            laborum dignissimos consectetur quae vero in perferendis provident quis.</p>
+                                    </div>
+                                    <div class="list">
+                                        <ul>
+                                            <li><label>Brand <span>:</span></label>ESTA BETTERU CO</li>
+                                            <li><label>Flavour <span>:</span></label>Super Saver Pack</li>
+                                            <li><label>Diet Type <span>:</span></label>Vegetarian</li>
+                                            <li><label>Weight <span>:</span></label>200 Grams</li>
+                                            <li><label>Speciality <span>:</span></label>Gluten Free, Sugar Free</li>
+                                            <li><label>Info <span>:</span></label>Egg Free, Allergen-Free</li>
+                                            <li><label>Items <span>:</span></label>1</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                <div class="cr-tab-content-from">
+                                    <div class="post">
+                                        <div class="content">
+                                            <div class="details">
+                                                <span class="date">Jan 08, 2024</span>
+                                                <span class="name">Oreo Noman</span>
+                                            </div>
+                                            <div class="cr-t-review-rating">
+                                                <i class="fa fa-star"></i>
+							                    <i class="fa fa-star"></i>
+							                    <i class="fa fa-star"></i>
+							                    <i class="fa fa-star"></i>
+							                    <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error in vero
+                                            sapiente doloribus debitis corporis, eaque dicta, repellat amet, illum
+                                            adipisci vel
+                                            perferendis dolor! quae vero in perferendis provident quis.</p>
+                                    </div>
+
+                                    <h4 class="heading">Add a Review</h4>
+                                    <form method="POST" action="{{ url('addproductreview') }}">
+                                    	@csrf
+                                    	<input type="hidden" value="{{ $product_detail->id }}" name="">
+                                        <div class="cr-ratting-star">
+                                            <span>Your rating :</span>
+                                            <div class="cr-t-review-rating">
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-fill"></i>
+                                                <i class="ri-star-s-line"></i>
+                                                <i class="ri-star-s-line"></i>
+                                                <i class="ri-star-s-line"></i>
+                                            </div>
+                                            <div class="rating">
+											  <input type="radio" id="star1" name="rating" value="1">
+											  <label for="star1"><i class="fa fa-star"></i></label>
+											  <input type="radio" id="star2" name="rating" value="2">
+											  <label for="star2"><i class="fa fa-star"></i></label>
+											  <input type="radio" id="star3" name="rating" value="3">
+											  <label for="star3"><i class="fa fa-star"></i></label>
+											  <input type="radio" id="star4" name="rating" value="4">
+											  <label for="star4"><i class="fa fa-star"></i></label>
+											  <input type="radio" id="star5" name="rating" value="5">
+											  <label for="star5"><i class="fa fa-star"></i></label>
+											</div>
+                                        </div>
+                                        <div class="cr-ratting-input">
+                                            <input name="name" placeholder="Name" type="text">
+                                        </div>
+                                        <div class="cr-ratting-input">
+                                            <input name="email" placeholder="Email*" type="email" required="">
+                                        </div>
+                                        <div class="cr-ratting-input form-submit">
+                                            <textarea name="commemt" placeholder="Enter Your Comment"></textarea>
+                                            <button class="cr-button" type="submit" value="Submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
 		        </div>
 		    </div>
 

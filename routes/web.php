@@ -48,7 +48,9 @@
     Route::POST('admin/product/updatevariationsimages',[AdminController::class,'updatevariationsimages']);
     
     Route::POST('getstock',[FrontendController::class,'getstock']);
+    
 
+    Route::post('addproductreview', [FrontendController::class, 'addproductreview']);    
     
     Route::post('enquery', [FrontendController::class, 'enquery']);
     Route::get('deleteenquiery/{id}', [FrontendController::class, 'deleteenquiery']);

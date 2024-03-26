@@ -36,7 +36,7 @@
     <script src="{{ url('public/assetstwo/vendors/jquery/jquery-3.7.0.min.js') }}"></script>
     <!-- template styles -->
     <link rel="stylesheet" href="{{ url('public/assetstwo/css/floens.css') }}" />
-
+    <link rel="stylesheet" href="{{ url('public/assetstwo/css/custom.css') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 

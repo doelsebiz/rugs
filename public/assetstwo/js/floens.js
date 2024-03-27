@@ -156,6 +156,7 @@
                     $(form).serialize(),
                     function(response) {
                         $(form).parent().find(".result").append(response);
+                        $(form).parent().find(".result").show();
                         $(form).find('input[type="text"]').val("");
                         $(form).find('input[type="email"]').val("");
                         $(form).find("textarea").val("");

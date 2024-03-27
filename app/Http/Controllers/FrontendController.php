@@ -30,9 +30,14 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.projectwork');
     }
-    public function addproductreview(Request $request)
+    public function customwork()
     {
-        
+        return view('frontend.pages.customwork');
+    }
+    
+    public function projectinquiery(Request $request)
+    {
+        return "Your Query Submited Successfully. Our Team Will Contact You With in 24 Hours";
     }
     public function bycolor($id)
     {

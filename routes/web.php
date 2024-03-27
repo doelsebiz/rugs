@@ -59,6 +59,11 @@
 
     Route::get('project-work', [FrontendController::class, 'projectwork']);
 
+    Route::POST('projectinquiery', [FrontendController::class, 'projectinquiery']);
+    
+    Route::get('custom-work', [FrontendController::class, 'customwork']);
+
+
     Route::post('selectcolor', [FrontendController::class, 'selectcolor']);
     Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');
     Route::post('user/login', [FrontendController::class, 'loginSubmit'])->name('login.submit');

@@ -26,6 +26,10 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
+    public function projectwork()
+    {
+        return view('frontend.pages.projectwork');
+    }
     public function addproductreview(Request $request)
     {
         

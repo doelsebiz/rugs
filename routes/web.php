@@ -57,6 +57,7 @@
     
     Auth::routes(['register' => false]);
 
+    Route::get('project-work', [FrontendController::class, 'projectwork']);
 
     Route::post('selectcolor', [FrontendController::class, 'selectcolor']);
     Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');

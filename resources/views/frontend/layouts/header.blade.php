@@ -81,7 +81,13 @@
                         <li>
                             <a href="{{ url('product-cat/carpets') }}">Carpets</a>
                         </li>
-                        <li class="dropdown">
+                        <li>
+                            <a href="{{ url('project-work') }}">Project work </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('custom-work') }}">Custom Work</a>
+                        </li>
+                        <!-- <li class="dropdown">
                             <a href="javascript:void(0)">Colors</a>
                             <ul>
                                 @foreach(DB::table('product_colors')->groupby('colors')->get() as $c)
@@ -96,7 +102,7 @@
                                 <li><a href="{{ url('rug-by-size') }}/{{ $s->sizes }}">{{ $s->sizes }}</a></li>
                                 @endforeach
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- /.main-header__nav -->

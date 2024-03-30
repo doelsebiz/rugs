@@ -31,7 +31,7 @@
                     @if(isset($colors))
                         @foreach($data as $r)
                             @php
-                                $count = DB::table('product_colors')->where('product_id', $r->id)->whereIn('colors', $colors)->whereIn('sizes', $sizes)->count();
+                                $count = DB::table('product_colors')->where('product_id', $r->id)->whereIn('colors', $colors)->count();
                             @endphp
                             @if($count > 0)
                             @include('frontend.showproduct')

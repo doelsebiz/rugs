@@ -12,7 +12,7 @@
                         </a>
                     </div>
                     <div class="center-content">
-                        <span>We found {{ $data->count() }} items for you!</span>
+                        <span>We found these items for you after Filter!</span>
                     </div>
                     <div class="cr-select">
                         <label>Sort By :</label>

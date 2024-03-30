@@ -163,30 +163,59 @@
                             </div> -->
                             <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                                 <div class="cr-tab-content-from">
+                                	@foreach(DB::table('product_reviews')->where('product_id' , $product_detail->id)->get() as $r)
                                     <div class="post">
                                         <div class="content">
                                             <div class="details">
-                                                <span class="date">Jan 08, 2024</span>
-                                                <span class="name">Oreo Noman</span>
+                                                <span class="date">{{ Cmf::date_format($r->created_at) }}</span>
+                                                <span class="name">{{ $r->name }}</span>
                                             </div>
                                             <div class="cr-t-review-rating">
+                                            	@if($r->rate == 1)
+                                                <i class="fa fa-star activestar"></i>
                                                 <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                @endif
+                                                @if($r->rate == 2)
+                                                <i class="fa fa-star activestar"></i>
+                                                <i class="fa fa-star activestar"></i>
 							                    <i class="fa fa-star"></i>
 							                    <i class="fa fa-star"></i>
 							                    <i class="fa fa-star"></i>
+                                                @endif
+                                                @if($r->rate == 3)
+                                                <i class="fa fa-star activestar"></i>
+                                                <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star activestar"></i>
 							                    <i class="fa fa-star"></i>
+							                    <i class="fa fa-star"></i>
+                                                @endif
+                                                @if($r->rate == 4)
+                                                <i class="fa fa-star activestar"></i>
+                                                <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star"></i>
+                                                @endif
+                                                @if($r->rate == 5)
+                                                <i class="fa fa-star activestar"></i>
+                                                <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star activestar"></i>
+							                    <i class="fa fa-star activestar"></i>
+                                                @endif
+							                    
                                             </div>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error in vero
-                                            sapiente doloribus debitis corporis, eaque dicta, repellat amet, illum
-                                            adipisci vel
-                                            perferendis dolor! quae vero in perferendis provident quis.</p>
+                                        <p>{{$r->review}}</p>
                                     </div>
-
+                                    @endforeach
                                     <h4 class="heading">Add a Review</h4>
                                     <form method="POST" action="{{ url('addproductreview') }}">
                                     	@csrf
-                                    	<input type="hidden" value="{{ $product_detail->id }}" name="">
+                                    	<input type="hidden" value="{{ $product_detail->id }}" name="product_id">
                                         <div class="cr-ratting-star">
                                             <span>Your rating :</span>
                                             <div class="cr-t-review-rating">

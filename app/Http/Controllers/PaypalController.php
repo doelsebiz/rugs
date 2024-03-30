@@ -15,6 +15,14 @@ class PaypalController extends Controller
         $totalprice = $data->total_amount;
 
         $data = [];
+        $data['items'] = [
+            [
+                'name' => 'ItSolutionStuff.com',
+                'price' => 100,
+                'desc'  => 'Description for ItSolutionStuff.com',
+                'qty' => 1
+            ]
+        ];
         $data['invoice_id'] ='ORD-'.strtoupper(uniqid());
         $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
         $data['return_url'] = route('payment.success');
@@ -27,7 +35,9 @@ class PaypalController extends Controller
         $provider = new ExpressCheckout;
   
         $response = $provider->setExpressCheckout($data);
-    
+        $response = $provider->setExpressCheckout($data, true);
+        print_r($response);exit;
+
         return redirect($response['paypal_link']);
     }
    

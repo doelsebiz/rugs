@@ -1,8 +1,12 @@
 @if(session('success'))
-    <div class="alert alert-success alert-dismissable fade show text-center">
-        <button class="close" data-dismiss="alert" aria-label="Close">×</button>
-        {{session('success')}}
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            swal('success','{{session("success")}}','success').then(function(){
+                
+            });
+        });
+    </script>
 @endif
 
 

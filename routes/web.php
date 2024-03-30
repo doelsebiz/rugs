@@ -39,6 +39,8 @@
     // STORAGE LINKED ROUTE
     Route::get('storage-link',[AdminController::class,'storageLink'])->name('storage.link');
 
+    
+    
 
     Route::POST('admin/product/addproductimages',[AdminController::class,'addproductimages']);
     Route::get('admin/product/deleteimage/{id}',[AdminController::class,'deleteimage']);
@@ -48,7 +50,7 @@
     Route::POST('admin/product/updatevariationsimages',[AdminController::class,'updatevariationsimages']);
     
     Route::POST('getstock',[FrontendController::class,'getstock']);
-    
+    Route::POST('filterproducts',[FrontendController::class,'filterproducts']);
 
     Route::post('addproductreview', [FrontendController::class, 'addproductreview']);    
     

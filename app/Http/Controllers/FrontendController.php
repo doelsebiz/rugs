@@ -10,6 +10,7 @@ use App\Models\PostCategory;
 use App\Models\Post;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\ProductReview;
 use App\Models\enquiries;
 use App\Models\Brand;
 use App\Models\product_variation_images;
@@ -34,7 +35,44 @@ class FrontendController extends Controller
     {
         return view('frontend.pages.customwork');
     }
-    
+    public function addproductreview(Request $request)
+    {
+        $data = new ProductReview();
+        $data->product_id = $request->product_id;
+        $data->rate = $request->rating;
+        $data->review = $request->commemt;
+        $data->status = 'inactive';
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->save();
+        request()->session()->flash('cartadded','Product Added in Cart');
+        return redirect()->back();
+    }
+    public function filterproducts(Request $request)
+    {
+        $query = Product::query();
+        if (!empty($request->category)) {
+            $query->whereIn('cat_id', $request->category);
+        }
+        if (!empty($request->yarn)) {
+            $query->whereIn('yarn', $request->yarn);
+        }
+        $data = $query->get();
+        if(!empty($request->colors))
+        {
+            $colors = $request->colors;
+        }else{
+            $colors = Null;
+        }
+        if(!empty($request->size))
+        {
+            $sizes = $request->size;
+        }else{
+            $sizes = Null;
+        }
+        $html = view('frontend.filterproducts', compact('data','colors' , 'sizes'))->render();
+        return $html;
+    }
     public function projectinquiery(Request $request)
     {
         return "Your Query Submited Successfully. Our Team Will Contact You With in 24 Hours";

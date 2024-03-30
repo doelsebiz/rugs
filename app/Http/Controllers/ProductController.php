@@ -61,6 +61,7 @@ class ProductController extends Controller
             'is_featured'=>'sometimes|in:1',
             'status'=>'required|in:active,inactive',
             'price'=>'required|numeric',
+            'yarn'=>'required',
         ]);
 
         $data=$request->all();
@@ -143,6 +144,7 @@ class ProductController extends Controller
             'is_featured'=>'sometimes|in:1',
             'status'=>'required|in:active,inactive',
             'price'=>'required|numeric',
+            'yarn'=>'required',
         ]);
 
         $data=$request->all();

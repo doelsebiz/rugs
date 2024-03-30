@@ -134,13 +134,31 @@
     </div>
     <!-- /.search-popup -->
     @yield('sidebar')
-    
+    <style>
+    /* Styles for the back-to-top button */
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        width: 40px;
+        height: 40px;
+        background: #007bff;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1000;
+    }
+</style>
     <!-- /.sidebar-one -->
+    <div id="back-to-top"><i class="fa fa-arrow-up"></i></div>
 
-    <a href="javascript:void(0)" data-target="html" class="scroll-to-target scroll-to-top">
+    <!-- <a href="javascript:void(0)" data-target="html" class="scroll-to-target scroll-to-top">
         <span class="scroll-to-top__text">back top</span>
         <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
-    </a>
+    </a> -->
 
     
     <script src="{{ url('public/assetstwo/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -169,6 +187,24 @@
     <script src="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/js/vendor/swiper-bundle.min.js"></script>
     <script src="https://maraviyainfotech.com/projects/carrot/carrot-v2/carrot-html/assets/js/main.js"></script>
      @stack('scripts')
+     <script>
+$(document).ready(function(){
+    // Show or hide the back-to-top button based on scroll position
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+
+    // Smooth scroll to top when the button is clicked
+    $('#back-to-top').click(function(){
+        $('html, body').animate({scrollTop : 0},800);
+        return false;
+    });
+});
+</script>
 </body>
 
 </html>

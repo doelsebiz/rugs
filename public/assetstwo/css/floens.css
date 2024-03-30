@@ -18560,3 +18560,10 @@ body.boxed-wrapper .projects-one__shape {
     }
 }
 
+.addblurr{
+    filter: blur(2px);
+}
+
+.activestar{
+    color: #ffcc00;
+}

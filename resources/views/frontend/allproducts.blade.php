@@ -23,47 +23,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <div class="cr-shop-sideview">
-                    <div class="cr-shop-categories">
-                        <h4 class="cr-shop-sub-title">Category</h4>
-                        <div class="cr-checkbox">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="drinks">
-                                <label for="drinks">Rugs</label>
-                                <span>{{ DB::table('products')->where('cat_id' , 13)->count() }}</span>
-                            </div>
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="drinks1">
-                                <label for="drinks1">Carpets</label>
-                                <span>{{ DB::table('products')->where('cat_id' , 6)->count() }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cr-shop-color">
-                        <h4 class="cr-shop-sub-title">Colors</h4>
-                        <div class="cr-checkbox" style="height: 300px;overflow: auto;margin-bottom: 10px;">
-                            @foreach(DB::table('product_colors')->groupby('colors')->get() as  $filtercolor => $c)
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="color{{ $filtercolor+1 }}">
-                                <label for="color{{ $filtercolor+1 }}">{{ $c->colors }}</label>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="cr-shop-weight">
-                        <h4 class="cr-shop-sub-title">Size</h4>
-                        <div class="cr-checkbox" style="height: 300px;overflow: auto;margin-bottom: 10px;">
-                            @foreach(DB::table('product_colors')->groupby('sizes')->get() as  $filtersize => $s)
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="size{{ $filtersize+1 }}">
-                                <label for="size{{ $filtersize+1 }}">{{ $s->sizes }}</label>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
+                @include('frontend.pages.filter')
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9" id="showproductsection">
                 <section class="product-page product-page--left section-space-bottom">
                     <div class="container-fluid">
                         <div class="row">

@@ -60,6 +60,14 @@
         </div>
 
         <div class="form-group">
+          <label for="yarn" class="col-form-label">Yarn <span class="text-danger">*</span></label>
+          <input id="yarn" type="text" name="yarn" placeholder="Enter Yarn"  value="{{old('yarn')}}" class="form-control">
+          @error('yarn')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
+
+        <div class="form-group">
           <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
           <input id="price" type="number" name="price" placeholder="Enter price"  value="{{old('price')}}" class="form-control">
           @error('price')

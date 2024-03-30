@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin')}}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('admin')}}" style="background-color: white;">
       <div style="height: 50px;border-radius: 10px;">
         @php
                     $settings= DB::table('settings')->first();
@@ -127,7 +127,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('review.index')}}">
             <i class="fas fa-comments"></i>
-            <span>Enquiery List</span></a>
+            <span>Enquiry List</span></a>
     </li>
     
 

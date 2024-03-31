@@ -18,16 +18,14 @@
 </div>
 <script type="text/javascript">
 	var galleryThumbs = new Swiper(".product-details__gallery-thumb", {
-        slidesPerView: 4,
+        slidesPerView: {{ $data->count() }},
         spaceBetween: 30,
         speed: 1400,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        loop: true,
-        autoplay: {
-            delay: 5000
-        },
-        watchSlidesProgress: true,
+        watchSlidesVisibility: false,
+        watchSlidesProgress: false,
+        loop: false,
+        autoplay: false,
+        watchSlidesProgress: false,
         breakpoints: {
             0: {
                 spaceBetween: 15

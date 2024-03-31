@@ -28,7 +28,7 @@
                     <p>(4.5)</p>
                 </div>
             </div> -->
-            <a href="{{route('product-detail',$r->slug)}}" class="title">{{ $r->title }} {{ $r->id }}</a>
+            <a href="{{route('product-detail',$r->slug)}}" class="title">{{ $r->title }}</a>
             @if($r->price != 0)
             <p class="cr-price"><span class="new-price">Starting From ${{ DB::table('product_colors')->where('product_id' , $r->id)->first()->price }}</span></p>
             @endif

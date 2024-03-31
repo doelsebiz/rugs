@@ -18,6 +18,7 @@ use App\Models\product_colors;
 use App\User;
 use Auth;
 use Session;
+use Image;
 use Newsletter;
 use DB;
 use Stripe;

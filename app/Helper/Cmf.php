@@ -16,8 +16,8 @@ use App\Models\activities;
 use App\Models\Member_order;
 use Mail;
 use Illuminate\Support\Facades\Http;
-
 use OneSignal;
+use Image;
 class Cmf
 { 
 
@@ -74,9 +74,11 @@ class Cmf
     }
     public static function sendimagetodirectory($imagename)
     {
-        $file = $imagename;
-        $filename = rand() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('images'), $filename);
+        $image = $imagename;
+        $filename = time().'.'.$image->getClientOriginalExtension();
+        $imgFile = Image::make($image->getRealPath());
+        $imgFile->insert(public_path('images/watermark.png'), 'center');
+        $imgFile->save(public_path('/images').'/'.$filename);
         return $filename;
     }
     public static function shorten_url($text)

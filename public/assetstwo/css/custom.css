@@ -245,6 +245,11 @@ h4.cr-shop-sub-title {
     object-fit: fill;
     transition: all 500ms ease;
     transform: scale(1);
+    width: 100%;
+    display: block;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background-color: white;
 }
 .mb-30 {
     margin-bottom: 30px;

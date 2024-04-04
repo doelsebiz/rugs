@@ -1,9 +1,9 @@
 <div class="swiper product-details__gallery-top">
     <div class="swiper-wrapper">
     	@foreach($data as $r)
-        <div class="swiper-slide">
-            <img src="{{ url('public/images') }}/{{ $r->image }}" class="product-details__gallery-top__img">
-        </div>
+        <a href="{{ url('public/images') }}/{{ $r->image }}" data-fancybox="gallery"  class="swiper-slide">
+            <img src="{{ url('public/images') }}/{{ $r->image }}"  class="product-details__gallery-top__img">
+        </a>
         @endforeach
     </div>
 </div>

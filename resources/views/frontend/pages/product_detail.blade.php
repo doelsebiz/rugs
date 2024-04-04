@@ -15,6 +15,9 @@
 <meta property="og:description" content="{!! $product_detail->summary !!}">
 @endsection
 @section('main-content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <section class="section-breadcrumb">
     <div class="cr-breadcrumb-image">
         <div class="container-fluid">
@@ -38,9 +41,9 @@
 		                <div class="swiper product-details__gallery-top">
 		                    <div class="swiper-wrapper">
 		                    	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $r)
-		                        <div class="swiper-slide">
+		                        <a href="{{ url('public/images') }}/{{ $r->image }}" data-fancybox="gallery" data-title="{{ $product_detail->title }}" class="swiper-slide">
 		                            <img src="{{ url('public/images') }}/{{ $r->image }}" alt="{{$product_detail->title}}" class="product-details__gallery-top__img">
-		                        </div>
+		                        </a>
 		                        @endforeach
 		                    </div>
 		                </div>

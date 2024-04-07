@@ -143,7 +143,6 @@ class ProductController extends Controller
             'child_cat_id'=>'nullable|exists:categories,id',
             'is_featured'=>'sometimes|in:1',
             'status'=>'required|in:active,inactive',
-            'price'=>'required|numeric',
             'yarn'=>'required',
         ]);
 

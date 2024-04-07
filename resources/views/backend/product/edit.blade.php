@@ -37,12 +37,6 @@
 
 
               <div class="form-group">
-                <label for="is_featured">Is Featured</label><br>
-                <input type="checkbox" name='is_featured' id='is_featured' value='{{$product->is_featured}}' {{(($product->is_featured) ? 'checked' : '')}}> Yes                        
-              </div>
-                    {{-- {{$categories}} --}}
-
-              <div class="form-group">
                 <label for="cat_id">Category <span class="text-danger">*</span></label>
                 <select name="cat_id" id="cat_id" class="form-control">
                     <option value="">--Select any category--</option>
@@ -72,9 +66,9 @@
                 @enderror
               </div>
               <div class="form-group">
-                <label for="price" class="col-form-label">Price(NRS) <span class="text-danger">*</span></label>
-                <input id="price" type="number" name="price" placeholder="Enter price"  value="{{$product->price}}" class="form-control">
-                @error('price')
+                <label for="yarn" class="col-form-label">Taglines</label>
+                <input id="yarn" type="text" name="weave_type" placeholder="Enter Tagline Seprated With ',' "  value="{{$product->weave_type}}" class="form-control">
+                @error('yarn')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
@@ -101,8 +95,8 @@
                     </select>
                   </div>
                 </div> 
-              </div>  
-              <a target="_blank" href="{{ url('admin/product/Variations') }}/{{ $product->id }}">First Save and then Variations</a>
+              </div> 
+              <a target="_blank" href="{{ url('admin/product/Variations') }}/{{ $product->id }}">View Variations</a>
               <div class="form-group">
                 <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
                 <select name="status" class="form-control">

@@ -88,6 +88,7 @@
 		                        @endif
 		                    </div><!-- /.product-details__price -->
 		                </div>
+		                @if($product_detail->weave_type)
 		                <div class="attribute-badges-section">
 						    <ul>
 						    	@foreach(explode(',' , $product_detail->weave_type) as $r)
@@ -95,6 +96,7 @@
 						    	@endforeach					    
 						    </ul>
 						</div>
+						@endif
 		                <div class="product-details__excerpt">
 		                    <p class="product-details__excerpt__text1">
 		                        {{$product_detail->summary}}

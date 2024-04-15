@@ -1,4 +1,4 @@
-<div class="col-xxl-3 col-xl-4 col-6 cr-product-box mb-24">
+<div class="col-xxl-4 col-xl-4 col-6 cr-product-box mb-24">
     <a href="{{route('product-detail',$r->slug)}}" class="cr-product-card">
         <div class="cr-product-image">
             <div class="cr-image-inner zoom-image-hover">
@@ -30,7 +30,9 @@
             </div> -->
             <p class="title">{{ $r->title }}</p>
             @if($r->price != 0)
+            @if(DB::table('product_colors')->where('product_id' , $r->id)->first())
             <p class="cr-price"><span class="new-price">Starting From ${{ DB::table('product_colors')->where('product_id' , $r->id)->first()->price }}</span></p>
+            @endif
             @endif
             
         </div>

@@ -36,8 +36,25 @@
 	<div class="container-fluid">
 		<div style="position: relative;background-color: #f7f7f8;border-radius: 10px;padding: 20px;">
 			<div class="row gutter-y-50">
-		        <div class="col-lg-6 col-xl-6 wow fadeInLeft" data-wow-delay="200ms">
-		            <div class="product-details__img">
+		        <div class="col-lg-7 col-xl-7 wow fadeInLeft" data-wow-delay="200ms">
+		        	<div class="product-slider-wrapper">
+		               <div id="demo" class="carousel slide" data-bs-ride="carousel">
+		                  <!-- Indicators/dots -->
+		                  <div class="carousel-indicators">
+		                  	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $keyslide => $r)
+		                     <button type="button" data-bs-target="#demo" data-bs-slide-to="{{ $keyslide }}" class="@if($keyslide == 0) active @endif"> 
+		                     	<img src="{{ url('public/images') }}/{{ $r->image }}" alt="img"> </button>
+		                    @endforeach
+		                  </div>
+		                  <div class="carousel-inner">
+		                  	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $keyslidetwo => $r)
+		                     <a href="{{ url('public/images') }}/{{ $r->image }}" data-fancybox="gallery" data-title="{{ $product_detail->title }}" class="carousel-item @if($keyslidetwo == 0) active @endif">
+		                        <img src="{{ url('public/images') }}/{{ $r->image }}" alt="img">
+		                     </a>
+		                    @endforeach
+		                  </div>
+		               </div>
+		            <!-- <div class="product-details__img">
 		                <div class="swiper product-details__gallery-top">
 		                    <div class="swiper-wrapper">
 		                    	@foreach(DB::table('product_images')->where('product_id' , $product_detail->id)->get() as $r)
@@ -56,18 +73,28 @@
 		                        @endforeach
 		                    </div>
 		                </div>
-		            </div>
+		            </div> -->
 		        </div><!-- /.column -->
-		        <div class="col-lg-6 col-xl-6 wow fadeInRight" data-wow-delay="300ms">
+		    </div>
+		        <div class="col-lg-5 col-xl-5 wow fadeInRight" data-wow-delay="300ms">
 		            <div class="product-details__content">
 		                <div class="product-details__top">
 		                    <div class="product-details__top__left">
 		                        <h3 class="product-details__name">{{ $product_detail->title }}</h3><!-- /.product-title -->
 		                        @if($product_detail->price != 0)
+		                        @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->first())
 		                        <h4 class="product-details__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $product_detail->id)->first()->price }}</h4><!-- /.product-price -->
+		                        @endif
 		                        @endif
 		                    </div><!-- /.product-details__price -->
 		                </div>
+		                <div class="attribute-badges-section">
+						    <ul>
+						    	@foreach(explode(',' , $product_detail->weave_type) as $r)
+						        <li class="pet-friendly">{{ $r }}</li>
+						    	@endforeach					    
+						    </ul>
+						</div>
 		                <div class="product-details__excerpt">
 		                    <p class="product-details__excerpt__text1">
 		                        {{$product_detail->summary}}
@@ -424,7 +451,7 @@
                 product_id:product_id
             },
             success: function(res) {
-            	$('.product-details__img').html(res);
+            	$('.product-slider-wrapper').html(res);
             	$('#colorforcart').val(id);
                $('.allcolorbutton').removeClass('activecolor');
 			   $('.color'+id).addClass('activecolor');

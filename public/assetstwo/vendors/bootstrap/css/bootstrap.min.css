@@ -6655,7 +6655,7 @@ fieldset:disabled .btn {
     padding: 0;
     margin-right: 3px;
     margin-left: 3px;
-    text-indent: -999px;
+/*    text-indent: -999px;*/
     cursor: pointer;
     background-color: #fff;
     background-clip: padding-box;

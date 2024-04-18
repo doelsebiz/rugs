@@ -247,7 +247,7 @@ h4.cr-shop-sub-title {
     transform: scale(1);
     width: 100%;
     display: block;
-/*    object-fit: contain !important;*/
+    object-fit: contain !important;
     object-position: center center !important;
     background-color: white;
     min-height: 390px;

@@ -136,7 +136,7 @@ input[type="number"] {
 						@endif
 		                <div class="product-details__excerpt">
 		                    <p class="product-details__excerpt__text1">
-		                        {{$product_detail->summary}}
+		                        {!! $product_detail->summary !!}
 		                    </p>
 		                </div><!-- /.excerp-text -->
 		                @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->count() > 0)

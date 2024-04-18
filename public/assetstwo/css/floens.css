@@ -533,8 +533,8 @@ p {
     -webkit-appearance: none;
     border: none;
     outline: none !important;
-    background-color: var(--floens-base, #C7844F);
-    color: var(--floens-white, #ffffff);
+    background-color: var(--floens-white2, #F2EEEA);
+    color: black;
     font-size: 15px;
     font-weight: 700;
     font-family: var(--floens-font, "DM Sans", sans-serif);
@@ -558,40 +558,8 @@ p {
     }
 }
 
-.floens-btn::before,
-.floens-btn::after {
-    content: "";
-    background-color: var(--floens-black2, #2B1E16);
-    height: 50%;
-    width: 0;
-    position: absolute;
-    transition: 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    z-index: -1;
-}
 
-.floens-btn::before {
-    top: 0;
-    left: 0;
-    right: auto;
-}
 
-.floens-btn::after {
-    bottom: 0;
-    right: 0;
-    left: auto;
-}
-
-.floens-btn:hover::before {
-    width: 100%;
-    right: 0;
-    left: auto;
-}
-
-.floens-btn:hover:after {
-    width: 100%;
-    left: 0;
-    right: auto;
-}
 
 .floens-btn span {
     position: relative;
@@ -5057,7 +5025,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .main-footer {
     position: relative;
-    background-color: var(--floens-black2, #2B1E16);
+    background-color: var(--floens-white2, #F2EEEA);
 }
 
 .main-footer__top {
@@ -5121,7 +5089,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .footer-widget__about-text {
-    color: white;
+    color: black;
     padding-right: 5px;
     margin-bottom: 31px;
 }
@@ -5227,7 +5195,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .footer-widget__title {
     font-size: 18px;
-    color: var(--floens-white, #ffffff);
+    color: black;
     text-transform: capitalize;
     margin: 0;
 }
@@ -5302,7 +5270,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 
 .footer-widget__links li a {
-    color: white;
+    color: black;
     background: linear-gradient(to right, currentcolor 0%, currentcolor 100%) 0px 95%/0px 1px no-repeat;
     transition: all 500ms ease;
 }
@@ -5344,12 +5312,12 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .footer-widget__info li span {
     font-size: 18px;
-    color: white;
+    color: black;
     margin-right: 15px;
 }
 
 .footer-widget__info li a {
-    color: white;
+    color: black;
     background: linear-gradient(to right, currentcolor 0%, currentcolor 100%) 0px 95%/0px 1px no-repeat;
     transition: all 500ms ease;
 }

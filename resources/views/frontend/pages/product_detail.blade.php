@@ -116,12 +116,10 @@
 		                    	@foreach(DB::table('product_colors')->where('product_id' , $product_detail->id)->groupby('sizes')->get() as $r)
 		                        <button onclick="selectsize('{{ $r->id }}' , '{{ $r->sizes }}')" type="button" class="product-details__size__btn allsizebutton size{{ $r->id }}">{{ $r->sizes }}</button>
 		                        @endforeach
-		                    </div>
-
-		                    <h3 class="product-details__content__title">Custom Size</h3>
-		                    <div class="product-details__size__box">
-		                        <button type="button" class="product-details__size__btn sidebar-btn__toggler">Custom Size</button>
-		                    </div>
+		                        <div class="product-details__size__box">
+			                        <button type="button" class="product-details__size__btn sidebar-btn__toggler">Custom Size</button>
+			                    </div>
+		                    </div>	                    
 		                    @endif
 		                </div>
 

@@ -32,7 +32,7 @@
             @foreach(DB::table('product_colors')->groupby('colors')->get() as  $filtercolor => $c)
             <div class="checkbox-group">
                 <input name="colors[]" value="{{ $c->colors }}" type="checkbox" id="color{{ $filtercolor+1 }}">
-                <label for="color{{ $filtercolor+1 }}">{{ $c->colors }}</label>
+                <label for="color{{ $filtercolor+1 }}">{{ DB::table('sizeandcolors')->where('colors' , $c->colors)->first()->tone }}</label>
             </div>
             @endforeach
         </div>

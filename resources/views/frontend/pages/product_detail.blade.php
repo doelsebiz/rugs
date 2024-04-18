@@ -167,7 +167,7 @@ input[type="number"] {
 		                    </div>	                    
 		                    @endif
 		                </div>
-		                <p>Use an anti-slip pad underneath rugs to prevent slippage.</p>
+		                <p>*Use an anti-slip pad underneath rugs to prevent slippage.</p>
 		                @endif
 		                @if($product_detail->cat_id == 6)
 		                <button type="button" class="floens-btn sidebar-btn__toggler">

@@ -70,7 +70,7 @@ input[type="number"] {
     </div>
 </section> -->
 <section class="product-details section-space" style="padding-top: 25px;">
-	<div class="container-fluid">
+	<div class="container">
 		<div style="position: relative;background-color: #f7f7f8;border-radius: 10px;padding: 20px;">
 			<div class="row gutter-y-50">
 		        <div class="col-lg-7 col-xl-7 wow fadeInLeft" data-wow-delay="200ms">

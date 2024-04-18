@@ -141,14 +141,14 @@ input[type="number"] {
 		                </div><!-- /.excerp-text -->
 		                @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->count() > 0)
 		                <div class="product-details__color">
-		                    <h3 class="product-details__content__title">Color</h3>
+		                    <h3 class="product-details__content__title">Select Color</h3>
 		                    <div class="product-details__size__box">
 		                    	@foreach(DB::table('product_colors')->where('product_id' , $product_detail->id)->groupby('colors')->get() as $r)
 		                        <button onclick="selectcolor('{{ $r->colors }}')" type="button" class="product-details__size__btn allcolorbutton color{{ $r->colors }}">{{ $r->colors }}</button>
 		                        @endforeach
 		                    </div>
 		                    @if($product_detail->cat_id != 6)
-		                    <h3 class="product-details__content__title">Size</h3>
+		                    <h3 class="product-details__content__title">Select Size</h3>
 		                    <div class="product-details__size__box">
 		                    	@foreach(DB::table('product_colors')->where('product_id' , $product_detail->id)->groupby('sizes')->get() as $r)
 		                        <button onclick="selectsize('{{ $r->id }}' , '{{ $r->sizes }}')" type="button" class="product-details__size__btn allsizebutton size{{ $r->id }}">{{ $r->sizes }}</button>

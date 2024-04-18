@@ -23,6 +23,26 @@ class AdminController extends Controller
         $colors = DB::table('product_colors')->where('product_id' , $id)->get();
         return view('backend.product.getvariations')->with(array('colors' => $colors,'id'=>$id));
     }
+    public function attributes()
+    {
+        $colors = DB::table('sizeandcolors')->groupby('colors')->get();
+        return view('backend.product.attributes')->with(array('colors' => $colors));
+    }
+    public function addnewcolor(Request $request)
+    {
+        $KPI =  DB::table('sizeandcolors')->insertGetId([
+            'colors' => $request->color,
+            'tone' => $request->tone
+        ]);
+        request()->session()->flash('success','Color Added  Successfully');
+        return redirect()->back();
+    }
+    public function updatecolor(Request $request)
+    {
+        DB::table('sizeandcolors')->where('id',$request->id)->update(['colors' =>  $request->color,'tone' =>  $request->tone]);
+        request()->session()->flash('success','Color Updated Successfully');
+        return redirect()->back();
+    }
     public function updatevariationsimages(Request $request)
     {
         $input  = $request->all();

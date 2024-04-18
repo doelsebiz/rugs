@@ -197,6 +197,12 @@
         Route::get('settings', [AdminController::class, 'settings'])->name('settings');
         Route::post('setting/update', [AdminController::class, 'settingsUpdate'])->name('settings.update');
 
+
+        
+        Route::POST('updatecolor', [AdminController::class, 'updatecolor']);
+        Route::POST('addnewcolor', [AdminController::class, 'addnewcolor']);
+        Route::get('attributes', [AdminController::class, 'attributes']);
+
         // Notification
         Route::get('/notification/{id}', [NotificationController::class, 'show'])->name('admin.notification');
         Route::get('/notifications', [NotificationController::class, 'index'])->name('all.notification');

@@ -105,7 +105,7 @@ class FrontendController extends Controller
             "name" => $product->title,
             "size" => $request->size,
             "color" => $request->color,
-            "quantity" => 1,
+            "quantity" => $request->quantity,
             "price" => $request->price,
             "product_id" => $product->id
         ];

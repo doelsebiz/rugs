@@ -15,6 +15,7 @@
 <meta property="og:description" content="{!! $product_detail->summary !!}">
 @endsection
 @section('main-content')
+<input type="hidden" id="productstock" name="">
 <style type="text/css">
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -157,7 +158,7 @@ input[type="number"] {
 			                        <button type="button" class="product-details__size__btn sidebar-btn__toggler">Custom Size</button>
 			                    </div>
 		                    </div>	
-		                    <h3 class="product-details__content__title">Quantity</h3>
+		                    <h3 class="product-details__content__title">Quantity <small class="text-danger" id="quantityalert"></small> </h3>
 		                    <div class="product-details__size__box">
 		                        <div class="quantity-selector">
 								    <button class="quantity-btn minus">-</button>
@@ -176,6 +177,7 @@ input[type="number"] {
 		                @else
 		                <form method="POST" action="{{ url('add-to-cart') }}">
 		                @csrf
+		                <input type="hidden" value="1" name="quantity" id="quantity">
 		                <input type="hidden" name="price" id="priceforcart">
 		                <input type="hidden" name="product_id" value="{{ $product_detail->id }}">
 		                <input type="hidden"  name="color" id="colorforcart">
@@ -471,6 +473,9 @@ input[type="number"] {
             success: function(res) {
             	$('.product-details__price').html('Price : $'+res.price);
             	$('#priceforcart').val(res.price);
+
+            	$('#productstock').val(res.stock)
+
             	if(res.stock > 0)
             	{
             		$('.product-details__buttons').html('<button class="product-details__btn-cart floens-btn"> <span>Add to Cart</span> <i class="icon-cart"></i> </button>')
@@ -502,8 +507,8 @@ input[type="number"] {
                 product_id:product_id
             },
             success: function(res) {
-            	$('.product-slider-wrapper').html(res);
-            	$('#colorforcart').val(id);
+               $('.product-slider-wrapper').html(res);
+               $('#colorforcart').val(id);
                $('.allcolorbutton').removeClass('activecolor');
 			   $('.color'+id).addClass('activecolor');
             },
@@ -513,59 +518,27 @@ input[type="number"] {
         });
 	}
 	$(document).ready(function() {
-    // Plus button click event
-    $('.quantity-selector .plus').click(function() {
-        // Get the current quantity value
-        var currentValue = parseInt($(this).siblings('.quantity-input').val());
+	    $('.quantity-selector .plus').click(function() {
+		    var productstock = parseInt($('#productstock').val());
+		    var currentValue = parseInt($(this).siblings('.quantity-input').val());
+		    if (currentValue < productstock) {
+		        $(this).siblings('.quantity-input').val(currentValue + 1);
 
-        // Increment the quantity value
-        $(this).siblings('.quantity-input').val(currentValue + 1);
-    });
+		        $('#quantity').val(currentValue + 1);
 
-    // Minus button click event
-    $('.quantity-selector .minus').click(function() {
-        // Get the current quantity value
-        var currentValue = parseInt($(this).siblings('.quantity-input').val());
-
-        // Decrement the quantity value if it's greater than 1
-        if (currentValue > 1) {
-            $(this).siblings('.quantity-input').val(currentValue - 1);
-        }
-    });
-});
+		    } else {
+		    	$('#quantityalert').html('Only ' + productstock + ' items left in stock');
+		    }
+		});
+	    $('.quantity-selector .minus').click(function() {
+	        var currentValue = parseInt($(this).siblings('.quantity-input').val());
+	        if (currentValue > 1) {
+	        	$('#quantityalert').html('');
+	            $(this).siblings('.quantity-input').val(currentValue - 1);
+	            $('#quantity').val(currentValue - 1);
+	        }
+	    });
+	});
 
 </script>
-    {{-- <script>
-        $('.cart').click(function(){
-            var quantity=$('#quantity').val();
-            var pro_id=$(this).data('id');
-            // alert(quantity);
-            $.ajax({
-                url:"{{route('add-to-cart')}}",
-                type:"POST",
-                data:{
-                    _token:"{{csrf_token()}}",
-                    quantity:quantity,
-                    pro_id:pro_id
-                },
-                success:function(response){
-                    console.log(response);
-					if(typeof(response)!='object'){
-						response=$.parseJSON(response);
-					}
-					if(response.status){
-						swal('success',response.msg,'success').then(function(){
-							document.location.href=document.location.href;
-						});
-					}
-					else{
-                        swal('error',response.msg,'error').then(function(){
-							document.location.href=document.location.href;
-						});
-                    }
-                }
-            })
-        });
-    </script> --}}
-
 @endpush

@@ -37,7 +37,7 @@
           <tbody>
             @foreach($reviews as $review)
                 <tr>
-                    <td>{{$review->product_id}}</td>
+                    <td>{{DB::table('products')->where('id' , $review->product_id)->first()->title}}</td>
                     <td>{{$review->name}}</td>
                     <td>{{$review->email}}</td>
                     <td>{{$review->phonenumber}}</td>

@@ -23,8 +23,8 @@
                             <tr>
                                 <th>Product</th>
                                 <th>Price</th>
-                                <th>Color</th>
-                                <th>Size</th>
+                                <th>Color/Size</th>
+                                <th>Quantity</th>
                                 <th>Remove</th>
                             </tr>
                         </thead>
@@ -48,9 +48,9 @@
                                     </div>
                                 </td>
                                 <td class="cart-page__table__price">${{ $details['price'] }}</td>
-                                <td class="cart-page__table__price"><span style="background-color: black;padding: 10px;border-radius:5px;color: white;">{{ $details['size'] }}</span></td>
+                                <td class="cart-page__table__price"><span>{{ $details['color'] }}/{{ $details['size'] }}</span></td>
                                 <td class="cart-page__table__price">
-                                    <span style="background-color: black;padding: 10px;border-radius:5px;color: white;">{{ $details['color'] }}</span>
+                                    <span>{{ $details['quantity'] }}</span>
                                 </td>
                                 <td>
                                     <a href="{{ url('removefromcart') }}/{{ $details['product_id'] }}" class="cart-page__table__remove remove-from-cart"><i class="fas fa-times"></i> remove</a>

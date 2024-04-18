@@ -77,7 +77,7 @@ class Cmf
         $image = $imagename;
         $filename = time().'.'.$image->getClientOriginalExtension();
         $imgFile = Image::make($image->getRealPath());
-        $imgFile->insert(public_path('images/watermark.png'), 'center');
+        $imgFile->insert(public_path('images/watermark.png'), 'top-left');
         $imgFile->save(public_path('/images').'/'.$filename);
         return $filename;
     }

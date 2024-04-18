@@ -117,8 +117,14 @@
 		                        <button onclick="selectsize('{{ $r->id }}' , '{{ $r->sizes }}')" type="button" class="product-details__size__btn allsizebutton size{{ $r->id }}">{{ $r->sizes }}</button>
 		                        @endforeach
 		                    </div>
+
+		                    <h3 class="product-details__content__title">Custom Size</h3>
+		                    <div class="product-details__size__box">
+		                        <button type="button" class="product-details__size__btn sidebar-btn__toggler">Custom Size</button>
+		                    </div>
 		                    @endif
 		                </div>
+
 		                @endif
 		                @if($product_detail->cat_id == 6)
 		                <button type="button" class="floens-btn sidebar-btn__toggler">

@@ -55,7 +55,7 @@ input[type="number"] {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<section class="section-breadcrumb">
+<!-- <section class="section-breadcrumb">
     <div class="cr-breadcrumb-image">
         <div class="container-fluid">
             <div class="row">
@@ -68,7 +68,7 @@ input[type="number"] {
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <section class="product-details section-space" style="padding-top: 25px;">
 	<div class="container-fluid">
 		<div style="position: relative;background-color: #f7f7f8;border-radius: 10px;padding: 20px;">

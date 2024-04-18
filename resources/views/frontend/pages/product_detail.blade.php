@@ -15,6 +15,43 @@
 <meta property="og:description" content="{!! $product_detail->summary !!}">
 @endsection
 @section('main-content')
+<style type="text/css">
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    /* Optional: Set custom width */
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+}
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+.quantity-btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+}
+</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
@@ -119,6 +156,14 @@
 		                        <div class="product-details__size__box">
 			                        <button type="button" class="product-details__size__btn sidebar-btn__toggler">Custom Size</button>
 			                    </div>
+		                    </div>	
+		                    <h3 class="product-details__content__title">Quantity</h3>
+		                    <div class="product-details__size__box">
+		                        <div class="quantity-selector">
+								    <button class="quantity-btn minus">-</button>
+								    <input type="number" class="quantity-input" value="1" min="1">
+								    <button class="quantity-btn plus">+</button>
+								</div>
 		                    </div>	                    
 		                    @endif
 		                </div>
@@ -348,6 +393,7 @@
 		content: "\F005";
 		}
 
+
 	</style>
 @endpush
 @section('sidebar')
@@ -467,6 +513,28 @@
             }
         });
 	}
+	$(document).ready(function() {
+    // Plus button click event
+    $('.quantity-selector .plus').click(function() {
+        // Get the current quantity value
+        var currentValue = parseInt($(this).siblings('.quantity-input').val());
+
+        // Increment the quantity value
+        $(this).siblings('.quantity-input').val(currentValue + 1);
+    });
+
+    // Minus button click event
+    $('.quantity-selector .minus').click(function() {
+        // Get the current quantity value
+        var currentValue = parseInt($(this).siblings('.quantity-input').val());
+
+        // Decrement the quantity value if it's greater than 1
+        if (currentValue > 1) {
+            $(this).siblings('.quantity-input').val(currentValue - 1);
+        }
+    });
+});
+
 </script>
     {{-- <script>
         $('.cart').click(function(){

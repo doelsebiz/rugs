@@ -82,11 +82,11 @@
                             <a href="{{ url('product-cat/carpets') }}">Carpets</a>
                         </li>
                         <li>
-                            <a href="{{ url('project-work') }}">Project work </a>
+                            <a href="{{ url('project-work') }}">Project/Custom work </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="{{ url('custom-work') }}">Custom Work</a>
-                        </li>
+                        </li> -->
                         <!-- <li class="dropdown">
                             <a href="javascript:void(0)">Colors</a>
                             <ul>

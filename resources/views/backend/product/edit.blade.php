@@ -123,7 +123,7 @@
               <input type="hidden" value="{{ $product->id }}" name="id">
               <div class="form-group">
                 <label for="address" class="col-form-label">Photo <span class="text-danger">*</span></label>
-                <input multiple type="file" class="form-control" name="photo[]" >
+                <input required multiple type="file" class="form-control" name="photo[]" >
                 @error('photo')
                 <span class="text-danger">{{$message}}</span>
                 @enderror

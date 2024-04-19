@@ -130,7 +130,7 @@ input[type="number"] {
 		                <div class="attribute-badges-section">
 						    <ul>
 						    	@foreach(explode(',' , $product_detail->weave_type) as $r)
-						        <li style="background-color: #F2EEEA;" class="pet-friendly">{{ $r }}</li>
+						        <li style="background-color: #F2EEEA;color: black" class="pet-friendly">{{ $r }}</li>
 						    	@endforeach					    
 						    </ul>
 						</div>

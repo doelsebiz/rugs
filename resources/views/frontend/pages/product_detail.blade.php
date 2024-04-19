@@ -119,11 +119,6 @@ input[type="number"] {
 		                <div class="product-details__top">
 		                    <div class="product-details__top__left">
 		                        <h3 class="product-details__name">{{ $product_detail->title }}</h3><!-- /.product-title -->
-		                        @if($product_detail->price != 0)
-		                        @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->first())
-		                        <h4 style="color: var(--floens-base2, #8A5133);" class="product-details__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $product_detail->id)->first()->price }}</h4><!-- /.product-price -->
-		                        @endif
-		                        @endif
 		                    </div><!-- /.product-details__price -->
 		                </div>
 		                @if($product_detail->weave_type)
@@ -140,6 +135,11 @@ input[type="number"] {
 		                        {!! $product_detail->summary !!}
 		                    </p>
 		                </div><!-- /.excerp-text -->
+		                @if($product_detail->price != 0)
+                        @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->first())
+                        <h4 style="color: var(--floens-base2, #8A5133);margin-top: 20px;" class="product-details__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $product_detail->id)->first()->price }}</h4><!-- /.product-price -->
+                        @endif
+                        @endif
 		                @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->count() > 0)
 		                <div class="product-details__color">
 		                    <h3 class="product-details__content__title">Select Color</h3>

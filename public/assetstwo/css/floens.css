@@ -11903,11 +11903,11 @@ li:hover .sidebar__comments__icon::after {
     line-height: 1;
 }
 .activecolor{
-    background-color: var(--floens-base, #C7844F);
+    background-color: var(--floens-base2, #8A5133);
     color: white;
 }
 .product-details__size__btn:hover {
-    background-color: var(--floens-base, #C7844F);
+    background-color: var(--floens-base2, #8A5133);
     color: white;
 }
 

@@ -72,6 +72,10 @@
                 <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
+              @php
+                $productsizes = DB::table('product_colors')->where('product_id' , $product->id)->groupby('sizes')->get();
+                $productcolors = DB::table('product_colors')->where('product_id' , $product->id)->groupby('colors')->get();
+              @endphp
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -79,7 +83,7 @@
                 <select name="size[]" class="form-control selectpicker"  multiple data-live-search="true">
                     <option value="">--Select any size--</option>
                     @foreach(DB::table('sizeandcolors')->groupby('size')->get() as $r)              
-                    <option value="{{ $r->size }}">{{ $r->size }}</option>
+                    <option @if($productsizes) @foreach($productsizes as $productsize) @if($productsize->sizes == $r->size) selected @endif  @endforeach @endif value="{{ $r->size }}">{{ $r->size }}</option>
                     @endforeach
                 </select>
               </div> 
@@ -90,7 +94,7 @@
                     <select name="color[]" class="form-control selectpicker"  multiple data-live-search="true">
                         <option value="">--Select any size--</option>
                         @foreach(DB::table('sizeandcolors')->groupby('colors')->get() as $r)              
-                        <option value="{{ $r->colors }}">{{ $r->colors }}</option>
+                        <option @if($productcolors) @foreach($productcolors as $productcolor) @if($productcolor->colors == $r->colors) selected @endif  @endforeach @endif value="{{ $r->colors }}">{{ $r->colors }}</option>
                         @endforeach
                     </select>
                   </div>

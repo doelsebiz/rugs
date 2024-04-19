@@ -20,8 +20,14 @@ class AdminController extends Controller
 {
     public function getvariations($id)
     {
-        $colors = DB::table('product_colors')->where('product_id' , $id)->get();
+        $colors = DB::table('product_colors')->where('product_id' , $id)->orderby('colors')->get();
         return view('backend.product.getvariations')->with(array('colors' => $colors,'id'=>$id));
+    }
+    public function deletevariation($id)
+    {
+        DB::table('product_colors')->where('id' , $id)->delete();
+        request()->session()->flash('success','Variation Deleted  Successfully');
+        return redirect()->back();
     }
     public function attributes()
     {

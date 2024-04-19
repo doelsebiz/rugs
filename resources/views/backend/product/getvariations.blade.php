@@ -20,6 +20,7 @@
         <table class="table table-bordered" id="product-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
+              <th>Delete</th>
               <th>Color</th>
               <th>Size</th>
               <th>SKU</th>
@@ -33,10 +34,11 @@
             @foreach($colors as $r)
                 <input type="hidden" value="{{ $r->id }}" name="id[]">
                 <tr>
+                    <td> <a href="{{ url('admin/product/deletevariation') }}/{{ $r->id }}"><i class="fa fa-trash-alt"></i></a> </td>
                     <td style="width:20%;">{{$r->colors}}</td>
                     <td style="width:20%;">{{$r->sizes}}</td>
                     <td style="width:30%;"><input name="sku[]" value="{{ $r->sku }}" type="text" class="form-control"></td>
-                    <td style="width:20%;"><input name="stock[]" value="{{ $r->stock }}" type="text" class="form-control"></td>
+                    <td style="width:10%;"><input name="stock[]" value="{{ $r->stock }}" type="text" class="form-control"></td>
                     <td style="width:20%;"><input name="price[]" value="{{ $r->price }}" type="text" class="form-control"></td>
                 </tr>
             @endforeach

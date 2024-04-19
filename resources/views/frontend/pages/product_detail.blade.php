@@ -121,7 +121,7 @@ input[type="number"] {
 		                        <h3 class="product-details__name">{{ $product_detail->title }}</h3><!-- /.product-title -->
 		                        @if($product_detail->price != 0)
 		                        @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->first())
-		                        <h4 class="product-details__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $product_detail->id)->first()->price }}</h4><!-- /.product-price -->
+		                        <h4 style="color: var(--floens-base2, #8A5133);" class="product-details__price">Starting From ${{ DB::table('product_colors')->where('product_id' , $product_detail->id)->first()->price }}</h4><!-- /.product-price -->
 		                        @endif
 		                        @endif
 		                    </div><!-- /.product-details__price -->

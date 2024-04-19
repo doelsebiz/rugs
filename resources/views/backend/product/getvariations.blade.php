@@ -100,7 +100,7 @@
         <div class="row">
           @foreach(DB::table('product_variation_images')->where('product_id' , $id)->get() as $r)
           <div class="col-md-6 mt-2 allnone colorimage{{ $r->color }}" style="display:none;">
-              <a href="{{ url('admin/product/deleteimage') }}/{{ $r->id }}" class="fas fa-trash-alt"></a>
+              <a href="{{ url('admin/product/deletevariationimage') }}/{{ $r->id }}" class="fas fa-trash-alt"></a>
               <img style="width: 100px;height: 100px;object-fit: cover;" src="{{ url('public/images') }}/{{ $r->image }}">
           </div>
           @endforeach

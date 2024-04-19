@@ -100,6 +100,12 @@ class AdminController extends Controller
         request()->session()->flash('success','Product Image Added Successfully');
         return redirect()->back();
     }
+    public function deletevariationimage($id)
+    {
+        product_variation_images::where('id' , $id)->delete();
+        request()->session()->flash('success','Product Image Added Successfully');
+        return redirect()->back();
+    }
     public function profile(){
         $profile=Auth()->user();
         // return $profile;

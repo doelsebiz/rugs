@@ -9,6 +9,7 @@ use App\Models\product_images;
 use App\Models\product_colors;
 use App\Models\product_variation_images;
 use App\User;
+use App\Models\Category;
 use App\Rules\MatchOldPassword;
 use Hash;
 use Carbon\Carbon;
@@ -18,6 +19,26 @@ use Illuminate\Support\Facades\File;
 use DB;
 class AdminController extends Controller
 {
+    public function searchproduct(Request $request)
+    {
+        $input = $request->all();
+
+
+        $q = Product::query();
+
+        if (!empty($input['keyword']))
+        {
+            $q->where('title','like', '%' . $input['keyword'] . '%' );
+        }
+        if (!empty($input['category_id']))
+        {
+            $q->where('cat_id','like', '%' . $input['category_id'] . '%' );
+        }
+        $products = $q->orderBy('id' , 'desc')->paginate(200);
+
+        $category=Category::where('is_parent',1)->get();
+        return view('backend.product.index')->with('products',$products)->with('categories',$category);
+    }
     public function saveorder(Request $request)
     {
         $update = product_images::find($request->id);

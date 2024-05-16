@@ -30,10 +30,12 @@
         <h4 class="cr-shop-sub-title">Colors</h4>
         <div class="cr-checkbox" style="height: 300px;overflow: auto;margin-bottom: 10px;">
             @foreach(DB::table('product_colors')->groupby('colors')->get() as  $filtercolor => $c)
+            @if(DB::table('sizeandcolors')->where('colors' , $c->colors)->first()->tone)
             <div class="checkbox-group">
                 <input name="colors[]" value="{{ $c->colors }}" type="checkbox" id="color{{ $filtercolor+1 }}">
                 <label for="color{{ $filtercolor+1 }}">{{ DB::table('sizeandcolors')->where('colors' , $c->colors)->first()->tone }}</label>
             </div>
+            @endif
             @endforeach
         </div>
     </div>

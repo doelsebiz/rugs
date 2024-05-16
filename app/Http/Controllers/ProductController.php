@@ -21,11 +21,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products=Product::getAllProduct();
-        // return $products;
-        return view('backend.product.index')->with('products',$products);
+        $category=Category::where('is_parent',1)->get();
+        return view('backend.product.index')->with('products',$products)->with('categories',$category);
     }
 
     /**

@@ -47,7 +47,10 @@
     Route::get('admin/product/deleteimage/{id}',[AdminController::class,'deleteimage']);
     Route::get('admin/product/deletevariation/{id}',[AdminController::class,'deletevariation']);
     Route::get('admin/product/deletevariationimage/{id}',[AdminController::class,'deletevariationimage']);
-    
+    Route::get('admin/searchproduct',[AdminController::class,'searchproduct']);
+
+
+
     Route::get('admin/product/Variations/{id}',[AdminController::class,'getvariations']);
     Route::POST('admin/product/updatevariations',[AdminController::class,'updatevariations']);
 

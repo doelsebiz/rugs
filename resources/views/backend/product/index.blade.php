@@ -3,12 +3,48 @@
 @section('main-content')
  <!-- DataTales Example -->
 <div class="container-fluid">
+  <div class="card mb-5">
+      <div class="card-header">
+          Filter Products
+      </div>
+      <div class="card-body">
+          <form method="GET" action="{{ url('admin/searchproduct') }}">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Enter Key Word</label>
+                        <input @if(isset($_GET['keyword'])) value="{{ $_GET['keyword'] }}" @endif class="form-control" type="text" name="keyword">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Select Category</label>
+                        <select name="category_id" class="form-control">
+                            <option value="">Select Category</option>
+                            @foreach($categories as $key=>$cat_data)
+                                <option @if(isset($_GET['category_id'])) @if($_GET['category_id'] == $cat_data->id) selected @endif @endif value='{{$cat_data->id}}'>{{$cat_data->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mt-4">
+                        <button class="btn btn-success form-control">Search</button>
+                    </div>
+                </div>
+            </div>
+          </form>
+      </div>
+   </div>
    <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
             @include('backend.layouts.notification')
          </div>
      </div>
+
+     
+
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary float-left">Product Lists</h6>
       <a href="{{route('product.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Product</a>

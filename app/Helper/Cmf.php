@@ -74,11 +74,9 @@ class Cmf
     }
     public static function sendimagetodirectory($imagename)
     {
-        $image = $imagename;
-        $filename = time().'.'.$image->getClientOriginalExtension();
-        $imgFile = Image::make($image->getRealPath());
-        $imgFile->insert(public_path('images/watermark.png'), 'center');
-        $imgFile->save(public_path('/images').'/'.$filename);
+        $file = $imagename;
+        $filename = rand() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('images'), $filename);
         return $filename;
     }
     public static function shorten_url($text)

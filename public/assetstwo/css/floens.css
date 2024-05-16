@@ -4622,7 +4622,7 @@ body.megamenu-popup-active .mobile-nav__content {
 
 .search-popup__form .floens-btn span {
     font-size: 18px;
-    color: var(--floens-white, #ffffff);
+    color: black;
 }
 
 .search-popup.active {

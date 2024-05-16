@@ -141,14 +141,18 @@
       <div class="card mt-4">
           <h5 class="card-header">Product Images</h5>
           <div class="card-body">
-              <div class="row">
-                @foreach(DB::table('product_images')->where('product_id' , $product->id)->get() as $r)
-                <div class="col-md-6 mt-2">
-                    <a href="{{ url('admin/product/deleteimage') }}/{{ $r->id }}" class="fas fa-trash-alt"></a>
-                    <img style="width: 100px;height: 100px;object-fit: cover;" src="{{ url('public/images') }}/{{ $r->image }}">
-                </div>
-                @endforeach
-              </div>
+              <table class="table table-bordered">
+                  <tbody id="productmainimages">
+                      @foreach(DB::table('product_images')->where('product_id' , $product->id)->orderby('orderby' , 'ASC')->get() as $r)
+                      <tr>
+                        <td><img style="width: 100px;height: 100px;object-fit: cover;" class="img-thumbnail" src="{{ url('public/images') }}/{{ $r->image }}"></td>
+                        <td><input id="ordernumber{{ $r->id }}" type="number" class="form-control mt-3" value="{{ $r->orderby }}" name="product_order[]"></td>
+                        <td><button onclick="saveorder({{$r->id}})" class="btn btn-success mt-3">Save</button></td>
+                        <td><a href="{{ url('admin/product/deleteimage') }}/{{ $r->id }}" class="fas fa-trash-alt mt-3"></a></td>
+                      </tr>
+                      @endforeach
+                  </tbody>
+              </table>
           </div>
       </div>
   </div>
@@ -167,8 +171,27 @@
 <script src="{{asset('public/backend/summernote/summernote.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
-  function getvariations() {
-      
+  function saveorder(id) {
+      var ordernumber = $('#ordernumber'+id).val();
+      var product_id = '{{ $product->id }}';
+      $.ajax({
+          type: "POST",
+          url: "{{ url('admin/product/saveorder') }}",
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          data: {
+              id:id,
+              product_id:product_id,
+              ordernumber:ordernumber,
+          },
+          success: function(res) {
+              $('#productmainimages').html(res);
+          },
+          error: function(error) {
+              console.log('Error updating card position:', error);
+          }
+      });
   }
 </script>
 <script>

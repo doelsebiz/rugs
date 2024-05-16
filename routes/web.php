@@ -41,7 +41,8 @@
 
     
     
-
+    
+    Route::POST('admin/product/saveorder',[AdminController::class,'saveorder']);
     Route::POST('admin/product/addproductimages',[AdminController::class,'addproductimages']);
     Route::get('admin/product/deleteimage/{id}',[AdminController::class,'deleteimage']);
     Route::get('admin/product/deletevariation/{id}',[AdminController::class,'deletevariation']);

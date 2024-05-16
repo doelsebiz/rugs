@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\File;
 use DB;
 class AdminController extends Controller
 {
+    public function saveorder(Request $request)
+    {
+        $update = product_images::find($request->id);
+        $update->orderby = $request->ordernumber;
+        $update->save();
+        $productid = $request->product_id;
+        $html = view('backend.product.saveorder', compact('productid'))->render();
+        return $html;
+    }
     public function getvariations($id)
     {
         $colors = DB::table('product_colors')->where('product_id' , $id)->orderby('colors')->get();

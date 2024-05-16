@@ -7,12 +7,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="keywords" content="online shop, purchase, cart, ecommerce site, best online shopping">
-<meta name="description" content="{!! $product_detail->summary !!}">
+<meta name="description" content="">
 <meta property="og:url" content="{{route('product-detail',$product_detail->slug)}}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{{$product_detail->title}}">
 <meta property="og:image" content="{{$product_detail->photo}}">
-<meta property="og:description" content="{!! $product_detail->summary !!}">
+<meta property="og:description" content="">
 @endsection
 @section('main-content')
 <input type="hidden" id="productstock" name="">
@@ -51,6 +51,9 @@ input[type="number"] {
     border: 1px solid #ccc;
     border-left: none;
     border-right: none;
+}
+.product-details__size__box{
+    flex-wrap: wrap;
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
@@ -131,9 +134,7 @@ input[type="number"] {
 						</div>
 						@endif
 		                <div class="product-details__excerpt">
-		                    <p class="product-details__excerpt__text1">
-		                        {!! $product_detail->summary !!}
-		                    </p>
+		                    {!! $product_detail->summary !!}
 		                </div><!-- /.excerp-text -->
 		                @if($product_detail->price != 0)
                         @if(DB::table('product_colors')->where('product_id' , $product_detail->id)->first())

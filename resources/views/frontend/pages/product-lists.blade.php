@@ -22,10 +22,10 @@
 @if($categoryname->title != 'Carpets')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             @include('frontend.pages.filter')
         </div>
-        <div class="col-md-9" id="showproductsection">
+        <div class="col-md-10" id="showproductsection">
             <section class="product-page product-page--left section-space-bottom">
                 <div class="container-fluid">
                     <div class="row">

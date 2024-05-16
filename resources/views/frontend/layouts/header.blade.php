@@ -121,8 +121,8 @@
                 </a>
                 <!-- /.shopping card -->
                 <a href="#" class="search-toggler main-header__search">
-                    <!-- <i class="icon-search" aria-hidden="true"></i> -->
-                    <!-- <span class="sr-only">Search</span> -->
+                    <i class="icon-search" aria-hidden="true"></i>
+                    <span class="sr-only">Search</span>
                 </a>
                 <!-- /.search-toggler -->
                 <button class="main-header__sidebar-btn sidebar-btn__toggler">

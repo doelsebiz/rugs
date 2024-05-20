@@ -1,7 +1,8 @@
-<div class="top-notice bg-primary text-white">
+<div style="background-color: red !important;" class="top-notice bg-primary text-white">
     <div class="container text-center">
-        <h5 class="d-inline-block">Launching Discount Get Up to <b>40% OFF</b></h5>
-        <small>* Limited time only.</small>
+        <h5 class="d-inline-block">Website is Under Construction <b>We'll be Live Very Soon</b></h5>
+        <!-- <h5 class="d-inline-block">Launching Discount Get Up to <b>40% OFF</b></h5> -->
+        <!-- <small>* Limited time only.</small> -->
     </div>
     <!-- End .container -->
 </div>

@@ -9,7 +9,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_2e8C2K5k5slozTp96XOBMD6aYMlj2YQ223BxU-kQA&s">
                 @endif
                 @else
-                @if(DB::table('product_images')->where('product_id' , $r->id)->first())
+                @if(DB::table('product_images')->where('product_id' , $r->id)->orderby('orderby' , 'ASC')->first())
                 <img src="{{ url('public/images') }}/{{ DB::table('product_images')->where('product_id' , $r->id)->first()->image }}" alt="{{$r->title}}">
                 @else
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh_2e8C2K5k5slozTp96XOBMD6aYMlj2YQ223BxU-kQA&s">

@@ -237,7 +237,7 @@
                         <i class="fa fa-info"></i>
                     </div>
                     <div class="cr-services-contain">
-                        <h4>24X7 Support</h4>
+                        <h4>Responsible Customer Service</h4>
                         <p>Always available for your assistance, round the clock</p>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
                         <i class="fa fa-truck"></i>
                     </div>
                     <div class="cr-services-contain">
-                        <h4>Delivery in 5 Days</h4>
+                        <h4>Dispatch in 2-3 Working Days</h4>
                         <p>Fast delivery within 5 days, hassle-free service.</p>
                     </div>
                 </div>

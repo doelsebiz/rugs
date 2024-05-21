@@ -163,11 +163,11 @@
                             </div>
                             <div class="col-lg-12 col-sm-6 col-6 cr-product-box banner-480 mb-24">
                                 <div class="cr-ice-cubes">
-                                    <img src="{{ url('public/images/bannerimage.jpg') }}" alt="product banner">
+                                    <img src="{{ url('public/images/PHOTO-2024-05-17-01-28-15.jpg') }}" alt="product banner">
                                     <div class="cr-ice-cubes-contain">
-                                        <h4 class="title">HANDMADE </h4>
+                                        <h4 class="title" style="color:black;">HANDMADE </h4>
                                         <h5 class="sub-title">RUGS</h5>
-                                        <span style="color:white;">Explore the finest selection of handmade rugs and carpets at Jagkris Home, your premier destination for luxurious floor covering. Discover meticulously handcrafted rugs, elegant carpets available in an array of styles and materials to enhance your living spaces.</span>
+                                        <span style="color:black;font-weight: bold;">Explore the finest selection of handmade rugs and carpets at Jagkris Home, your premier destination for luxurious floor covering. Discover meticulously handcrafted rugs, elegant carpets available in an array of styles and materials to enhance your living spaces.</span>
                                         <a href="{{ url('product-cat/rugs') }}" class="cr-button">Shop Now</a>
                                     </div>
                                 </div>

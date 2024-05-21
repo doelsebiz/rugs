@@ -167,7 +167,7 @@
                                     <div class="cr-ice-cubes-contain">
                                         <h4 class="title">HANDMADE </h4>
                                         <h5 class="sub-title">RUGS</h5>
-                                        <span style="color:white;">Discover the artistry of our handcrafted rugs, meticulously woven by skilled artisans to bring warmth and character to your space. Each rug is a unique masterpiece, blending tradition with modern design to create timeless elegance. With a commitment to quality and attention to detail, our rugs promise durability and beauty, adding a touch of luxury to your home décor.</span>
+                                        <span style="color:white;">Explore the finest selection of handmade rugs and carpets at Jagkris Home, your premier destination for luxurious floor covering. Discover meticulously handcrafted rugs, elegant carpets available in an array of styles and materials to enhance your living spaces.</span>
                                         <a href="{{ url('product-cat/rugs') }}" class="cr-button">Shop Now</a>
                                     </div>
                                 </div>

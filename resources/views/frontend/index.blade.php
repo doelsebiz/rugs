@@ -249,7 +249,7 @@
                     </div>
                     <div class="cr-services-contain">
                         <h4>Dispatch in 2-3 Working Days</h4>
-                        <p>Free Delivery With In 7-12 Working Days*</p>
+                        <p>Free Delivery With In 7-12 Working Days.*</p>
                     </div>
                 </div>
             </div>

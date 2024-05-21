@@ -85,9 +85,9 @@
                         <li>
                             <a href="{{ url('project-work') }}">Project/Custom work </a>
                         </li>
-                        <!-- <li>
-                            <a href="{{ url('custom-work') }}">Custom Work</a>
-                        </li> -->
+                        <li>
+                            <a href="{{ url('blogs') }}">Blogs</a>
+                        </li>
                         <!-- <li class="dropdown">
                             <a href="javascript:void(0)">Colors</a>
                             <ul>

@@ -4,20 +4,6 @@
 @endsection
 
 @section('main-content')
-<section class="section-breadcrumb">
-    <div class="cr-breadcrumb-image">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="cr-breadcrumb-title">
-                        <h2>Project Work</h2>
-                        <span> <a href="{{ url('') }}">Home</a> - Project Work</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="contact-one section-space">
     <div class="container">
         <div class="row gutter-y-40">

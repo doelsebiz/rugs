@@ -5,20 +5,6 @@
 @endsection
 
 @section('main-content')
-<section class="section-breadcrumb">
-    <div class="cr-breadcrumb-image">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="cr-breadcrumb-title">
-                        <h2>{{ $categoryname->title }}</h2>
-                        <span> <a href="{{ url('') }}">Home</a> - {{ $categoryname->title }}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 @if($categoryname->title != 'Carpets')
 <div class="container-fluid">
     <div class="row">

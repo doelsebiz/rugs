@@ -23,46 +23,16 @@
 @include('frontend.mainslider')
 <!--/ End Slider Area -->
 <!-- services start -->
-<div  class="container-fluid">
-    <div class="slide slide-1 slide-show-banner-1" data-endtime="">
-  <a href="{{ url('product-cat/rugs') }}">
-  
-    
-    <div class="slide-image-desktop slide-image-desktop-1"></div>
-      <style>
-        .slide{
-            position: relative;
-        }
-        @media (min-width: 768px) {
-          .slide-image-desktop-1 {
-            background-image: url("//missamara.com.au/cdn/shop/files/Webslider_Easter-AU_1.png?v=1711347741");
-            background-position: center;
-            background-size: 100%;
-            background-repeat: no-repeat;
-            height: 450px;
-          }
-        }
-      </style>
-      
-        <div class="slide-image-mobile slide-image-mobile-1"></div>
-        <style>
-          @media (max-width: 767px) {
-            .slide-image-mobile-1 {
-              background-image: url("//missamara.com.au/cdn/shop/files/Webslider_Easter-AU_1.png?v=1711347741");
-              background-position: center;
-              background-size: 100%;
-              background-repeat: no-repeat;
-              height: 140px;
-            }
-          }
-        </style>
-          
-    
-  
-  
-  </a>
+<div class="container-fluid">
+    <div class="row mt-3">    
+        @foreach(DB::table('banners')->where('type' , 'bellowhero')->get() as $r)
+            <a href="{{ url('') }}/{{ $r->slug }}" class="col-md-12">
+                <img style="width: 100%;" src="{{ url('public/images') }}/{{ $r->photo }}">
+            </a>
+        @endforeach
+    </div>
 </div>
-</div>
+
 
 <section class="about-two section-space mt-4">
     <!-- /.about-two__bg -->

@@ -1,11 +1,11 @@
 @extends('backend.layouts.master')
 @section('title','E-SHOP || Banner Edit')
 @section('main-content')
-
-<div class="card">
+<div class="container">
+  <div class="card">
     <h5 class="card-header">Edit Banner</h5>
     <div class="card-body">
-      <form method="post" action="{{route('banner.update',$banner->id)}}">
+      <form enctype="multipart/form-data" method="post" action="{{route('banner.update',$banner->id)}}">
         @csrf 
         @method('PATCH')
         <div class="form-group">
@@ -26,27 +26,27 @@
 
         <div class="form-group">
         <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
-        <div class="input-group">
-            <span class="input-group-btn">
-                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                <i class="fa fa-picture-o"></i> Choose
-                </a>
-            </span>
-          <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$banner->photo}}">
-        </div>
-        <div id="holder" style="margin-top:15px;max-height:100px;"></div>
-          @error('photo')
-          <span class="text-danger">{{$message}}</span>
-          @enderror
+        <input id="inputTitle" type="file" name="photo" class="form-control">
         </div>
         
         <div class="form-group">
-          <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
-          <select name="status" class="form-control">
-            <option value="active" {{(($banner->status=='active') ? 'selected' : '')}}>Active</option>
-            <option value="inactive" {{(($banner->status=='inactive') ? 'selected' : '')}}>Inactive</option>
+          <label for="type" class="col-form-label">Type <span class="text-danger">*</span></label>
+          <select name="type" class="form-control">
+              <option value="hero">Hero Banner</option>
+              @if(DB::table('banners')->where('type' , 'bellowhero')->count() == 0)
+              <option value="bellowhero">Second Section</option>
+              @endif
+              @if(DB::table('banners')->where('type' , 'about-us-section-horizontal')->count() == 0)
+              <option value="about-us-section-horizontal">About Us Section One (Horizontal Image)</option>
+              @endif
+              @if(DB::table('banners')->where('type' , 'about-us-section-vertical')->count() == 0)
+              <option value="about-us-section-vertical">About Us Section One (Vertical Image)</option>
+              @endif
+              @if(DB::table('banners')->where('type' , 'vertical-poster')->count() == 0)
+              <option value="vertical-poster">Vertical Poster</option>
+              @endif
           </select>
-          @error('status')
+          @error('type')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
@@ -56,7 +56,7 @@
       </form>
     </div>
 </div>
-
+</div>
 @endsection
 
 @push('styles')

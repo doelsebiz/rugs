@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Helper\Cmf;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use Illuminate\Support\Str;
@@ -36,21 +36,8 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->all();
-        $this->validate($request,[
-            'title'=>'string|required|max:50',
-            'description'=>'string|nullable',
-            'photo'=>'string|required',
-            'status'=>'required|in:active,inactive',
-        ]);
         $data=$request->all();
-        $slug=Str::slug($request->title);
-        $count=Banner::where('slug',$slug)->count();
-        if($count>0){
-            $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
-        }
-        $data['slug']=$slug;
-        // return $slug;
+        $data['photo'] = Cmf::sendimagetodirectory($request->photo);
         $status=Banner::create($data);
         if($status){
             request()->session()->flash('success','Banner successfully added');
@@ -94,20 +81,11 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $banner=Banner::findOrFail($id);
-        $this->validate($request,[
-            'title'=>'string|required|max:50',
-            'description'=>'string|nullable',
-            'photo'=>'string|required',
-            'status'=>'required|in:active,inactive',
-        ]);
         $data=$request->all();
-        // $slug=Str::slug($request->title);
-        // $count=Banner::where('slug',$slug)->count();
-        // if($count>0){
-        //     $slug=$slug.'-'.date('ymdis').'-'.rand(0,999);
-        // }
-        // $data['slug']=$slug;
-        // return $slug;
+        if($request->photo)
+        {
+            $data['photo'] = Cmf::sendimagetodirectory($request->photo);
+        }
         $status=$banner->fill($data)->save();
         if($status){
             request()->session()->flash('success','Banner successfully updated');

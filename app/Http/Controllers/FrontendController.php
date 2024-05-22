@@ -87,7 +87,7 @@ class FrontendController extends Controller
     public function getstock(Request $request)
     {
         $data = product_colors::where('product_id' , $request->product_id)->where('colors' , $request->color)->where('sizes' , $request->size)->get()->first();
-        return response()->json(['stock' =>$data->stock, 'price' =>$data->price]);
+        return response()->json(['stock' =>$data->stock, 'price' =>$data->price, 'sku' =>$data->sku]);
     }
     public function selectcolor(Request $request)
     {
@@ -181,7 +181,6 @@ class FrontendController extends Controller
     public function home(){
         $featured=Product::where('status','active')->where('is_featured',1)->orderBy('price','DESC')->limit(2)->get();
         $posts=Post::where('status','active')->orderBy('id','DESC')->limit(3)->get();
-        $banners=Banner::where('status','active')->limit(3)->orderBy('id','DESC')->get();
         // return $banner;
         $products=Product::where('status','active')->orderBy('id','DESC')->limit(6)->get();
         $category=Category::where('status','active')->where('is_parent',1)->orderBy('title','ASC')->get();
@@ -189,7 +188,6 @@ class FrontendController extends Controller
         return view('frontend.index')
                 ->with('featured',$featured)
                 ->with('posts',$posts)
-                ->with('banners',$banners)
                 ->with('product_lists',$products)
                 ->with('category_lists',$category);
     }   
@@ -367,6 +365,19 @@ class FrontendController extends Controller
                     ->paginate('9');
         return view('frontend.pages.product-grids')->with('products',$products)->with('recent_products',$recent_products);
     }
+
+
+    public function searchproduct(Request $request)
+    {
+        $products=Product::orwhere('title','like','%'.$request->name.'%')
+                    ->orwhere('slug','like','%'.$request->name.'%')
+                    ->orwhere('description','like','%'.$request->name.'%')
+                    ->orwhere('summary','like','%'.$request->name.'%')
+                    ->orderBy('id','DESC')
+                    ->paginate('9');
+        return view('frontend.pages.product-lists-search' ,compact('products'));
+    }
+
 
     public function productBrand(Request $request){
         $products=Brand::getProductByBrand($request->slug);

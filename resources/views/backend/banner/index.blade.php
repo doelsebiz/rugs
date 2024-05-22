@@ -2,7 +2,8 @@
 @section('title','E-SHOP || Banner Page')
 @section('main-content')
  <!-- DataTales Example -->
- <div class="card shadow mb-4">
+<div class="container">
+   <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
             @include('backend.layouts.notification')
@@ -20,9 +21,8 @@
             <tr>
               <th>S.N.</th>
               <th>Title</th>
-              <th>Slug</th>
               <th>Photo</th>
-              <th>Status</th>
+              <th>Type</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -30,9 +30,8 @@
             <tr>
               <th>S.N.</th>
               <th>Title</th>
-              <th>Slug</th>
               <th>Photo</th>
-              <th>Status</th>
+              <th>Type</th>
               <th>Action</th>
               </tr>
           </tfoot>
@@ -41,20 +40,15 @@
                 <tr>
                     <td>{{$banner->id}}</td>
                     <td>{{$banner->title}}</td>
-                    <td>{{$banner->slug}}</td>
                     <td>
                         @if($banner->photo)
-                            <img src="{{$banner->photo}}" class="img-fluid zoom" style="max-width:80px" alt="{{$banner->photo}}">
+                            <img src="{{ url('public/images') }}/{{$banner->photo}}" class="img-fluid zoom" style="max-width:80px" alt="{{$banner->photo}}">
                         @else
                             <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid zoom" style="max-width:100%" alt="avatar.png">
                         @endif
                     </td>
                     <td>
-                        @if($banner->status=='active')
-                            <span class="badge badge-success">{{$banner->status}}</span>
-                        @else
-                            <span class="badge badge-warning">{{$banner->status}}</span>
-                        @endif
+                        <span class="badge badge-success">{{$banner->type}}</span>
                     </td>
                     <td>
                         <a href="{{route('banner.edit',$banner->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
@@ -94,6 +88,7 @@
         @endif
       </div>
     </div>
+</div>
 </div>
 @endsection
 

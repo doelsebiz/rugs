@@ -166,7 +166,8 @@ input[type="number"] {
 								    <input type="number" class="quantity-input" value="1" min="1">
 								    <button class="quantity-btn plus">+</button>
 								</div>
-		                    </div>	                    
+		                    </div>
+		                    <p id="skuofvariation" style="color:black;margin-top: 10px;">SKU: </p>                   
 		                    @endif
 		                </div>
 		                @endif
@@ -183,7 +184,7 @@ input[type="number"] {
 		                <input type="hidden" name="product_id" value="{{ $product_detail->id }}">
 		                <input type="hidden"  name="color" id="colorforcart">
 		                <input type="hidden"  name="size" id="sizeforcart">
-		                <div class="product-details__buttons">
+		                <div style="margin-top: 15px;" class="product-details__buttons">
 		                    <button disabled class="product-details__btn-cart floens-btn">
 		                        <span>Add to Cart</span>
 		                        <i class="icon-cart"></i>
@@ -474,9 +475,8 @@ input[type="number"] {
             success: function(res) {
             	$('.product-details__price').html('Price : $'+res.price);
             	$('#priceforcart').val(res.price);
-
-            	$('#productstock').val(res.stock)
-
+            	$('#productstock').val(res.stock);
+            	$('#skuofvariation').html('SKU: '+res.sku);
             	if(res.stock > 0)
             	{
             		$('.product-details__buttons').html('<button class="product-details__btn-cart floens-btn"> <span>Add to Cart</span> <i class="icon-cart"></i> </button>')

@@ -108,6 +108,8 @@
 
     Route::get('removefromcart/{id}', [FrontendController::class, 'removefromcart']);
     
+    Route::get('search', [FrontendController::class, 'searchproduct']);
+    
     
     Route::post('stripe', [FrontendController::class, 'stripePost'])->name('stripe.post');
     Route::get('return-policy', [FrontendController::class, 'returnpolicy']);

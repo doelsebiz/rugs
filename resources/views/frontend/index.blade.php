@@ -41,9 +41,9 @@
             <div class="col-lg-6 wow fadeInLeft animated" data-wow-duration="1500ms" data-wow-delay="00ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInLeft;">
                 <div class="about-two__image">
                     <div class="about-two__image__inner">
-                        <img src="{{ url('public/images/aboutimageone.jpg') }}" alt="about" class="about-two__image__one">
+                        <img src="{{ url('public/images/') }}/{{ DB::table('banners')->where('type' , 'about-us-section-vertical')->first()->photo }}" alt="about" class="about-two__image__one">
                         <div class="about-two__image__inner__inner">
-                            <img src="{{ url('public/images/aboutimagetwo.jpg') }}" alt="about" class="about-two__image__two">
+                            <img src="{{ url('public/images/') }}/{{ DB::table('banners')->where('type' , 'about-us-section-horizontal')->first()->photo }}" alt="about" class="about-two__image__two">
                         </div><!-- /.about-two__image__inner__inner -->
                         <div class="experience about-two__experience">
                             <div class="experience__inner">
@@ -133,7 +133,7 @@
                             </div>
                             <div class="col-lg-12 col-sm-6 col-6 cr-product-box banner-480 mb-24">
                                 <div class="cr-ice-cubes">
-                                    <img src="{{ url('public/images/PHOTO-2024-05-17-01-28-15.jpg') }}" alt="product banner">
+                                    <img src="{{ url('public/images/') }}/{{ DB::table('banners')->where('type' , 'about-us-section-vertical')->first()->photo }}" alt="product banner">
                                     <div class="cr-ice-cubes-contain">
                                         <h4 class="title" style="color:black;">HANDMADE </h4>
                                         <h5 class="sub-title">RUGS</h5>
